@@ -4,6 +4,7 @@ function getActions(req, res) {
 
 function getPushWebHooks(req, res) {
     console.log(req.headers['x-github-hook-id'])
+    console.log(req.headers)
     res.status(200).send({})
 }
 
