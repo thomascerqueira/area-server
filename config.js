@@ -3,6 +3,8 @@ import admin from 'firebase-admin'
 import Mongodb from 'mongodb'
 import nodemailer from 'nodemailer'
 
+console.log("test", process.env.FIREBASE_PRIVATE_KEY)
+
 admin.initializeApp({
     credential: admin.credential.cert({
         "type": process.env.FIREBASE_TYPE,
