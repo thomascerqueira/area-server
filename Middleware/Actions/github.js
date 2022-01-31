@@ -7,5 +7,6 @@ function getPushWebHooks(res, req) {
 }
 
 export {
-    getActions
+    getActions,
+    getPushWebHooks
 }
