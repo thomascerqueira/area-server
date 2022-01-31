@@ -3,7 +3,7 @@ function getActions(res, req) {
 }
 
 function getPushWebHooks(res, req) {
-    res.status(200).send(req)
+    console.log(req)
 }
 
 export {
