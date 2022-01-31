@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "63eb93f3-9613-4fae-a1c1-d2b7aa552250",
+		"name": "Area",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"mdr@gmail.com\",\n    \"password\": \"123456\",\n    \"username\": \"alexis\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/createUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImlhdCI6MTY0MjMzNzcxMSwiZXhwIjoxNjQyMzQxMzExLCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay1veHBxeEBhcmVhLWUzZmMyLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiZmlyZWJhc2UtYWRtaW5zZGstb3hwcXhAYXJlYS1lM2ZjMi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6ImgwWnI2SGdhMUFlRHNMblZ5Y0hrR0VVVTBMWDIifQ.wUl9VZeiwEz5Gq3CRp4Ah_z91Z6Xo4KSurvhipuzUALkP6cOcbW9SlpL8kZPa-WEQelGBKMNfvyk2Icmina6cX2yysdoD3GMGUqhB9JxmLzd3q80LgyZEX2pohkguLOI7_PI2WX6ZMV4a284JiYeJQi_BlyGpeveRe4r4oibzmDBTugAO04-4iCt05IHGkCw0U_jFgFNNLoyvKXOuB1BGFpzwISaikm42RCxBNC1YRFQGPw0o10PqquaRSPNZK_cj354P4z3tXoGp9eK7vTgP8bE6_YphQXnvAuJQWc8Awv2o3HsFmWV93CkPnkRh87CpL7yLql0DHkayR5EFCCWFA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/deleteUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"deleteUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mdr@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/signUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"signUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/services/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"services",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get good",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service\": \"github\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/services/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"services",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service\": \"j'existe pas mdr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5555/services/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"services",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
