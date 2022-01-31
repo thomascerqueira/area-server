@@ -2,9 +2,7 @@ import { getAuth } from 'firebase-admin/auth';
 import admin from 'firebase-admin'
 import Mongodb from 'mongodb'
 import nodemailer from 'nodemailer'
-
 console.log("test", process.env.FIREBASE_PRIVATE_KEY)
-
 admin.initializeApp({
     credential: admin.credential.cert({
         "type": process.env.FIREBASE_TYPE,
@@ -18,7 +16,7 @@ admin.initializeApp({
         "auth_provider_x509_cert_url": process.env.FIREBASE_AUTH_PROVIDER,
         "client_x509_cert_url": process.env.FIREBASE_CLIENT_CERT
     })
-});
+  });
 
 const auth = getAuth()
 let allDb
