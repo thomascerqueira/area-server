@@ -1,6 +1,6 @@
 import express from 'express';
 import {create_route_from_routes, check_arg} from '../../Functions/createroutefromroutes.js'
-import {getActions, getPushWebHooks} from "../../Middleware/Actions/github.js"
+import {getActions, getWebHooks} from "../../Middleware/Actions/github.js"
 
 const routes = [
     {
@@ -11,9 +11,9 @@ const routes = [
     },
     {
         type: 'post',
-        route: '/push',
+        route: '/hooks',
         middlewares: [],
-        callback: getPushWebHooks
+        callback: getWebHooks
     }
 ]
 
