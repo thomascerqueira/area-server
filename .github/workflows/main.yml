@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          destination-github-username: 'EpitechPromo2024'
+          destination-repository-name: 'B-YEP-500-PAR-5-1-area-kylian.germain'
+          user-email: alexis.fabarez@epitech.eu
+          commit-message: See $REPOSITORY_URL@commit from $GITHUB_REF
+          target-branch: server
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
