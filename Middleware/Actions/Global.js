@@ -11,9 +11,9 @@ async function createActionReaction(req, res) {
     switch (req.body.action.service) {
       case 'github':
         paramAction = {
-          githubName: req.body.action.githubName,
-          repository: req.body.action.repository,
-          token: req.body.action.token
+          githubName: `${req.body.action.githubName}`,
+          repository: `${req.body.action.repository}`,
+          token: `${req.body.action.token}`
         }
         break
       default:
@@ -26,11 +26,12 @@ async function createActionReaction(req, res) {
         switch (req.body.reaction.service) {
           case 'email':
             paramReaction = {
-              email: req.body.reaction.email,
+              email: `${req.body.reaction.email}`,
               object: "Area Reaction",
               html: ""
             }
         }
+        console.log("Add Doc")
         addDocC(
           allDb["ActionReaction"], req.body.uid, {
             "from": req.body.action.service,
