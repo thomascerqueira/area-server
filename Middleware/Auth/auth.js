@@ -4,7 +4,9 @@ import {allDb} from "../../config.js";
 import {getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import {sendMail} from '../../Functions/sendMail.js'
 import {userSchema} from "../../user.js";
-import {EmailTemplate} from "email-templates"
+import pkg from "email-templates"
+
+const {EmailTemplate} = pkg
 
 function createUser(req, res) {
 
