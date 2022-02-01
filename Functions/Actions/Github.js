@@ -18,6 +18,7 @@ async function createGithubAction(options) {
       {
         Authorization: `token ${options.token.toString()}`
       })
+    console.log("result =", result)
     return result.id
   } catch (err) {
     console.error("Err Create Github Action", err)
