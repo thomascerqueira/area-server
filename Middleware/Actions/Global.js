@@ -50,7 +50,11 @@ async function createActionReaction(req, res) {
           })
       }catch(err) {
         console.error("global error", err)
-        res.status(500).send({msg: err})
+        try {
+          res.status(500).send({msg: err})
+        } catch (err) {
+          res.status(500).send(err)
+        }
       }
 
 }
