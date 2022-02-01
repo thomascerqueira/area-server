@@ -16,7 +16,7 @@ function createUser(req, res) {
     .then((userRecord) => {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
-          readFile("../../Template/confirm.html", (err, html) => {
+          readFile(__filename + "../../Template/confirm.html", (err, html) => {
             console.log(err)
             console.log(html)
             sendMail(req.body.email, "Verify your email",
