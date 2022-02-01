@@ -29,7 +29,8 @@
     "firebase-admin": "^10.0.1",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.8",
-    "nodemailer": "^6.7.2"
+    "nodemailer": "^6.7.2",
+    "nodemailer-express-handlebars": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

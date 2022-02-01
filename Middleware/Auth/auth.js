@@ -4,7 +4,6 @@ import {allDb} from "../../config.js";
 import {getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import {sendMail} from '../../Functions/sendMail.js'
 import {userSchema} from "../../user.js";
-import {createReadStream} from "fs"
 
 function createUser(req, res) {
 
@@ -17,7 +16,7 @@ function createUser(req, res) {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
           sendMail(req.body.email, "Verify your email",
-            createReadStream("/Template/confirm.html"), {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
+            "confirm", {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
             .then(() => {})
         })
       addDocC(allDb[process.env.DB_MONGO_USERS], "users", new userSchema({
