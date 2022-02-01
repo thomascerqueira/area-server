@@ -1,6 +1,6 @@
 import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
-import {getActions, getWebHooks, createGithubAction, deleteGithubAction, updateGithubAction, getGithubAction} from "../../Middleware/Actions/github.js"
+import {getWebHooks, createGithubAction, deleteGithubAction, updateGithubAction, getGithubAction} from "../../Middleware/Actions/github.js"
 
 const routes = [
     {
