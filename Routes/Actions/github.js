@@ -11,25 +11,25 @@ const routes = [
     },
     {
         type: 'get',
-        route: '/getGithubAction/:id',
+        route: '/get/:id',
         middlewares: [],
         callback: getGithubAction
     },
     {
         type: 'post',
-        route: '/addGithubAction',
-        middlewares: [],
+        route: '/create',
+        middlewares: [check_arg(['githubName', 'repository', 'token'])],
         callback: createGithubAction
     },
     {
         type: 'delete',
-        route: '/deleteGithubAction/:id',
+        route: '/delete/:id',
         middlewares: [],
         callback: deleteGithubAction
     },
     {
         type: 'patch',
-        route: '/updateGithubAction/:id',
+        route: '/update/:id',
         middlewares: [],
         callback: updateGithubAction
     }

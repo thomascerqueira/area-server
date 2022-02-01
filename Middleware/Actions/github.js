@@ -1,11 +1,43 @@
+import {addDocC} from "../../Functions/MongoDB/addDoc.js";
+import httpRequest from "../../Functions/httpRequest.js";
+
 function getWebHooks(req, res) {
     console.log(req.headers['x-github-hook-id'])
     console.log(req.headers)
     res.status(200).send({})
 }
 
-function createGithubAction(req, res) {
-    res.status(401).send({})
+async function createGithubAction(req, res) {
+    httpRequest(`https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
+      "POST",
+      {
+          name: "web",
+          active: true,
+          config: {
+              url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
+              content_type: "json",
+              token: req.body.token
+          }
+      })
+      .then((res) => {
+        console.log(res)
+        res.status(200).send({})
+      })
+      .catch((err) => {
+        console.error(err)
+        res.status(500).send({})
+      })
+    // addDocC("ActionReaction", req.body.uid, {
+    //     "from": "github",
+    //     "action": req.body.action,
+    //     "hook_id": "",
+    //     "to": "area",
+    //     "reaction": "send_mail",
+    //     "reaction_id": -1
+    // })
+    //   .then((result) => {
+    //
+    //   })
 }
 
 function deleteGithubAction(req, res) {
