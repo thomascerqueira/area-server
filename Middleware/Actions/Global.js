@@ -32,7 +32,8 @@ async function createActionReaction(req, res) {
               html: ""
             }
         }
-        console.log("Add Doc")
+        if (id === undefined)
+          throw "Internal error"
         addDocC(
           allDb["ActionReaction"], req.body.uid, {
             "from": req.body.action.service,
@@ -49,8 +50,8 @@ async function createActionReaction(req, res) {
             throw err
           })
       }catch(err) {
-        console.error("global error", err)
         try {
+          console.error("global error", err.data.errors)
           res.status(500).send({msg: err})
         } catch (err) {
           res.status(500).send(err)
