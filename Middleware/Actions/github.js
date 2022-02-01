@@ -20,6 +20,12 @@ async function createGithubAction(req, res) {
                 token: req.body.token
             },
         })
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
     // httpRequest(
     //   `https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
     //   "post",
