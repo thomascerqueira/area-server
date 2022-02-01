@@ -1,11 +1,11 @@
 import {transporter} from "../config.js";
 
-async function sendMail(email, object, template, context) {
+async function sendMail(email, object, html, context) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
     subject: object,
-    template: template,
+    html: html,
     context: context
   }
   transporter.sendMail(mailOptions)
