@@ -17,11 +17,11 @@ function createUser(req, res) {
     .then((userRecord) => {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
-          readFileSync(resolve("Template", "confirm.html"), (err, html) => {
+          readFileSync(resolve("Template", "confirm.html"), {encoding: "utf-8"}, (err, html) => {
             console.log(err)
             console.log(html)
             sendMail(req.body.email, "Verify your email",
-              html, {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
+              html, {CONFIRM_LINK: value, EMAIL_ADDRESS: req.body.email})
             .then(() => {})
           })
         })
