@@ -4,8 +4,8 @@ import {allDb} from "../../config.js";
 import {getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import {sendMail} from '../../Functions/sendMail.js'
 import {userSchema} from "../../user.js";
-import fs from "fs"
 
+const fs = require('fs')
 const template = fs.readFileSync('../../Template/confirm.html',{encoding:'utf-8'});
 
 function createUser(req, res) {
