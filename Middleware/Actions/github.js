@@ -11,6 +11,7 @@ function getWebHooks(req, res) {
         hook_id: req.headers['x-github-hook-id']
       })
         .then((res) => {
+          //TODO sent document to dispatch function
           console.log(res)
         })
         .catch((err) => {
