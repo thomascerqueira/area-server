@@ -1,5 +1,6 @@
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import httpRequest from "../../Functions/httpRequest.js";
+import axios from "axios"
 
 function getWebHooks(req, res) {
     console.log(req.headers['x-github-hook-id'])
@@ -9,29 +10,39 @@ function getWebHooks(req, res) {
 
 async function createGithubAction(req, res) {
   console.log(req.body)
-    httpRequest(
-      `https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
-      "post",
-      {
-          name: "web",
-          active: true,
-          config: {
-              url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
-              content_type: "json",
-              token: req.body.token
-          },
-      },
-      {
-        "Accept": "application/vnd.github.v3+json"
-      })
-      .then((res) => {
-        console.log(res)
-        res.status(200).send({})
-      })
-      .catch((err) => {
-        console.error(err)
-        res.status(500).send({})
-      })
+  axios.post(`https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
+    {
+            name: "web",
+            active: true,
+            config: {
+                url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
+                content_type: "json",
+                token: req.body.token
+            },
+        })
+    // httpRequest(
+    //   `https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
+    //   "post",
+    //   {
+    //       name: "web",
+    //       active: true,
+    //       config: {
+    //           url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
+    //           content_type: "json",
+    //           token: req.body.token
+    //       },
+    //   },
+    //   {
+    //     "Accept": "application/vnd.github.v3+json"
+    //   })
+    //   .then((res) => {
+    //     console.log(res)
+    //     res.status(200).send({})
+    //   })
+    //   .catch((err) => {
+    //     console.error(err)
+    //     res.status(500).send({})
+    //   })
     // addDocC("ActionReaction", req.body.uid, {
     //     "from": "github",
     //     "action": req.body.action,
