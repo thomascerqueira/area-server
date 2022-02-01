@@ -24,6 +24,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
+    "email-templates": "^8.0.8",
     "express": "^4.17.2",
     "express-list-endpoints": "^6.0.0",
     "firebase-admin": "^10.0.1",
