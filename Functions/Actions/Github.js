@@ -1,27 +1,25 @@
 import httpRequest from "../httpRequest.js";
 
-async function createGithubAction(githubName, repository, token) {
-  httpRequest(
-    `https://api.github.com/repos/${githubName}/${repository}/hooks`,
-    "post",
-    {
-      name: "web",
-      active: true,
-      config: {
-        url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
-        content_type: "json",
-        token: token
+async function createGithubAction({githubName, repository, token}) {
+  try {
+    return await httpRequest(
+      `https://api.github.com/repos/${githubName}/${repository}/hooks`,
+      "post",
+      {
+        name: "web",
+        active: true,
+        config: {
+          url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
+          content_type: "json",
+          token: token
+        },
       },
-    },
-    {
-      Authorization: `token ${token}`
-    })
-    .then((res) => {
-      return (res.id)
-    })
-    .catch((err) => {
-      throw err
-    })
+      {
+        Authorization: `token ${token}`
+      })
+  } catch (err) {
+    throw err;
+  }
 }
 
 function deleteGithubAction(req, res) {
