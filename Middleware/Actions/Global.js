@@ -36,11 +36,11 @@ async function createActionReaction(req, res) {
           throw "Internal error"
         addDocC(
           allDb["ActionReaction"], req.body.uid, {
-            "from": req.body.action.service,
-            "action": req.body.action.action,
-            "hook_id": id,
-            "to": req.body.reaction.service,
-            "reaction": req.body.reaction.action,
+            "from": req.body.action.service.toString(),
+            "action": req.body.action.action.toString(),
+            "hook_id": id.toString(),
+            "to": req.body.reaction.service.toString(),
+            "reaction": req.body.reaction.action.toString(),
           })
           .then((result) => {
             res.status(200).send(result)
