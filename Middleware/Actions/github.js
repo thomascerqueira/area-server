@@ -19,7 +19,10 @@ async function createGithubAction(req, res) {
               url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
               content_type: "json",
               token: req.body.token
-          }
+          },
+      },
+      {
+        "Accept": "application/vnd.github.v3+json"
       })
       .then((res) => {
         console.log(res)
