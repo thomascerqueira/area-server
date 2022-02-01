@@ -6,8 +6,6 @@ import {sendMail} from '../../Functions/sendMail.js'
 import {userSchema} from "../../user.js";
 import {readFile} from "fs"
 
-const template = readFile('../../Template/confirm.html');
-
 function createUser(req, res) {
 
   auth.createUser({
@@ -18,9 +16,11 @@ function createUser(req, res) {
     .then((userRecord) => {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
-          sendMail(req.body.email, "Verify your email",
-              template, {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
+          readFile('../../Template/confirm.html', (data, err) => {
+            sendMail(req.body.email, "Verify your email",
+              data, {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
             .then(() => {})
+          });
         })
       addDocC(allDb[process.env.DB_MONGO_USERS], "users", new userSchema({
         uid: userRecord.uid,
