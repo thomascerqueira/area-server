@@ -28,7 +28,8 @@ Mongodb.MongoClient.connect(process.env.URL_MONGO, function(err, client) {
         console.log("Connected to mongodb")
         allDb = {
             [process.env.DB_MONGO_USERS]: client.db(process.env.DB_MONGO_USERS),
-            [process.env.DB_MONGO_POSTMAN]: client.db(process.env.DB_MONGO_POSTMAN)
+            [process.env.DB_MONGO_POSTMAN]: client.db(process.env.DB_MONGO_POSTMAN),
+            ['ActionReaction']: client.db("ActionReaction")
         }
     }
 })
