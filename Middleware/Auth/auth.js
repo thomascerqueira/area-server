@@ -4,6 +4,7 @@ import {allDb} from "../../config.js";
 import {getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import {sendMail} from '../../Functions/sendMail.js'
 import {userSchema} from "../../user.js";
+import {readFile} from "fs"
 
 function createUser(req, res) {
 
@@ -15,9 +16,11 @@ function createUser(req, res) {
     .then((userRecord) => {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
-          sendMail(req.body.email, "Verify your email",
-            "", {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
+          readFile("../../Template/confirm.html", (err, html) => {
+            sendMail(req.body.email, "Verify your email",
+              html, {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
             .then(() => {})
+          })
         })
       addDocC(allDb[process.env.DB_MONGO_USERS], "users", new userSchema({
         uid: userRecord.uid,
