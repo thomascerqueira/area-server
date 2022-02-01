@@ -16,9 +16,7 @@ function createUser(req, res) {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
           sendMail(req.body.email, "Verify your email",
-              `<html lang="en">
-                        <a href=${value}>${value}</a>
-                    </html>`, value)
+              "../../Template/confirm.html", {CONFIRM_LINK: value, EMAIL_ADRESS: req.body.email})
             .then(() => {})
         })
       addDocC(allDb[process.env.DB_MONGO_USERS], "users", new userSchema({
