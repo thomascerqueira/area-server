@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default async function httpRequest(url, method="GET", data={}) {
+export default async function httpRequest(url, method="get", data={}) {
   try {
     return await axios({
       method: method,

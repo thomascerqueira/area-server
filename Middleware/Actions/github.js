@@ -9,8 +9,9 @@ function getWebHooks(req, res) {
 
 async function createGithubAction(req, res) {
   console.log(req.body)
-    httpRequest(`https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
-      "POST",
+    httpRequest(
+      `https://api.github.com/repos/${req.body.githubName}/${req.body.repository}/hooks`,
+      "post",
       {
           name: "web",
           active: true,
