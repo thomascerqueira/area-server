@@ -4,12 +4,6 @@ import {getActions, getWebHooks, createGithubAction, deleteGithubAction, updateG
 
 const routes = [
     {
-        type: 'get',
-        route: '/getActions',
-        middlewares: [],
-        callback: getActions
-    },
-    {
         type: 'post',
         route: '/hooks',
         middlewares: [check_header(['x-github-event', 'x-github-hook-id', 'x-github-hook-installation-target-id', 'x-github-hook-installation-target-type'])],

@@ -1,7 +1,3 @@
-function getActions(req, res) {
-    res.status(200).send({})
-}
-
 function getWebHooks(req, res) {
     console.log(req.headers['x-github-hook-id'])
     console.log(req.headers)
@@ -25,7 +21,6 @@ function updateGithubAction(req, res) {
 }
 
 export {
-    getActions,
     getWebHooks,
     createGithubAction,
     deleteGithubAction,
