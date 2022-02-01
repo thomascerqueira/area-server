@@ -4,7 +4,7 @@ import {allDb} from "../../config.js";
 import {getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import {sendMail} from '../../Functions/sendMail.js'
 import {userSchema} from "../../user.js";
-import {readFileSync} from "fs"
+import {readFile} from "fs"
 import {resolve} from "path"
 
 function createUser(req, res) {
