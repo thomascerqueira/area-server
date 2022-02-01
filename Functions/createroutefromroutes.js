@@ -29,7 +29,24 @@ function check_arg(args) {
     }
 }
 
+/**
+ * Check if headers are in the request
+ * @param {array} headers header to have
+ */
+function check_header(headers) {
+    return (req, res, next) => {
+        for (const header of headers) {
+            if (!(header in req.headers)) {
+                res.status(500).send({msg: `Missing header '${header}'`});
+                return;
+            }
+        }
+        next()
+    }
+}
+
 export {
     create_route_from_routes,
-    check_arg
+    check_arg,
+    check_header
 }
