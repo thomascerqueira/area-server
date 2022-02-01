@@ -21,35 +21,40 @@ async function createActionReaction(req, res) {
     }
 
     if (paramAction !== {})
-    actions[req.body.action.service](paramAction)
-      .then((id) => {
-        switch (req.body.reaction.service) {
-          case 'email':
-            paramReaction = {
-              email: req.body.reaction.email,
-              object: "Area Reaction",
-              html: ""
+      try {
+        actions[req.body.action.service](paramAction)
+          .then((id) => {
+            switch (req.body.reaction.service) {
+              case 'email':
+                paramReaction = {
+                  email: req.body.reaction.email,
+                  object: "Area Reaction",
+                  html: ""
+                }
             }
-        }
-        addDocC(
-          allDb["ActionReaction"], req.body.uid, {
-            "from": req.body.action.service,
-            "action": req.body.action.action,
-            "hook_id": id,
-            "to": req.body.reaction.service,
-            "reaction": req.body.reaction.action,
-        })
-          .then((result) => {
-            res.status(200).send({'msg': "Created"})
+            addDocC(
+              allDb["ActionReaction"], req.body.uid, {
+                "from": req.body.action.service,
+                "action": req.body.action.action,
+                "hook_id": id,
+                "to": req.body.reaction.service,
+                "reaction": req.body.reaction.action,
+              })
+              .then((result) => {
+                res.status(200).send({'msg': "Created"})
+              })
+              .catch((err) => {
+                throw err
+              })
           })
           .catch((err) => {
-            throw err
+            console.error(err)
+            res.status(500).send({msg: 'Internal error'})
           })
-      })
-      .catch((err) => {
-        console.error(err)
-        res.status(500).send({msg: 'Internal error'})
-      })
+      }catch(err) {
+      res.status(500).send({'msg': err})
+      }
+
 }
 
 export {
