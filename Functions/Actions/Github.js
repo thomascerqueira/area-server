@@ -3,7 +3,7 @@ import httpRequest from "../httpRequest.js";
 async function createGithubAction(options) {
   try {
     return await httpRequest(
-      `https://api.github.com/repos/${options.githubName}/${options.repository}/hooks`,
+      `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks`,
       "post",
       {
         name: "web",
@@ -11,13 +11,14 @@ async function createGithubAction(options) {
         config: {
           url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
           content_type: "json",
-          token: options.token
+          token: options.token.toString()
         },
       },
       {
-        Authorization: `token ${options.token}`
+        Authorization: `token ${options.token.toString()}`
       })
   } catch (err) {
+    console.error("Err Create Github Action", err)
     throw err;
   }
 }
