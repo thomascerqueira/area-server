@@ -34,8 +34,11 @@ async function createActionReaction(req, res) {
         }
         if (id === undefined)
           throw "Internal error"
+        const newVale = await allDb["ActionReaction"].collection("ActionReaction").count()
         addDocC(
-          allDb["ActionReaction"], req.body.uid, {
+          allDb["ActionReaction"], "ActionReaction", {
+            "uid": req.body.uid.toString(),
+            "id": newVale + 1,
             "from": req.body.action.service.toString(),
             "action": req.body.action.action.toString(),
             "hook_id": id.toString(),
