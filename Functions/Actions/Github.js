@@ -12,11 +12,11 @@ async function createGithubAction(options) {
         config: {
           url: "https://area-epitech2.herokuapp.com/actions/github/hooks",
           content_type: "json",
-          token: options.token.toString()
+          token: options.token
         },
       },
       {
-        Authorization: `token ${options.token.toString()}`
+        Authorization: `token ${options.token}`
       })
     options.hook_id = result.data.id
     return options
