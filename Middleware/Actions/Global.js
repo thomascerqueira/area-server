@@ -33,7 +33,7 @@ async function createActionReaction(req, res) {
       })
   }catch(err) {
     try {
-      console.error("global error", err.data.errors)
+      console.error("global error", err)
       res.status(500).send({msg: err})
     } catch (err) {
       res.status(500).send(err)
