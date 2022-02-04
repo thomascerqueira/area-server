@@ -1,6 +1,7 @@
 import {createGithubAction} from "../../Functions/Actions/Github.js";
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb} from "../../config.js";
+import generateID from "../../Functions/generateID.js";
 
 const actions = {'push': createGithubAction}
 
@@ -8,11 +9,11 @@ async function createActionReaction(req, res) {
   try {
     console.log("Wait avant ID")
     const data = await actions[req.body.action.actionName](req.body.action.data)
-    const newVale = await allDb["ActionReaction"].collection("ActionReaction").count()
+    const id = generateID()
     addDocC(
       allDb["ActionReaction"], "ActionReaction", {
         "uid": req.body.uid.toString(),
-        "id": newVale + 1,
+        "id": id,
         "action": {
           "service": req.body.action.service.toString(),
           "actionName": req.body.action.actionName.toString(),
