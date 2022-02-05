@@ -19,7 +19,7 @@ function createUser(req, res) {
         .then((value) => {
           readFile(resolve("Template", "confirm.html"), (err, html) => {
             const mail = html.toString().replaceAll("{{CONFIRM_LINK}}", value).replaceAll("{{EMAIL_ADDRESS}}", req.body.email)
-            sendMail(req.body.email, "Verify your email", mail)
+            sendMail({"email": req.body.email, "object": "Verify your email"}, mail)
             .then(() => {})
           })
         })
