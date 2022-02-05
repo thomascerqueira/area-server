@@ -9,7 +9,7 @@ function getWebHooks(req, res) {
     if (req.headers['x-github-event'] !== 'ping') {
       console.log(req.headers)
       getOneValueDb(allDb['ActionReaction'], 'ActionReaction', {
-        hook_id: req.headers['x-github-hook-id']
+        action: {hook_id: req.headers['x-github-hook-id']}
       })
         .then((res) => {
           if (res) {
