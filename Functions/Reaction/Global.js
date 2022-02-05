@@ -1,4 +1,4 @@
-import { sendMail } from "../sendMail";
+import { sendMail } from "../sendMail.js";
 
 const reaction = {"send_mail": sendMail}
 
