@@ -12,7 +12,7 @@ function generateID() {
             numCount += 1;
         } else {
             const rnum = Math.floor(Math.random() * chars.length);
-            randomstring += chars.substring(rnum,rnum+1);
+            randomString += chars.substring(rnum,rnum+1);
             charCount += 1;
         }
     }
