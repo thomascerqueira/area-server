@@ -12,9 +12,11 @@ function getWebHooks(req, res) {
         hook_id: req.headers['x-github-hook-id']
       })
         .then((res) => {
-          //TODO sent document to dispatch function
-          dispatchReaction(res)
-          console.log(res)
+          if (res) {
+            //TODO sent document to dispatch function
+            dispatchReaction(res)
+            console.log(res)
+          }
         })
         .catch((err) => {
           console.error(err)
