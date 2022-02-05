@@ -15,7 +15,6 @@ function getWebHooks(req, res) {
           if (res) {
             //TODO sent document to dispatch function
             dispatchReaction(res)
-            console.log(res)
           }
         })
         .catch((err) => {
