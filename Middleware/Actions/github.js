@@ -3,6 +3,7 @@ import httpRequest from "../../Functions/httpRequest.js";
 import axios from "axios"
 import {getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import {allDb} from "../../config.js";
+import { dispatchReaction } from "../../Functions/Reaction/Global.js";
 
 function getWebHooks(req, res) {
     if (req.headers['x-github-event'] !== 'ping') {
@@ -12,6 +13,7 @@ function getWebHooks(req, res) {
       })
         .then((res) => {
           //TODO sent document to dispatch function
+          dispatchReaction(res)
           console.log(res)
         })
         .catch((err) => {
