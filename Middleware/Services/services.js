@@ -2,7 +2,6 @@ import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import * as fs from "fs";
 
-
 async function updateServices(req, res) {
   const file = JSON.parse(fs.readFileSync('./service.json').toString())
   const db = admin.firestore()
