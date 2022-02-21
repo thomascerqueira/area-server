@@ -1,15 +1,16 @@
 import {admin} from '../../config.js'
 
-function getAllServices(req, res) {
+async function getAllServices(req, res) {
     const db = admin.firestore()
     const dbRef = db.collection("Services")
+    let response;
 
     dbRef.get()
-      .then((snapshot) => {
-          snapshot.forEach(doc => {
-              console.log(doc.data())
+      .then(async (snapshot) => {
+          await snapshot.forEach(doc => {
+              response += doc.data();
           })
-          res.status(200).send({'msg': "good"})
+          res.status(200).send(response)
       })
       .catch((err) => {
           console.error(err);
