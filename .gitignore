@@ -1,3 +1,4 @@
 .idea
 node_*
 package-lock.json
+service.json
