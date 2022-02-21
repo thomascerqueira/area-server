@@ -1,3 +1,6 @@
+import {admin} from '../../config.js'
+import {getDoc} from 'firebase/firestore';
+
 const allInfo = {
     gmail: "je suis gmail",
     github: "je suis github",
@@ -6,22 +9,17 @@ const allInfo = {
 }
 
 function getAllServices(req, res) {
-    res.status(200).send({
-        services: [
-            {
-                name: "gmail"
-            },
-            {
-                name: 'github'
-            },
-            {
-                name: 'email'
-            },
-            {
-                name: 'meteo'
-            }
-        ]
-    });
+    const docRef = admin.firestore().collection("Services")
+    getDoc(docRef)
+      .then((snapshot) => {
+          if (snapshot.exists())
+              console.log(snapshot.val())
+          res.status(200).send(snapshot.val())
+      })
+      .catch((err) => {
+          console.error(err);
+          res.status(500).send(err)
+      })
 }
 
 function getService(req, res) {
