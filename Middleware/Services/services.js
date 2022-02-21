@@ -34,6 +34,9 @@ function getServicesUser(req, res) {
             console.log("Fini")
           }
         }))
+        .catch((err) => {
+          console.error(err)
+        })
     })
   res.status(200).json({'msg': "TA GROSSE DARONNE"})
 }
