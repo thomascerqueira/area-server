@@ -10,8 +10,8 @@ async function updateServices(req, res) {
 
   file.forEach((serv) => {
     dbRef.doc(serv.name).set({
-      actions: serv.action,
-      reactions: serv.reaction
+      actions: serv.action ? serv.action : [],
+      reactions: serv.reaction ? serv.reaction : []
     })
   })
   res.status(200).send({'msg': 'inchalla ca marche'})
