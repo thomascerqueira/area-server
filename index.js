@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-nodeCron.schedule('*/5 * * * *', async () => {
+nodeCron.schedule('* * * * *', async () => {
   /*
   ** get id list
   ** tableau de fonction => bonne action
