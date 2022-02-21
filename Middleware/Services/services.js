@@ -1,12 +1,5 @@
 import {admin} from '../../config.js'
 
-const allInfo = {
-    gmail: "je suis gmail",
-    github: "je suis github",
-    email: "je suis email",
-    meteo: "je suis meteo"
-}
-
 function getAllServices(req, res) {
     const db = admin.firestore()
     const dbRef = db.collection("Services")
