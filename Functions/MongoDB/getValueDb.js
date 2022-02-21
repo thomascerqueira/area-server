@@ -24,7 +24,7 @@ async function getOneValueDb(db, collection, doc) {
  */
 async function getAllValueDb(db, collection, doc) {
   try {
-    return await db.collection(collection).find(doc)
+    return await db.collection(collection).find(doc).toArray()
   } catch (e) {
     throw e
   }

@@ -27,12 +27,9 @@ function getServicesUser(req, res) {
         uid: decoded.user_id
       })
         .then((cursor => {
-          var myDoc = cursor.hasNext() ? cursor.next() : null
-          if (myDoc) {
-            console.log(myDoc)
-          } else {
-            console.log("Fini")
-          }
+          cursor.forEach((val) => {
+            console.log(val);
+          })
         }))
         .catch((err) => {
           console.error(err)
