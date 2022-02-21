@@ -1,17 +1,18 @@
 import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
-// import * as services from '../../test.json'
+import * as fs from "fs";
 
 async function updateServices(req, res) {
-  // const db = admin.firestore()
-  // const dbRef = db.collection("Services")
-  //
-  // services.forEach((serv) => {
-  //   dbRef.doc(serv.name).set({
-  //     actions: serv.action,
-  //     reactions: serv.reaction
-  //   })
-  // })
+  const file = JSON.parse(fs.readFileSync('../../test.json').toString())
+  const db = admin.firestore()
+  const dbRef = db.collection("Services")
+
+  file.forEach((serv) => {
+    dbRef.doc(serv.name).set({
+      actions: serv.action,
+      reactions: serv.reaction
+    })
+  })
   res.status(200).send({'msg': 'inchalla ca marche'})
 }
 
