@@ -14,6 +14,7 @@ async function createGithubAction(options) {
           content_type: "json",
           token: options.token
         },
+        events: [options.events]
       },
       {
         Authorization: `token ${options.token}`
