@@ -1,11 +1,12 @@
-import {admin} from '../../config.js'
+import {admin, allDb, auth} from '../../config.js'
+import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 
-async function getAllServices(req, res) {
+function getAllServices(req, res) {
     const db = admin.firestore()
     const dbRef = db.collection("Services")
 
     dbRef.get()
-      .then(async (snapshot) => {
+      .then((snapshot) => {
           let arrayR = snapshot.docs.map(doc => {
               return doc.data()
           })
@@ -17,18 +18,27 @@ async function getAllServices(req, res) {
       })
 }
 
-function getService(req, res) {
-    if (req.body.service in allInfo)
-        res.status(200).send({
-            service: allInfo[req.body.service]
-        })
-    else
-        res.status(404).send({
-            msg: 'Service not found'
-        })
+function getServicesUser(req, res) {
+  const token = req.body.tokenID.split(' ')[1]
+
+  auth.verifyIdToken(token)
+    .then((decoded) => {
+      getAllValueDb(allDb["ActionReaction"], "ActionReaction", {
+        uid: decoded.user_id
+      })
+        .then((cursor => {
+          var myDoc = cursor.hasNext() ? cursor.next() : null
+          if (myDoc) {
+            console.log(myDoc)
+          } else {
+            console.log("Fini")
+          }
+        }))
+    })
+  res.status(200).json({'msg': "TA GROSSE DARONNE"})
 }
 
 export {
     getAllServices,
-    getService
+    getServicesUser
 }
