@@ -1,7 +1,6 @@
 import httpRequest from "../httpRequest.js";
 
 async function createGithubAction(options) {
-  console.log(options)
   try {
     let result = await httpRequest(
       `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks`,
