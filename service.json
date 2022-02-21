@@ -1,0 +1,504 @@
+[
+  {
+    "name": "GitHub",
+    "actions": [
+      {
+        "name": "check_run",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "check_suite",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "code_scanning_alert",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "commit_comment",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "create",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "delete",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "deploy_key",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "deployment",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "deployment_status",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "fork",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "gollum",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "issue_comment",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "issues",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "member",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "meta",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "milestone",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "package",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "package_v2",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "page_build",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "project",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "project_card",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "project_column",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "public",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "pull_request",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "pull_request_review",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "pull_request_review_comment",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "push",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "registry_package",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "release",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "repository",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "repository_import",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "repository_vulnerability_alert",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "star",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "status",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "team_add",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "watch",
+        "input": [
+          {
+            "name": "githubName",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "reaction": []
+  },
+  {
+    "name": "Mail",
+    "actions": [],
+    "reactions": [
+      {
+        "name": "send_mail",
+        "input": [
+          {
+            "name": "email",
+            "type": "email"
+          }
+        ]
+      }
+    ]
+  }
+]

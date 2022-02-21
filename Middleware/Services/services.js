@@ -1,21 +1,40 @@
 import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
+import * as fs from "fs";
+
+async function updateServices(req, res) {
+  const file = JSON.parse(fs.readFileSync('./service.json').toString())
+  const db = admin.firestore()
+  const dbRef = db.collection("Services")
+
+  file.forEach((serv) => {
+    try {
+      dbRef.doc(serv.name).set({
+        actions: serv.actions ? serv.actions : [],
+        reactions: serv.reactions ? serv.reactions : []
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  })
+  res.status(200).send({'msg': 'inchalla ca marche'})
+}
 
 function getAllServices(req, res) {
-    const db = admin.firestore()
-    const dbRef = db.collection("Services")
+  const db = admin.firestore()
+  const dbRef = db.collection("Services")
 
-    dbRef.get()
-      .then((snapshot) => {
-          let arrayR = snapshot.docs.map(doc => {
-              return doc.data()
-          })
-          res.status(200).json(arrayR)
+  dbRef.get()
+    .then((snapshot) => {
+      let arrayR = snapshot.docs.map(doc => {
+        return doc.data()
       })
-      .catch((err) => {
-          console.error(err);
-          res.status(500).send(err)
-      })
+      res.status(200).json(arrayR)
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send(err)
+    })
 }
 
 function getServicesUser(req, res) {
@@ -48,6 +67,7 @@ function getServicesUser(req, res) {
 }
 
 export {
-    getAllServices,
-    getServicesUser
+  getAllServices,
+  getServicesUser,
+  updateServices
 }
