@@ -6,6 +6,7 @@ import servicesRoute from './Routes/Services/services.js'
 import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
 import pkg from 'cors';
+import nodeCron from 'node-cron';
 const { cors } = pkg;
 dotenv.config()
 
@@ -23,7 +24,11 @@ app.use('/actions', actionsRoutes)
 // app.use('/mongoDb', mongoDbRoute)
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+  res.send('Hello World!')
+})
+
+nodeCron.schedule('* * * * *', () => {
+  console.log('Task running');
+})
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
