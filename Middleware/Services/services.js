@@ -8,6 +8,7 @@ async function updateServices(req, res) {
   const dbRef = db.collection("Services")
 
   file.forEach((serv) => {
+    console.log(serv)
     try {
       dbRef.doc(serv.name).set({
         actions: serv.actions ? serv.actions : [],
