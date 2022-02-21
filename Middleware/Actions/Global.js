@@ -10,7 +10,7 @@ async function createActionReaction(req, res) {
     const token = req.body.tokenID.split(' ')[1]
 
     auth.verifyIdToken(token)
-      .then((decoded) => {
+      .then(async (decoded) => {
         const data = await actions[req.body.action.actionName](req.body.action.data)
         const id = generateID()
         addDocC(
