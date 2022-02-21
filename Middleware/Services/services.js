@@ -3,8 +3,8 @@ import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.j
 import {createJsonServices} from "../../Functions/createOurServices.js";
 import * as fs from "fs";
 
-async function updateServices(req, res) {
-  await createJsonServices();
+function updateServices(req, res) {
+  createJsonServices();
   const file = JSON.parse(fs.readFileSync('./service.json').toString())
   const db = admin.firestore()
   const dbRef = db.collection("Services")
