@@ -26,8 +26,13 @@ function getServicesUser(req, res) {
       getAllValueDb(allDb["ActionReaction"], "ActionReaction", {
         uid: decoded.user_id
       })
-        .then((value => {
-          console.log(value)
+        .then((cursor => {
+          var myDoc = cursor.hasNext() ? cursor.next() : null
+          if (myDoc) {
+            console.log(myDoc)
+          } else {
+            console.log("Fini")
+          }
         }))
     })
   res.status(200).json({'msg': "TA GROSSE DARONNE"})
