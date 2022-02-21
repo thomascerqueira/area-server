@@ -4,7 +4,7 @@
     "actions": [
       {
         "name": "check_run",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -17,7 +17,7 @@
       },
       {
         "name": "check_suite",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -30,7 +30,7 @@
       },
       {
         "name": "code_scanning_alert",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -43,7 +43,7 @@
       },
       {
         "name": "commit_comment",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -56,7 +56,7 @@
       },
       {
         "name": "create",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -69,7 +69,7 @@
       },
       {
         "name": "delete",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -82,7 +82,7 @@
       },
       {
         "name": "deploy_key",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -95,7 +95,7 @@
       },
       {
         "name": "deployment",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -108,7 +108,7 @@
       },
       {
         "name": "deployment_status",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -121,7 +121,7 @@
       },
       {
         "name": "fork",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -134,7 +134,7 @@
       },
       {
         "name": "gollum",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -147,7 +147,7 @@
       },
       {
         "name": "issue_comment",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -160,7 +160,7 @@
       },
       {
         "name": "issues",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -173,7 +173,7 @@
       },
       {
         "name": "label",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -186,7 +186,7 @@
       },
       {
         "name": "member",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -199,7 +199,7 @@
       },
       {
         "name": "meta",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -212,7 +212,7 @@
       },
       {
         "name": "milestone",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -225,7 +225,7 @@
       },
       {
         "name": "package",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -238,7 +238,7 @@
       },
       {
         "name": "package_v2",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -251,7 +251,7 @@
       },
       {
         "name": "page_build",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -264,7 +264,7 @@
       },
       {
         "name": "project",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -277,7 +277,7 @@
       },
       {
         "name": "project_card",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -290,7 +290,7 @@
       },
       {
         "name": "project_column",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -303,7 +303,7 @@
       },
       {
         "name": "public",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -316,7 +316,7 @@
       },
       {
         "name": "pull_request",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -329,7 +329,7 @@
       },
       {
         "name": "pull_request_review",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -342,7 +342,7 @@
       },
       {
         "name": "pull_request_review_comment",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -355,7 +355,7 @@
       },
       {
         "name": "push",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -368,7 +368,7 @@
       },
       {
         "name": "registry_package",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -381,7 +381,7 @@
       },
       {
         "name": "release",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -394,7 +394,7 @@
       },
       {
         "name": "repository",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -407,7 +407,7 @@
       },
       {
         "name": "repository_import",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -420,7 +420,7 @@
       },
       {
         "name": "repository_vulnerability_alert",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -433,7 +433,7 @@
       },
       {
         "name": "star",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -446,7 +446,7 @@
       },
       {
         "name": "status",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -459,7 +459,7 @@
       },
       {
         "name": "team_add",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -472,7 +472,7 @@
       },
       {
         "name": "watch",
-        "input": [
+        "inputs": [
           {
             "name": "githubName",
             "type": "string"
@@ -492,7 +492,7 @@
     "reactions": [
       {
         "name": "send_mail",
-        "input": [
+        "inputs": [
           {
             "name": "email",
             "type": "email"
@@ -500,5 +500,37 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Weather",
+    "actions": [
+      {
+        "name": "temp",
+        "inputs": [
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "check",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "pollution",
+        "inputs": [
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "check",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "reactions": []
   }
 ]

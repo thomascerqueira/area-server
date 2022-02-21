@@ -52,11 +52,16 @@ function createJsonServices() {
     actions: [],
     reactions: []
   }
+  let Weather = {
+    name: "Weather",
+    actions: [],
+    reactions: []
+  }
 
   githubEvent.forEach((evt) => {
     GitHub.actions.push({
       name: evt,
-      input: [
+      inputs: [
         {
           name: "githubName",
           type: "string"
@@ -70,16 +75,44 @@ function createJsonServices() {
 
   Mail.reactions.push({
     name: 'send_mail',
-    input: [
+    inputs: [
       {
         name: "email",
         type: "email"
       }]
   })
 
+  Weather.actions.push({
+      name: "temp",
+      inputs: [
+        {
+          name: "city",
+          type: "string"
+        },
+        {
+          name: "check",
+          type: "string"
+        }
+      ]
+    },
+    {
+      name: "pollution",
+      inputs: [
+        {
+          name: "city",
+          type: "string"
+        },
+        {
+          name: "check",
+          type: "string"
+        }
+      ]
+    })
+
   ourServices = [
     GitHub,
-    Mail
+    Mail,
+    Weather
   ]
 
   const data = JSON.stringify(ourServices)
@@ -91,4 +124,6 @@ function createJsonServices() {
   }))
 }
 
-createJsonServices();
+export {
+  createJsonServices
+};
