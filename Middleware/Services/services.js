@@ -4,7 +4,7 @@ import {createJsonServices} from "../../Functions/createOurServices.js";
 import * as fs from "fs";
 
 async function updateServices(req, res) {
-  createJsonServices();
+  await createJsonServices();
   const file = JSON.parse(fs.readFileSync('./service.json').toString())
   const db = admin.firestore()
   const dbRef = db.collection("Services")
