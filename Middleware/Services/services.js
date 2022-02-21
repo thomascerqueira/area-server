@@ -33,18 +33,7 @@ function getServicesUser(req, res) {
   res.status(200).json({'msg': "TA GROSSE DARONNE"})
 }
 
-function getService(req, res) {
-    if (req.body.service in allInfo)
-        res.status(200).send({
-            service: allInfo[req.body.service]
-        })
-    else
-        res.status(404).send({
-            msg: 'Service not found'
-        })
-}
-
 export {
     getAllServices,
-    getService
+    getServicesUser
 }
