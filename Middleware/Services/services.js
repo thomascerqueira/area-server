@@ -8,13 +8,12 @@ async function updateServices(req, res) {
   const db = admin.firestore()
   const dbRef = db.collection("Services")
 
-  console.log(file)
-  // file.forEach((serv) => {
-  //   dbRef.doc(serv.name).set({
-  //     actions: serv.action,
-  //     reactions: serv.reaction
-  //   })
-  // })
+  file.forEach((serv) => {
+    dbRef.doc(serv.name).set({
+      actions: serv.action,
+      reactions: serv.reaction
+    })
+  })
   res.status(200).send({'msg': 'inchalla ca marche'})
 }
 
