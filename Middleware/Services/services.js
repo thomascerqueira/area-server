@@ -13,9 +13,10 @@ function getAllServices(req, res) {
 
     ref.get()
       .then((snapshot) => {
-          if (snapshot.exists())
-              console.log(snapshot.val())
-          res.status(200).send(snapshot.val())
+          snapshot.forEach(doc => {
+              console.log(doc.data())
+          })
+          res.status(200).send({'msg': "good"})
       })
       .catch((err) => {
           console.error(err);
