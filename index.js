@@ -27,7 +27,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-nodeCron.schedule('*/5 * * * *', () => {
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+nodeCron.schedule('*/5 * * * *', async () => {
   /*
   ** get id list
   ** tableau de fonction => bonne action
@@ -35,6 +37,7 @@ nodeCron.schedule('*/5 * * * *', () => {
   ** sinon next
   */
   console.log('Task running');
+  await delay(10000)
 })
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
