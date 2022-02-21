@@ -27,15 +27,24 @@ function getServicesUser(req, res) {
         uid: decoded.user_id
       })
         .then((cursor => {
+          let result = [];
           cursor.forEach((val) => {
-            console.log(val);
+            result.push({
+              id: val.id,
+              actionService: val.action.service,
+              actionElement: val.action.actionName,
+              inputAction: val.action.data,
+              reactionService: val.reaction.service,
+              reactionElement: val.reaction.reactionName,
+              inputReaction: val.reaction.data
+            })
           })
+          res.status(200).json(result)
         }))
         .catch((err) => {
-          console.error(err)
+          res.status(500).send(err)
         })
     })
-  res.status(200).json({'msg': "TA GROSSE DARONNE"})
 }
 
 export {
