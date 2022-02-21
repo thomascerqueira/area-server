@@ -1,6 +1,5 @@
 import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
-// import * as services from '../../test.json'
 import * as fs from "fs";
 
 
