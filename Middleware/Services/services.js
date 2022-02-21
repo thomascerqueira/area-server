@@ -9,11 +9,10 @@ async function updateServices(req, res) {
   const dbRef = db.collection("Services")
 
   file.forEach((serv) => {
-    console.log(serv)
     try {
       dbRef.doc(serv.name).set({
-        actions: serv.action ? serv.action : [],
-        reactions: serv.reaction ? serv.reaction : []
+        actions: serv.actions ? serv.actions : [],
+        reactions: serv.reactions ? serv.reactions : []
       })
     } catch (err) {
       console.error(err)
