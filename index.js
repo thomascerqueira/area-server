@@ -27,7 +27,13 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-nodeCron.schedule('* * * * *', () => {
+nodeCron.schedule('*/5 * * * *', () => {
+  /*
+  ** get id list
+  ** tableau de fonction => bonne action
+  ** si l'action return true => reaction
+  ** sinon next
+  */
   console.log('Task running');
 })
 
