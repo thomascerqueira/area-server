@@ -15,7 +15,7 @@ async function createActionReaction(req, res) {
         const id = generateID()
         addDocC(
           allDb["ActionReaction"], "ActionReaction", {
-            "uid": uid,
+            "uid": decoded.user_id,
             "id": id,
             "action": {
               "service": req.body.action.service.toString(),
