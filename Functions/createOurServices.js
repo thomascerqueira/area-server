@@ -117,7 +117,7 @@ function createJsonServices() {
 
   const data = JSON.stringify(ourServices)
 
-  fs.writeFile('./service.json', data, (err => {
+  fs.writeFileSync('./service.json', data, (err => {
     if (err) {
       console.log(err)
     }
