@@ -1,5 +1,4 @@
 import {admin} from '../../config.js'
-import {getDoc} from 'firebase/firestore';
 
 const allInfo = {
     gmail: "je suis gmail",
@@ -9,8 +8,10 @@ const allInfo = {
 }
 
 function getAllServices(req, res) {
-    const docRef = admin.firestore().collection("Services")
-    getDoc(docRef)
+    const db = admin.firestore()
+    const ref = db.collection("Services")
+
+    ref.get()
       .then((snapshot) => {
           if (snapshot.exists())
               console.log(snapshot.val())
