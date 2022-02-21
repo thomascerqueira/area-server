@@ -489,7 +489,7 @@
   {
     "name": "Mail",
     "actions": [],
-    "reaction": [
+    "reactions": [
       {
         "name": "send_mail",
         "input": [

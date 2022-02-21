@@ -8,10 +8,14 @@ async function updateServices(req, res) {
   const dbRef = db.collection("Services")
 
   file.forEach((serv) => {
-    dbRef.doc(serv.name).set({
-      actions: serv.action,
-      reactions: serv.reaction
-    })
+    try {
+      dbRef.doc(serv.name).set({
+        actions: serv.actions ? serv.actions : [],
+        reactions: serv.reactions ? serv.reactions : []
+      })
+    } catch (err) {
+      console.error(err)
+    }
   })
   res.status(200).send({'msg': 'inchalla ca marche'})
 }

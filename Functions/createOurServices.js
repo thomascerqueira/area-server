@@ -50,7 +50,7 @@ function createJsonServices() {
   let Mail = {
     name: "Mail",
     actions: [],
-    reaction: []
+    reactions: []
   }
 
   githubEvent.forEach((evt) => {
@@ -68,7 +68,7 @@ function createJsonServices() {
     })
   })
 
-  Mail.reaction.push({
+  Mail.reactions.push({
     name: 'send_mail',
     input: [
       {
