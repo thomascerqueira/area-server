@@ -24,7 +24,7 @@ function getServicesUser(req, res) {
   auth.verifyIdToken(token)
     .then((decoded) => {
       getAllValueDb(allDb["ActionReaction"], "ActionReaction", {
-        uid: decoded.uid
+        uid: decoded.user_id
       })
         .then((value => {
           console.log(value)
