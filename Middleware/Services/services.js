@@ -9,9 +9,9 @@ const allInfo = {
 
 function getAllServices(req, res) {
     const db = admin.firestore()
-    const ref = db.collection("Services")
+    const dbRef = db.collection("Services")
 
-    ref.get()
+    dbRef.get()
       .then((snapshot) => {
           snapshot.forEach(doc => {
               console.log(doc.data())
