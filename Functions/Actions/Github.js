@@ -26,21 +26,37 @@ async function createGithubAction(options) {
   }
 }
 
-function deleteGithubAction(req, res) {
+async function deleteGithubAction(options) {
+  try {
+    let result = await httpRequest(
+      `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks/${options.hook_id.toString()}`,
+      "delete",
+      {
+        config: {
+          content_type: "json",
+          token: options.token
+        },
+      },
+      {
+        Authorization: `token ${options.token}`
+      })
+  } catch (err) {
+    console.error("Err Create Github Action", err)
+    throw err;
+  }
+}
+
+async function getGithubAction(options) {
   res.status(401).send({})
 }
 
-function getGithubAction(req, res) {
-  res.status(401).send({})
-}
-
-function updateGithubAction(req, res) {
+async function updateGithubAction(options) {
   res.status(401).send({})
 }
 
 export {
   createGithubAction,
-  deleteGithubAction,
   getGithubAction,
-  updateGithubAction
+  updateGithubAction,
+  deleteGithubAction
 }
