@@ -12,9 +12,16 @@ function updateServices(req, res) {
   file.forEach((serv) => {
     try {
       dbRef.doc(serv.name).set({
+        service: serv.name,
         actions: serv.actions ? serv.actions : [],
         reactions: serv.reactions ? serv.reactions : []
       })
+        .then(() => {
+          console.log(`${serv.name} Done`)
+        })
+        .catch(err => {
+          console.log(`Error on ${serv.name}` + err)
+        })
     } catch (err) {
       console.error(err)
     }
