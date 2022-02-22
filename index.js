@@ -41,7 +41,7 @@ nodeCron.schedule('*/1 * * * *', async () => {
           getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
             id: survey
           }).then((data) => {
-            dispatchReaction(data.reaction)
+            dispatchReaction(data)
           })
         })
       })
