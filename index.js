@@ -34,7 +34,9 @@ nodeCron.schedule('*/10 * * * * *', async () => {
 
   dbRef.get()
     .then((snapshot) => {
-      console.log(snapshot.docs)
+      snapshot.docs.map((doc) => {
+        console.log(doc.data())
+      })
     })
 })
 
