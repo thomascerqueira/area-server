@@ -9,6 +9,7 @@ import pkg from 'cors';
 import nodeCron from 'node-cron';
 import {admin, allDb} from './config.js';
 import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
+import {dispatchReaction} from "./Functions/Reaction/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-nodeCron.schedule('*/10 * * * * *', async () => {
+nodeCron.schedule('*/1 * * * *', async () => {
   const db = admin.firestore()
   const dbRef = db.collection("References")
 
@@ -39,7 +40,9 @@ nodeCron.schedule('*/10 * * * * *', async () => {
         doc.data()['id_survey'].map((survey) => {
           getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
             id: survey
-          }).then((data) => console.log(data))
+          }).then((data) => {
+            dispatchReaction(data.reaction)
+          })
         })
       })
     })
