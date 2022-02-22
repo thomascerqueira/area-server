@@ -7,6 +7,7 @@ import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
 import pkg from 'cors';
 import nodeCron from 'node-cron';
+import { admin} from './config.js';
 const { cors } = pkg;
 dotenv.config()
 
@@ -28,6 +29,21 @@ app.get('/', (req, res) => {
 })
 
 nodeCron.schedule('*/5 * * * *', async () => {
+  const db = admin.firestore()
+  const dbRef = db.collection("Refenreces")
+
+  dbRef.get()
+    .then((snapshot) => {
+      let data = snapshot.docs.map(doc => {
+        return doc.data()
+      })
+    })
+  .catch(err => {
+    console.err(err)
+  })
+
+  console.log(data);
+
   /*
   ** get id list
   ** tableau de fonction => bonne action
