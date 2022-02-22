@@ -7,12 +7,6 @@
 * [Delete User](auth/deleteUser.md)
 * [Sign User](auth/signUser.md)
 * [Sign User Provider](auth/signUserProvider.md)
-  
-###MongoDB
-* [Add Doc](MongoDb/addDoc.md)
-* [Create Collection](MongoDb/createCollection.md)
-* [Delete Collection](MongoDb/deleteCollection.md)
-* [Get One Value](MongoDb/getOneValue.md)
 
 ###Services
 * [Get All Services](services/getAllServices.md)

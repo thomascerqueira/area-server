@@ -41,9 +41,7 @@
   ".data": {
     "email": "email of the user": string,
     "name": "name of the user": string,
-    "services": "services available": [],
     "uid": "uid of the user": string,
-    "_id": "_id of the doc mongo": string
   }
 }
 ```
