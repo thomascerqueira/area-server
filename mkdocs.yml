@@ -1,0 +1,19 @@
+site_name: Server Area
+site_url: http://localhost:3000
+nav:
+  - Home: index.md
+  - 'Auth':
+      - CreateUser: auth/createUser.md
+      - DeleteUser: auth/deleteUser.md
+      - SignUser: auth/signUser.md
+      - SignUserProvider: auth/signUserProvider.md
+  - 'MongoDB':
+      - AddDoc: MongoDb/addDoc.md
+      - CreateCollection: MongoDb/createCollection.md
+      - DeleteCollection: MongoDb/deleteCollection.md
+      - GetOneValue: MongoDb/getOneValue.md
+  - 'Services':
+      - GetAllServices: services/getAllServices.md
+      - GetService: services/getService.md
+theme:
+  name: material
