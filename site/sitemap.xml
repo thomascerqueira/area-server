@@ -6,26 +6,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://localhost:3000/MongoDb/addDoc/</loc>
-         <lastmod>2022-02-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://localhost:3000/MongoDb/createCollection/</loc>
-         <lastmod>2022-02-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://localhost:3000/MongoDb/deleteCollection/</loc>
-         <lastmod>2022-02-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://localhost:3000/MongoDb/getOneValue/</loc>
-         <lastmod>2022-02-22</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>http://localhost:3000/auth/createUser/</loc>
          <lastmod>2022-02-22</lastmod>
          <changefreq>daily</changefreq>
