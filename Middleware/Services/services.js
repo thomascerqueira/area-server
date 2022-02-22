@@ -26,7 +26,7 @@ function updateServices(req, res) {
       console.error(err)
     }
   })
-  res.status(200).send({'msg': 'inchalla ca marche'})
+  res.status(200).send({'msg': 'Done, See logs for information'})
 }
 
 function getAllServices(req, res) {
