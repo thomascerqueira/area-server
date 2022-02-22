@@ -29,20 +29,20 @@ app.get('/', (req, res) => {
 })
 
 nodeCron.schedule('* * * * *', async () => {
-  // const db = admin.firestore()
-  // const dbRef = db.collection("Refenreces")
+  const db = admin.firestore()
+  const dbRef = db.collection("Refenreces")
 
-  // dbRef.get()
-  //   .then((snapshot) => {
-  //     let data = snapshot.docs.map(doc => {
-  //       return doc.data()
-  //     })
-  //   })
-  // .catch(err => {
-  //   console.err(err)
-  // })
+  dbRef.get()
+    .then((snapshot) => {
+      let data = snapshot.docs.map(doc => {
+        return doc.data()
+      })
+    })
+  .catch(err => {
+    console.log(err)
+  })
 
-  // console.log(data);
+  console.log(data);
 
   /*
   ** get id list
