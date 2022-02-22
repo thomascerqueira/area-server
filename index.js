@@ -7,7 +7,8 @@ import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
 import pkg from 'cors';
 import nodeCron from 'node-cron';
-import { admin} from './config.js';
+import {admin, allDb} from './config.js';
+import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -35,7 +36,11 @@ nodeCron.schedule('*/10 * * * * *', async () => {
   dbRef.get()
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
-        console.log(doc.data())
+        doc.data.map((survey) => {
+          getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
+            id: survey
+          }).then((data) => console.log(data))
+        })
       })
     })
 })
