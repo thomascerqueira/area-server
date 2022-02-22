@@ -36,7 +36,7 @@ nodeCron.schedule('*/10 * * * * *', async () => {
   dbRef.get()
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
-        doc.data().map((survey) => {
+        doc.data()['id_survey'].map((survey) => {
           getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
             id: survey
           }).then((data) => console.log(data))
