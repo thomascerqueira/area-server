@@ -7,6 +7,9 @@ import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
 import pkg from 'cors';
 import nodeCron from 'node-cron';
+import {admin, allDb} from './config.js';
+import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
+import {dispatchReaction} from "./Functions/Reaction/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -27,14 +30,32 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-nodeCron.schedule('*/5 * * * *', () => {
-  /*
-  ** get id list
-  ** tableau de fonction => bonne action
-  ** si l'action return true => reaction
-  ** sinon next
-  */
-  console.log('Task running');
+nodeCron.schedule('*/1 * * * *', async () => {
+  const db = admin.firestore()
+  const dbRef = db.collection("References")
+
+  dbRef.get()
+    .then((snapshot) => {
+      snapshot.docs.map((doc) => {
+        if (doc.data()['id_survey'].length &&
+          doc.data()['id_survey'].length > 0) {
+          try {
+            doc.data()['id_survey'].map((survey) => {
+              getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
+                id: survey
+              }).then((data) => {
+                dispatchReaction(data)
+              })
+            })
+          } catch (err) {
+            console.error(err);
+          }
+        }
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 })
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
