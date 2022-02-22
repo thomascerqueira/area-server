@@ -50,6 +50,21 @@ async function createActionReaction(req, res) {
   }
 }
 
+async function getActionReaction(req, res) {
+  res.status(401).send({msg: "not implemented"})
+}
+
+async function updateActionReaction(req, res) {
+  res.status(401).send({msg: "not implemented"})
+}
+
+async function deleteActionReaction(req, res) {
+  res.status(401).send({msg: "not implemented"})
+}
+
 export {
-  createActionReaction
+  createActionReaction,
+  getActionReaction,
+  updateActionReaction,
+  deleteActionReaction
 }
