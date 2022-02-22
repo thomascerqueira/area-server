@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-nodeCron.schedule('* * * * *', async () => {
+nodeCron.schedule('* * * * *', () => {
   const db = admin.firestore()
   const dbRef = db.collection("Refenreces")
 
