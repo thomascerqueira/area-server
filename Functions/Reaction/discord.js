@@ -34,7 +34,7 @@ async function deleteDiscordReaction(options) {
 async function executeDiscordReaction(options) {
 	try {
 		let result = await httpRequest(
-			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}/${options.webhooks_token}`, 'post'
+			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}/${options.webhooks_token.toString()}`, 'post'
 		)
 	} catch (err) {
 		throw err
