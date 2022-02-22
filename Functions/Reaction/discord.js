@@ -3,7 +3,11 @@ import httpRequest from "../httpRequest";
 async function createDiscordReaction(options) {
 	try {
 		let result = await httpRequest(
-			`https://discord.com/api/channels/${options.channel_id.toString()}/webhooks`, 'post'
+			`https://discord.com/api/channels/${options.channel_id.toString()}/webhooks`,
+      'post',
+			{
+			  Authorization: `${options.token}`
+			}
 		)
 		return options
 	} catch (err) {
@@ -14,7 +18,8 @@ async function createDiscordReaction(options) {
 async function updateDiscordReaction(options) {
 	try {
 		let result = await httpRequest(
-			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}`, 'patch'
+			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}`,
+      'patch'
 		)
 	} catch (err) {
 		throw err
@@ -24,7 +29,11 @@ async function updateDiscordReaction(options) {
 async function deleteDiscordReaction(options) {
 	try {
 		let result = await httpRequest(
-			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}`, 'delete'
+			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}`,
+      'delete',
+      {
+			  Authorization: `${options.token}`
+			}
 		)
 	} catch (err) {
 		throw err
@@ -34,7 +43,8 @@ async function deleteDiscordReaction(options) {
 async function executeDiscordReaction(options) {
 	try {
 		let result = await httpRequest(
-			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}/${options.webhooks_token.toString()}`, 'post'
+			`https://discord.com/api/webhooks/${options.webhooks_id.toString()}/${options.webhooks_token.toString()}`,
+      'post'
 		)
 	} catch (err) {
 		throw err
