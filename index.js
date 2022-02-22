@@ -30,19 +30,11 @@ app.get('/', (req, res) => {
 
 nodeCron.schedule('* * * * *', async () => {
   const db = admin.firestore()
-  const dbRef = db.collection("References")
 
-  dbRef.get()
-    .then((snapshot) => {
-      let data = snapshot.docs.map(doc => {
-        return doc.data()
-      })
-    })
-  .catch(err => {
-    console.error(err)
-  })
-
-  console.log(data);
+  const querySnapshot = await admin.getDocs(db, "References")
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+  });
 
   /*
   ** get id list
