@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 nodeCron.schedule('* * * * *', async () => {
   const db = admin.firestore()
-  const dbRef = db.collection("Refenreces")
+  const dbRef = db.collection("Refenrences")
 
   dbRef.get()
     .then((snapshot) => {
