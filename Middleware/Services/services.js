@@ -55,6 +55,7 @@ function getServicesUser(req, res) {
     return
   }
 
+  console.log(token)
   auth.verifyIdToken(token)
     .then((decoded) => {
       getAllValueDb(allDb["ActionReaction"], "ActionReaction", {
