@@ -21,7 +21,7 @@ async function createActionReaction(req, res) {
         await actions[req.body.action.actionName](req.body.action.data)
       } catch (err) {
         console.error(err)
-        res.status(500).send({'msg': "unknown action name"})
+        res.status(500).send(err)
         return
       }
       const id = generateID()
