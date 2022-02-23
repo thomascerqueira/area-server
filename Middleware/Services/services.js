@@ -1,6 +1,5 @@
 import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
-import {createJsonServices} from "../../Functions/createOurServices.js";
 import * as fs from "fs";
 
 function updateServices(req, res) {
@@ -55,7 +54,6 @@ function getServicesUser(req, res) {
     return
   }
 
-  console.log(token)
   auth.verifyIdToken(token)
     .then((decoded) => {
       getAllValueDb(allDb["ActionReaction"], "ActionReaction", {
