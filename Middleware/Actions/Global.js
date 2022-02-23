@@ -32,7 +32,7 @@ async function createActionReaction(req, res) {
           "action": {
             "service": req.body.action.service.toString(),
             "actionName": req.body.action.actionName.toString(),
-            "data": data
+            "data": req.body.reaction.data
           },
           "reaction": {
             "service": req.body.reaction.service.toString(),
