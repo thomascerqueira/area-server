@@ -47,7 +47,13 @@ function getAllServices(req, res) {
 }
 
 function getServicesUser(req, res) {
-  const token = req.body.tokenID.split(' ')[1]
+  let token
+  try {
+    token = req.body.tokenID.split(' ')[1]
+  } catch (err) {
+    res.status(500).send({'msg': "Bad format Token"})
+    return
+  }
 
   auth.verifyIdToken(token)
     .then((decoded) => {
@@ -72,6 +78,10 @@ function getServicesUser(req, res) {
         .catch((err) => {
           res.status(500).send(err)
         })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send(err);
     })
 }
 
