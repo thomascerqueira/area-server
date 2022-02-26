@@ -50,6 +50,7 @@ function getServicesUser(req, res) {
   try {
     token = req.header.tokenid.split(' ')[1]
   } catch (err) {
+    console.error(err)
     res.status(500).send({'msg': "Bad format Token"})
     return
   }
