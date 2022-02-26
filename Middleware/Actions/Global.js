@@ -8,8 +8,9 @@ const actions = {'push': createGithubAction}
 async function createActionReaction(req, res) {
   let token
   try {
-    token = req.header.tokenid.split(' ')[1]
+    token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
+    console.error(err)
     res.status(500).send({'msg': "Bad format Token"})
     return
   }

@@ -44,8 +44,9 @@ function createUser(req, res) {
 function deleteUser(req, res) {
   let token
   try {
-    token = req.header.tokenid.split(' ')[1]
+    token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
+    console.error(err)
     res.status(500).send({'msg': "Bad format Token"})
     return
   }
@@ -71,9 +72,10 @@ function deleteUser(req, res) {
 function signUser(req, res) {
   let token;
   try {
-    token = req.header.tokenid.split(' ')[1]
+    token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
-    res.status(500).send({'msg': "Bad Format Token"})
+    console.error(err)
+    res.status(500).send({'msg': "Bad format Token"})
     return
   }
 
@@ -111,8 +113,9 @@ function signUser(req, res) {
 function signUserProvider(req, res) {
   let token
   try {
-    token = req.header.tokenid.split(' ')[1]
+    token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
+    console.error(err)
     res.status(500).send({'msg': "Bad format Token"})
     return
   }
