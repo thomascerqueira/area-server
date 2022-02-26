@@ -43,7 +43,7 @@ nodeCron.schedule('*/1 * * * *', async () => {
           try {
             doc.data()['id_survey'].map((survey) => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
-                id: survey
+                id: survey.id
               }).then((data) => {
                 customAction[data.action.actionName](data.action.data)
                 dispatchReaction(data)
