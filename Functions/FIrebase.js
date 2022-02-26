@@ -6,7 +6,9 @@ function addValueArray(nameCollection, nameDoc, data) {
 
   dbRef.update(admin.firestore.FieldValue.arrayUnion(data))
     .then(() => {})
-    .catch(err => throw err)
+    .catch(err => {
+      throw err
+    })
 }
 
 
