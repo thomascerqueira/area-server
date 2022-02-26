@@ -8,7 +8,7 @@ const actions = {'push': createGithubAction}
 async function createActionReaction(req, res) {
   let token
   try {
-    token = req.body.tokenID.split(' ')[1]
+    token = req.header.tokenID.split(' ')[1]
   } catch (err) {
     res.status(500).send({'msg': "Bad format Token"})
     return
@@ -21,7 +21,7 @@ async function createActionReaction(req, res) {
         await actions[req.body.action.actionName](req.body.action.data)
       } catch (err) {
         console.error(err)
-        res.status(500).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
+        res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
         return
       }
       const id = generateID()

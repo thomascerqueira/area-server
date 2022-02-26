@@ -1,5 +1,5 @@
 import express from 'express';
-import {create_route_from_routes, check_arg} from '../../Functions/createroutefromroutes.js'
+import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
 import {getAllServices, getServicesUser, updateServices} from '../../Middleware/Services/services.js'
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
     {
         type: 'get',
         route: '/getUser',
-        middlewares: [check_arg(['tokenID'])],
+        middlewares: [check_header(['tokenID'])],
         callback: getServicesUser
     },
     {
