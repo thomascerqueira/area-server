@@ -10,6 +10,7 @@ import nodeCron from 'node-cron';
 import {admin, allDb} from './config.js';
 import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
 import {dispatchReaction} from "./Functions/Reaction/Global.js";
+import {customAction} from "./Middleware/Actions/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -44,6 +45,7 @@ nodeCron.schedule('*/1 * * * *', async () => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
                 id: survey
               }).then((data) => {
+                customAction[data.action.actionName](data.action.data)
                 dispatchReaction(data)
               })
             })

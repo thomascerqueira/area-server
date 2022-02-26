@@ -2,8 +2,16 @@ import {createGithubAction} from "../../Functions/Actions/Github.js";
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
+import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
 
-const actions = {'push': createGithubAction}
+export const actions = {
+  'push': createGithubAction,
+  "temperature": () => {}
+}
+
+export const customAction = {
+  'temperature': weatherActionTemp
+}
 
 async function createActionReaction(req, res) {
   let token
@@ -17,15 +25,14 @@ async function createActionReaction(req, res) {
 
   auth.verifyIdToken(token)
     .then(async (decoded) => {
-      let data
+      const id = generateID()
       try {
-        await actions[req.body.action.actionName](req.body.action.data)
+        await actions[req.body.action.actionName](req.body.action.data, id)
       } catch (err) {
         console.error(err)
         res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
         return
       }
-      const id = generateID()
       addDocC(
         allDb["ActionReaction"], "ActionReaction", {
           "uid": decoded.user_id,
