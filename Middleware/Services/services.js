@@ -1,6 +1,5 @@
 import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
-import {createJsonServices} from "../../Functions/createOurServices.js";
 import * as fs from "fs";
 
 function updateServices(req, res) {
@@ -49,8 +48,9 @@ function getAllServices(req, res) {
 function getServicesUser(req, res) {
   let token
   try {
-    token = req.header('tokenID').split(' ')[1]
+    token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
+    console.error(err)
     res.status(500).send({'msg': "Bad format Token"})
     return
   }
@@ -65,6 +65,7 @@ function getServicesUser(req, res) {
           cursor.forEach((val) => {
             result.push({
               id: val.id,
+              titre: val.title,
               actionService: val.action.service,
               actionElement: val.action.actionName,
               inputAction: val.action.data,
