@@ -11,19 +11,19 @@ const routes = [
     {
         type: 'delete',
         route: '/deleteUser',
-        middlewares: [check_header(['tokenID'])],
+        middlewares: [check_header(['tokenid'])],
         callback: deleteUser
     },
     {
         type: 'post',
         route: '/signUser',
-        middlewares: [check_header(['tokenID'])],
+        middlewares: [check_header(['tokenid'])],
         callback: signUser
     },
     {
         type: 'post',
         route: '/signUserProvider',
-        middlewares: [check_arg(['user']), check_header(['tokenID'])],
+        middlewares: [check_arg(['user']), check_header(['tokenid'])],
         callback: signUserProvider
     }
 ]

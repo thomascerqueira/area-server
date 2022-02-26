@@ -12,7 +12,7 @@ const routes = [
     {
         type: 'get',
         route: '/getUser',
-        middlewares: [check_header(['tokenID'])],
+        middlewares: [check_header(['tokenid'])],
         callback: getServicesUser
     },
     {
