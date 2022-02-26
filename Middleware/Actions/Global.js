@@ -3,10 +3,11 @@ import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
 import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
+import {createSurveyAction} from "../../Functions/Actions/Global.js";
 
 export const actions = {
   'push': createGithubAction,
-  "temperature": () => {}
+  "temperature": createSurveyAction
 }
 
 export const customAction = {
