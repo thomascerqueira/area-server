@@ -35,6 +35,7 @@ function check_arg(args) {
  */
 function check_header(headers) {
     return (req, res, next) => {
+        console.log("headers request ", req.headers)
         for (const header of headers) {
             if (!(header in req.headers)) {
                 res.status(500).send({msg: `Missing header '${header}'`});
