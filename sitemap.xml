@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://localhost:3000/actions/deleteActionReaction/</loc>
+         <lastmod>2022-02-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://localhost:3000/auth/createUser/</loc>
          <lastmod>2022-02-27</lastmod>
          <changefreq>daily</changefreq>
@@ -27,11 +32,6 @@
     </url>
     <url>
          <loc>http://localhost:3000/auth/signUserProvider/</loc>
-         <lastmod>2022-02-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://localhost:3000/services/deleteServices/</loc>
          <lastmod>2022-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
