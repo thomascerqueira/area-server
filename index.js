@@ -10,6 +10,7 @@ import nodeCron from 'node-cron';
 import {admin, allDb} from './config.js';
 import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
 import {dispatchReaction} from "./Functions/Reaction/Global.js";
+import {customAction} from "./Middleware/Actions/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -30,7 +31,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-nodeCron.schedule('*/1 * * * *', async () => {
+nodeCron.schedule('*/10 * * * * *', async () => {
   const db = admin.firestore()
   const dbRef = db.collection("References")
 
@@ -44,11 +45,29 @@ nodeCron.schedule('*/1 * * * *', async () => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
                 id: survey
               }).then((data) => {
-                dispatchReaction(data)
+                try {
+                  customAction[data.action.actionName](data.action.data)
+                    .then((result) => {
+                      if (result === true) {
+                        dispatchReaction(data)
+                          .then(() => {
+                            console.log("Dispatch function for ", survey)
+                          })
+                          .catch((err) => {
+                            console.error("Error dispatch function", err)
+                          })
+                      }
+                    })
+                    .catch((err) => {
+                      console.error("Error Custom Action", err)
+                    })
+                } catch (e) {
+                  console.log("Error on id ", survey, e)
+                }
               })
             })
           } catch (err) {
-            console.error(err);
+            console.error("Error nodeCron", err);
           }
         }
       })

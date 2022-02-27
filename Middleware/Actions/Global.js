@@ -2,8 +2,17 @@ import {createGithubAction} from "../../Functions/Actions/Github.js";
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
+import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
+import {createSurveyAction} from "../../Functions/Actions/Global.js";
 
-const actions = {'push': createGithubAction}
+export const actions = {
+  'push': createGithubAction,
+  "temperature": createSurveyAction
+}
+
+export const customAction = {
+  'temperature': weatherActionTemp
+}
 
 async function createActionReaction(req, res) {
   let token
@@ -17,15 +26,14 @@ async function createActionReaction(req, res) {
 
   auth.verifyIdToken(token)
     .then(async (decoded) => {
-      let data
+      const id = generateID()
       try {
-        await actions[req.body.action.actionName](req.body.action.data)
+        await actions[req.body.action.actionName](req.body.action.data, id)
       } catch (err) {
         console.error(err)
         res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
         return
       }
-      const id = generateID()
       addDocC(
         allDb["ActionReaction"], "ActionReaction", {
           "uid": decoded.user_id,
@@ -39,7 +47,8 @@ async function createActionReaction(req, res) {
             "service": req.body.reaction.service.toString(),
             "reactionName": req.body.reaction.reactionName.toString(),
             "data": req.body.reaction.data
-          }
+          },
+          title: req.body.title
         })
         .then((result) => {
           res.status(200).send(result)
