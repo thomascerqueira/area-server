@@ -5,7 +5,7 @@ function addValueArray(nameCollection, nameDoc, data) {
   const dbRef = db.collection(nameCollection).doc(nameDoc)
 
   console.log("data ", data)
-  dbRef.update(admin.firestore.FieldValue.arrayUnion(JSON.stringify(data)))
+  dbRef.update(admin.firestore.FieldValue.arrayUnion(data))
     .then(() => {})
     .catch(err => {
       throw err

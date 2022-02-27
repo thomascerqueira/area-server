@@ -45,6 +45,7 @@ nodeCron.schedule('*/10 * * * * *', async () => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
                 id: survey.id
               }).then((data) => {
+                console.log("schedule")
                 customAction[data.action.actionName](data.action.data)
                 dispatchReaction(data)
               })
