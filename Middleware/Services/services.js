@@ -106,7 +106,7 @@ function deleteService(req, res) {
         uid: decoded.user_uid
       }).then(() => {
         try {
-          console.log("")
+          console.log(decoded.user_uid)
           removeValueArray("References", "Surveys", "id_survey", req.body.id)
           res.status(200).send({'msg': 'Delete success'})
         } catch (err) {
