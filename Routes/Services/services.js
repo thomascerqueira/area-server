@@ -16,8 +16,8 @@ const routes = [
         callback: getServicesUser
     },
     {
-        type: 'get',
-        route: '/update',
+        type: 'patch',
+        route: '/',
         middlewares: [],
         callback: updateServices
     },
