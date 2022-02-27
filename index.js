@@ -50,7 +50,9 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                     .then((result) => {
                       if (result === true) {
                         dispatchReaction(data)
-                          .then(() => {})
+                          .then(() => {
+                            console.log("Dispatch function for ", survey)
+                          })
                           .catch((err) => {
                             console.error("Error dispatch function", err)
                           })
