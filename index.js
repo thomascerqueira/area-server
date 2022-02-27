@@ -46,7 +46,7 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                 id: survey.id
               }).then((data) => {
                 try {
-                  console.log("schedule")
+                  console.log(data)
                   customAction[data.action.actionName](data.action.data)
                   dispatchReaction(data)
                 } catch (e) {
