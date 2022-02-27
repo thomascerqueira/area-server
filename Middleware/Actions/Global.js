@@ -20,7 +20,7 @@ async function createActionReaction(req, res) {
     token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
     console.error(err)
-    res.status(500).send({'msg': "Bad format Token"})
+    res.status(401).send({'msg': "Bad format Token"})
     return
   }
 
@@ -62,7 +62,7 @@ async function createActionReaction(req, res) {
     })
     .catch((err) => {
       console.error("token invalid ", err)
-      res.status(500).send(err)
+      res.status(401).send(err)
     })
 }
 
