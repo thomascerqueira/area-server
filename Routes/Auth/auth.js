@@ -23,7 +23,7 @@ const routes = [
     {
         type: 'post',
         route: '/signUserProvider',
-        middlewares: [check_arg(['user']), check_header(['tokenid'])],
+        middlewares: [check_header(['tokenid']), check_arg(['user'])],
         callback: signUserProvider
     }
 ]

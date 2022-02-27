@@ -1,6 +1,6 @@
 import express from 'express';
-import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
-import {deleteService, getAllServices, getServicesUser, updateServices} from '../../Middleware/Services/services.js'
+import {create_route_from_routes, check_header} from '../../Functions/createroutefromroutes.js'
+import {getAllServices, getServicesUser, updateServices} from '../../Middleware/Services/services.js'
 
 const routes = [
     {
@@ -20,12 +20,6 @@ const routes = [
         route: '/',
         middlewares: [],
         callback: updateServices
-    },
-    {
-        type: 'delete',
-        route: '/',
-        middlewares: [check_header(['tokenid']), check_arg(['id'])],
-        callback: deleteService
     }
 ]
 
