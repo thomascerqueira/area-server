@@ -1,9 +1,9 @@
 import httpRequest from '../httpRequest.js';
 
-async function weatherActionTemp(city, temp, option, reaction) {
+async function weatherActionTemp(data) {
   try {
     let result = await httpRequest(
-      `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_KEY}`,
+      `api.openweathermap.org/data/2.5/weather?q=${data['city']}&appid=${process.env.OPEN_WEATHER_KEY}`,
       "get"
     )
     console.log(result)
