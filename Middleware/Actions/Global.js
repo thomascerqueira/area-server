@@ -47,7 +47,8 @@ async function createActionReaction(req, res) {
             "service": req.body.reaction.service.toString(),
             "reactionName": req.body.reaction.reactionName.toString(),
             "data": req.body.reaction.data
-          }
+          },
+          title: req.body.title
         })
         .then((result) => {
           res.status(200).send(result)
