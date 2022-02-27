@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="http://localhost:3000/auth/signUserProvider/">
+        <link rel="canonical" href="http://localhost:3000/services/deleteServices/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
-        <title>SignUserProvider - Server Area</title>
+        <title>DeleteService - Server Area</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#signuserprovider" class="md-skip">
+        <a href="#deleteservice" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SignUserProvider
+              DeleteService
             
           </span>
         </div>
@@ -192,14 +192,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -222,7 +220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../createUser/" class="md-nav__link">
+      <a href="../../auth/createUser/" class="md-nav__link">
         CreateUser
       </a>
     </li>
@@ -236,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deleteUser/" class="md-nav__link">
+      <a href="../../auth/deleteUser/" class="md-nav__link">
         DeleteUser
       </a>
     </li>
@@ -250,7 +248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../signUser/" class="md-nav__link">
+      <a href="../../auth/signUser/" class="md-nav__link">
         SignUser
       </a>
     </li>
@@ -262,66 +260,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          SignUserProvider
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../auth/signUserProvider/" class="md-nav__link">
         SignUserProvider
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#success-response" class="md-nav__link">
-    Success Response
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-response" class="md-nav__link">
-    Error Response
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -367,7 +310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../services/getAllServices/" class="md-nav__link">
+      <a href="../getAllServices/" class="md-nav__link">
         GetAllServices
       </a>
     </li>
@@ -381,7 +324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../services/getService/" class="md-nav__link">
+      <a href="../getService/" class="md-nav__link">
         GetService
       </a>
     </li>
@@ -503,33 +446,33 @@
               
                 
 
-<h1 id="signuserprovider">signUserProvider</h1>
+<h1 id="deleteservice">DeleteService</h1>
 <ul>
-<li><a href="#signuserprovider">SignUserProvider</a><ul>
+<li><a href="#deleteservice">DeleteService</a><ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#success-response">Success Response</a></li>
 <li><a href="#error-response">Error Response</a></li>
 </ul>
 </li>
 </ul>
-<p><strong>URL</strong>: <a href="">/auth/deleteUser</a></p>
-<p><strong>Method</strong>: <code>POST</code></p>
+<p><strong>URL</strong>: <a href="">/services/getUser</a></p>
+<p><strong>Method</strong>: <code>GET</code></p>
 <hr />
 <h2 id="description">Description</h2>
-<p>&emsp;Use to delete a user in firebase with <code>token</code></p>
+<p>&emsp;Use to delete an ActionReaction from an User</p>
 <p><strong>Header</strong></p>
 <pre><code class="language-json">{
-  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot;: string
+  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot; : string
 }
 </code></pre>
 <p><strong>Data constraints</strong></p>
 <pre><code class="language-json">{
-  &quot;user&quot;: &quot;user settings provided by firebase&quot;: {}
+  &quot;id&quot;: &quot;ID of the ActionReaction&quot;: string
 }
 </code></pre>
 <p><strong>Data example</strong></p>
 <pre><code class="language-json">{
-  &quot;user&quot;: &quot;...&quot;
+  &quot;id&quot;: &quot;5f7ds65&quot;: string
 }
 </code></pre>
 <hr />
@@ -537,11 +480,7 @@
 <p><strong>Code</strong>: <code>200 OK</code></p>
 <p><strong>Content</strong></p>
 <pre><code class="language-json">{
-  &quot;.data&quot;: {
-    &quot;email&quot;: &quot;email of the user&quot;: string,
-    &quot;name&quot;: &quot;name of the user&quot;: string,
-    &quot;uid&quot;: &quot;uid of the user&quot;: string,
-  }
+  &quot;msg&quot;: &quot;Deleted successfully&quot;: string,
 }
 </code></pre>
 <hr />
@@ -550,7 +489,6 @@
 <tr>
 <td> Status </td> <td> Condition </td> <td> Response </td>
 </tr>
-
 <tr>
 <td> 401 </td>
 <td>Bad token</td>
@@ -566,13 +504,30 @@
 
 </td>
 </tr>
+
 <tr>
 <td> 500 </td>
-<td>If <code>uid</code> is wrong or error in firebase</td>
+<td>If firebase error</td>
 <td>
 
 
-<pre><code>firebase error
+<pre><code class="language-json">{
+  &quot;firebaseError&quot;: &quot;&quot;
+}
+</code></pre>
+
+
+</td>
+
+<tr>
+<td> 500 </td>
+<td>If mongo error</td>
+<td>
+
+
+<pre><code class="language-json">{
+  &quot;mongoDbError&quot;: &quot;&quot;
+}
 </code></pre>
 
 
@@ -589,41 +544,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../signUser/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SignUser" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              SignUser
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../services/getAllServices/" class="md-footer__link md-footer__link--next" aria-label="Next: GetAllServices" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              GetAllServices
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

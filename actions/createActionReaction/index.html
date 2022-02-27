@@ -517,6 +517,11 @@
 <hr />
 <h2 id="description">Description</h2>
 <p>&emsp;Use to create an action reaction</p>
+<p><strong>Header</strong></p>
+<pre><code class="language-json">{
+  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot;
+}
+</code></pre>
 <p><strong>Data constraints</strong></p>
 <pre><code class="language-json">{
   &quot;action&quot;: {
@@ -528,7 +533,8 @@
     &quot;service&quot;: &quot;Name of the service for the reaction&quot;: string,
     &quot;reactionName&quot;: &quot;Name of the reaction element&quot;: string,
     &quot;data&quot;: &quot;Data needed by the reaction&quot;: {}
-  }
+  },
+  &quot;title&quot;: &quot;Title Of the ActionReaction&quot;
 }
 </code></pre>
 <p><strong>Data example</strong></p>
@@ -550,7 +556,8 @@
       &quot;email&quot;: &quot;user.email@gmail.com&quot;,
       &quot;object&quot;: &quot;reaction push&quot;
     }
-  }
+  },
+  &quot;title&quot;: &quot;Test&quot;
 }
 </code></pre>
 <hr />
@@ -566,6 +573,22 @@
 <table>
 <tr>
 <td> Status </td> <td> Condition </td> <td> Response </td>
+</tr>
+
+<tr>
+<td> 401 </td>
+<td>Bad token</td>
+<td>
+
+
+<pre><code class="language-json">{
+  &quot;msg&quot;: &quot;Bad format Token&quot;
+     or firebaseError
+}
+</code></pre>
+
+
+</td>
 </tr>
 
 <tr>

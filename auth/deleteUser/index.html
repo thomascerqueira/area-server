@@ -517,14 +517,9 @@
 <hr />
 <h2 id="description">Description</h2>
 <p>&emsp;Use to delete a user in firebase with <code>token</code></p>
-<p><strong>Data constraints</strong></p>
+<p><strong>Header</strong></p>
 <pre><code class="language-json">{
-  &quot;tokenID&quot;: &quot;TokenID provided by firebase&quot;: string
-}
-</code></pre>
-<p><strong>Data example</strong></p>
-<pre><code class="language-json">{
-  &quot;tokenID&quot;: &quot;4f5sd7gf1k564sdf7...&quot;
+  &quot;tokenID&quot;: &quot;'Bearer' + TokenID provided by firebase&quot;: string
 }
 </code></pre>
 <hr />
@@ -540,6 +535,22 @@
 <table>
 <tr>
 <td> Status </td> <td> Condition </td> <td> Response </td>
+</tr>
+
+<tr>
+<td> 401 </td>
+<td>Bad token</td>
+<td>
+
+
+<pre><code class="language-json">{
+  &quot;msg&quot;: &quot;Bad format Token&quot;
+     or firebaseError
+}
+</code></pre>
+
+
+</td>
 </tr>
 
 <tr>
