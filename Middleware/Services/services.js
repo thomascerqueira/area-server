@@ -54,7 +54,7 @@ function getServicesUser(req, res) {
     token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
     console.error(err)
-    res.status(500).send({'msg': "Bad format Token"})
+    res.status(401).send({'msg': "Bad format Token"})
     return
   }
 
@@ -85,7 +85,7 @@ function getServicesUser(req, res) {
     })
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err);
+      res.status(401).send(err);
     })
 }
 
@@ -95,7 +95,7 @@ function deleteService(req, res) {
     token = req.headers.tokenid.split(' ')[1]
   } catch (err) {
     console.error(err)
-    res.status(500).send({'msg': "Bad format Token"})
+    res.status(401).send({'msg': "Bad format Token"})
     return
   }
 
@@ -122,7 +122,7 @@ function deleteService(req, res) {
     })
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err);
+      res.status(401).send(err);
     })
 }
 
