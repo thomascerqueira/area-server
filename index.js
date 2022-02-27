@@ -48,7 +48,7 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                 try {
                   customAction[data.action.actionName](data.action.data)
                     .then((result) => {
-                      if (result) {
+                      if (result === true) {
                         dispatchReaction(data)
                           .then(() => {})
                           .catch((err) => {
