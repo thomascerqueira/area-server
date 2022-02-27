@@ -45,13 +45,17 @@ nodeCron.schedule('*/10 * * * * *', async () => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
                 id: survey.id
               }).then((data) => {
-                console.log("schedule")
-                customAction[data.action.actionName](data.action.data)
-                dispatchReaction(data)
+                try {
+                  console.log("schedule")
+                  customAction[data.action.actionName](data.action.data)
+                  dispatchReaction(data)
+                } catch (e) {
+                  console.log("Error on id ", survey, e)
+                }
               })
             })
           } catch (err) {
-            console.error(err);
+            console.error("Error nodeCron", err);
           }
         }
       })
