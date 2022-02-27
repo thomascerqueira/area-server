@@ -43,7 +43,7 @@ nodeCron.schedule('*/10 * * * * *', async () => {
           try {
             doc.data()['id_survey'].map((survey) => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
-                id: `${survey.id}`
+                id: survey
               }).then((data) => {
                 try {
                   console.log(data)
