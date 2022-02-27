@@ -101,7 +101,7 @@ function deleteService(req, res) {
 
   auth.verifyIdToken(token)
     .then((decoded) => {
-      console.log(`Deleting ActionReaction ${req.body.id} for user ${decoded.user_uid}`)
+      console.log(`Deleting ActionReaction ${req.body.id} for user ${decoded.uid}`)
       dropDocument(allDb['ActionReaction'], 'ActionReaction', {
         id: req.body.id,
         uid: decoded.uid
