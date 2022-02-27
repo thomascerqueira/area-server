@@ -104,7 +104,7 @@ function deleteService(req, res) {
       console.log(`Deleting ActionReaction ${req.body.id} for user ${decoded.user_uid}`)
       dropDocument(allDb['ActionReaction'], 'ActionReaction', {
         id: req.body.id,
-        uid: decoded.user_uid
+        uid: decoded.uid
       }).then(() => {
         try {
           removeValueArray("References", "Surveys", "id_survey", req.body.id)
