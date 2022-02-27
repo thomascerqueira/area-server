@@ -51,7 +51,9 @@ async function createActionReaction(req, res) {
           title: req.body.title
         })
         .then((result) => {
-          res.status(200).send(result)
+          res.status(200).send({
+            id: id
+          })
         })
         .catch((err) => {
           console.error("Add doc", err)
