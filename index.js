@@ -46,9 +46,19 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                 id: survey
               }).then((data) => {
                 try {
-                  console.log(data)
                   customAction[data.action.actionName](data.action.data)
-                  dispatchReaction(data)
+                    .then((result) => {
+                      if (result) {
+                        dispatchReaction(data)
+                          .then(() => {})
+                          .catch((err) => {
+                            console.error("Error dispatch function", err)
+                          })
+                      }
+                    })
+                    .catch((err) => {
+                      console.error("Error Custom Action", err)
+                    })
                 } catch (e) {
                   console.log("Error on id ", survey, e)
                 }
