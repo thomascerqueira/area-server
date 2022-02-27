@@ -101,14 +101,15 @@ function deleteService(req, res) {
 
   auth.verifyIdToken(token)
     .then((decoded) => {
+      console.log(`Deleting ActionReaction ${req.body.id} for user ${decoded.user_uid}`)
       dropDocument(allDb['ActionReaction'], 'ActionReaction', {
         id: req.body.id,
         uid: decoded.user_uid
       }).then(() => {
         try {
-          console.log(decoded.user_uid)
           removeValueArray("References", "Surveys", "id_survey", req.body.id)
           res.status(200).send({'msg': 'Delete success'})
+          console.log(`ActionReaction ${req.body.id} Deleted successfully`)
         } catch (err) {
           console.error(err)
           res.status(500).send(err)
