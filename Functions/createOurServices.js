@@ -47,8 +47,8 @@ function createJsonServices() {
     actions: [],
     reaction: []
   };
-  let Mail = {
-    name: "Mail",
+  let Area = {
+    name: "Area",
     actions: [],
     reactions: []
   }
@@ -73,7 +73,7 @@ function createJsonServices() {
     })
   })
 
-  Mail.reactions.push({
+  Area.reactions.push({
     name: 'send_mail',
     inputs: [
       {
@@ -111,7 +111,7 @@ function createJsonServices() {
 
   ourServices = [
     GitHub,
-    Mail,
+    Area,
     Weather
   ]
 
