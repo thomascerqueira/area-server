@@ -1,6 +1,9 @@
 import {admin, allDb, auth} from '../../config.js'
-import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
+import {getAllValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import * as fs from "fs";
+import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
+import {removeValueArray} from "../../Functions/FIrebase.js";
+import {createJsonServices} from "../../Functions/createOurServices.js";
 
 function updateServices(req, res) {
   createJsonServices();
@@ -86,8 +89,46 @@ function getServicesUser(req, res) {
     })
 }
 
+function deleteService(req, res) {
+  let token
+  try {
+    token = req.headers.tokenid.split(' ')[1]
+  } catch (err) {
+    console.error(err)
+    res.status(500).send({'msg': "Bad format Token"})
+    return
+  }
+
+  auth.verifyIdToken(token)
+    .then((decoded) => {
+      console.log(`Deleting ActionReaction ${req.body.id} for user ${decoded.uid}`)
+      dropDocument(allDb['ActionReaction'], 'ActionReaction', {
+        id: req.body.id,
+        uid: decoded.uid
+      }).then(() => {
+        try {
+          removeValueArray("References", "Surveys", "id_survey", req.body.id)
+          res.status(200).send({'msg': 'Delete success'})
+          console.log(`ActionReaction ${req.body.id} Deleted successfully`)
+        } catch (err) {
+          console.error(err)
+          res.status(500).send(err)
+        }
+      })
+        .catch((err) => {
+          console.error(err)
+          res.status(500).send(err)
+        })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send(err);
+    })
+}
+
 export {
   getAllServices,
   getServicesUser,
-  updateServices
+  updateServices,
+  deleteService
 }
