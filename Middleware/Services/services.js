@@ -1,6 +1,8 @@
 import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import * as fs from "fs";
+import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
+import {removeValueArray} from "../../Functions/FIrebase.js";
 
 function updateServices(req, res) {
   createJsonServices();
@@ -86,8 +88,43 @@ function getServicesUser(req, res) {
     })
 }
 
+function deleteService(req, res) {
+  let token
+  try {
+    token = req.headers.tokenid.split(' ')[1]
+  } catch (err) {
+    console.error(err)
+    res.status(500).send({'msg': "Bad format Token"})
+    return
+  }
+
+  auth.verifyIdToken(token)
+    .then((decoded) => {
+      dropDocument(allDb['ActionReaction'], 'ActionReaction', {
+        id: req.body.id,
+        uid: decoded.user_uid
+      }).then(() => {
+        try {
+          removeValueArray("References", "Surveys", "id_survey", req.body.id)
+        } catch (err) {
+          console.error(err)
+          res.status(500).send(err)
+        }
+      })
+        .catch((err) => {
+          console.error(err)
+          res.status(500).send(err)
+        })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send(err);
+    })
+}
+
 export {
   getAllServices,
   getServicesUser,
-  updateServices
+  updateServices,
+  deleteService
 }

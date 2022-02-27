@@ -6,14 +6,24 @@ import Mongodb from "mongodb";
  * @param {string} collection name of the collection
  */
 async function dropCollection(db, collection) {
-    try {
-        await db.collection(collection).drop()
-        return {'msg': 'delete successful'}
-    } catch (err) {
-        throw err
-    }
+  try {
+    await db.collection(collection).drop()
+    return {'msg': 'delete successful'}
+  } catch (err) {
+    throw err
+  }
+}
+
+async function dropDocument(db, collection, data) {
+  try {
+    await db.collection(collection).deleteOne(data)
+    return {'msg': 'delete successful'}
+  } catch (err) {
+    throw err
+  }
 }
 
 export {
-    dropCollection
+  dropCollection,
+  dropDocument,
 }
