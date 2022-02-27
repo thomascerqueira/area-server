@@ -2,8 +2,10 @@ import {createGithubAction} from "../../Functions/Actions/Github.js";
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
+import { createDiscordReaction } from "../../Functions/Reaction/discord.js";
 
 const actions = {'push': createGithubAction}
+const reactions = {'sendMessage': createDiscordReaction}
 
 async function createActionReaction(req, res) {
   try {
@@ -11,7 +13,8 @@ async function createActionReaction(req, res) {
 
     auth.verifyIdToken(token)
       .then(async (decoded) => {
-        const data = await actions[req.body.action.actionName](req.body.action.data)
+        const actionData = await actions[req.body.action.actionName](req.body.action.data)
+        const reactionData = await reactions[req.body.action.reactionName](req.body.reaction.data)
         const id = generateID()
         addDocC(
           allDb["ActionReaction"], "ActionReaction", {
