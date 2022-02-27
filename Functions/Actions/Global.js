@@ -2,7 +2,7 @@ import {addValueArray} from "../FIrebase.js";
 
 function createSurveyAction(_, id) {
   try {
-    addValueArray("Reference", "Surveys", {id: id})
+    addValueArray("Reference", "Surveys", nameArray, id)
   } catch (e) {
     throw e
   }
