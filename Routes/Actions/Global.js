@@ -13,7 +13,7 @@ const routes = [
   {
     type: 'delete',
     route: '/',
-    middlewares: [check_arg(['id']), check_header('tokenid')],
+    middlewares: [check_arg(['id']), check_header(['tokenid'])],
     callback: deleteActionReaction
   }
 ]
