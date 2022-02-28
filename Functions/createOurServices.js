@@ -103,16 +103,20 @@ function createJsonServices() {
       name: "pollution",
       inputs: [
         {
-          name: "city",
-          type: "string"
-        },
-        {
           name: "option",
           type: "string"
         },
         {
-          name: "temp",
+          name: "long",
           type: 'number'
+        },
+        {
+          name: "lat",
+          type: 'number'
+        },
+        {
+          name: "value",
+          type: "string"
         }
       ]
     })
