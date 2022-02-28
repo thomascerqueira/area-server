@@ -12,6 +12,7 @@ async function createDiscordReaction(options) {
     console.log(result)
     return options
   } catch (err) {
+    console.log(err)
     throw err
   }
 }
