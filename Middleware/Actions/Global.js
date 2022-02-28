@@ -2,7 +2,7 @@ import {createGithubAction} from "../../Functions/Actions/Github.js";
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
-import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
+import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
 import {createSurveyAction} from "../../Functions/Actions/Global.js";
 
 export const actions = {
@@ -11,7 +11,8 @@ export const actions = {
 }
 
 export const customAction = {
-  'temperature': weatherActionTemp
+  'temperature': weatherActionTemp,
+  'pollution': weatherActionPoll
 }
 
 async function createActionReaction(req, res) {
