@@ -9,7 +9,7 @@ async function createDiscordReaction(options) {
         name: "test"
       },
       {
-        Authorization: `${options.token}`
+        "Authorization": `${options.token}`
       }
     )
     console.log(result)
