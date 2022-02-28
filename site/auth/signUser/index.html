@@ -15,7 +15,7 @@
     
     
       
-        <title>SignUser - Server Area</title>
+        <title>Sign User - Server Area</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#signuserprovider" class="md-skip">
+        <a href="#sign-user" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SignUser
+              Sign User
             
           </span>
         </div>
@@ -223,7 +223,7 @@
   
     <li class="md-nav__item">
       <a href="../createUser/" class="md-nav__link">
-        CreateUser
+        Create User
       </a>
     </li>
   
@@ -237,7 +237,7 @@
   
     <li class="md-nav__item">
       <a href="../deleteUser/" class="md-nav__link">
-        DeleteUser
+        Delete User
       </a>
     </li>
   
@@ -260,12 +260,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          SignUser
+          Sign User
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        SignUser
+        Sign User
       </a>
       
         
@@ -320,7 +320,7 @@
   
     <li class="md-nav__item">
       <a href="../signUserProvider/" class="md-nav__link">
-        SignUserProvider
+        Sign User Provider
       </a>
     </li>
   
@@ -368,7 +368,7 @@
   
     <li class="md-nav__item">
       <a href="../../services/getAllServices/" class="md-nav__link">
-        GetAllServices
+        Get All Services
       </a>
     </li>
   
@@ -382,7 +382,97 @@
   
     <li class="md-nav__item">
       <a href="../../services/getService/" class="md-nav__link">
-        GetService
+        Get Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Actions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Actions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Actions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/createActionReaction/" class="md-nav__link">
+        Create Action Reaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/deleteActionReaction/" class="md-nav__link">
+        Delete Action Reaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/Github/" class="md-nav__link">
+        GitHub Action Reaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/Weather/" class="md-nav__link">
+        Weather Action Reaction
       </a>
     </li>
   
@@ -455,28 +545,23 @@
               
                 
 
-<h1 id="signuserprovider">signUserProvider</h1>
+<h1 id="sign-user">Sign User</h1>
 <ul>
-<li><a href="#signuserprovider">SignUserProvider</a><ul>
+<li><a href="#sign-user">Sign User</a><ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#success-response">Success Response</a></li>
 <li><a href="#error-response">Error Response</a></li>
 </ul>
 </li>
 </ul>
-<p><strong>URL</strong>: <a href="">/auth/deleteUser</a></p>
+<p><strong>URL</strong>: <a href="">/auth/signUser</a></p>
 <p><strong>Method</strong>: <code>POST</code></p>
 <hr />
 <h2 id="description">Description</h2>
-<p>&emsp;Use to delete a user in firebase with <code>token</code></p>
-<p><strong>Data constraints</strong></p>
+<p>&emsp;Use to sign a user in firebase with <code>token</code></p>
+<p><strong>Header</strong></p>
 <pre><code class="language-json">{
-  &quot;tokenID&quot;: &quot;TokenID provided by firebase&quot;: string
-}
-</code></pre>
-<p><strong>Data example</strong></p>
-<pre><code class="language-json">{
-  &quot;tokenID&quot;: &quot;4f5sd7gf1k564sdf7...&quot;
+  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot; : string
 }
 </code></pre>
 <hr />
@@ -496,6 +581,22 @@
 <table>
 <tr>
 <td> Status </td> <td> Condition </td> <td> Response </td>
+</tr>
+
+<tr>
+<td> 401 </td>
+<td>Bad token</td>
+<td>
+
+
+<pre><code class="language-json">{
+  &quot;msg&quot;: &quot;Bad format Token&quot;
+     or firebaseError
+}
+</code></pre>
+
+
+</td>
 </tr>
 
 <tr>
@@ -525,7 +626,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../deleteUser/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DeleteUser" rel="prev">
+        <a href="../deleteUser/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Delete User" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -534,20 +635,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              DeleteUser
+              Delete User
             </div>
           </div>
         </a>
       
       
         
-        <a href="../signUserProvider/" class="md-footer__link md-footer__link--next" aria-label="Next: SignUserProvider" rel="next">
+        <a href="../signUserProvider/" class="md-footer__link md-footer__link--next" aria-label="Next: Sign User Provider" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              SignUserProvider
+              Sign User Provider
             </div>
           </div>
           <div class="md-footer__button md-icon">

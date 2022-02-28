@@ -1,6 +1,6 @@
-# GetService
+# Get Service
 
-- [GetService](#getservice)
+- [Get Service](#get-service)
     - [Description](#description)
     - [Success Response](#success-response)
     - [Error Response](#error-response)
@@ -14,19 +14,11 @@
 ## Description
 &emsp;Use to get actions reactions of a user  `service`
 
-**Data constraints**
+**Header**
 
 ```json
 {
-  "tokenID": "'Bearer ' + firebase token ID": string
-}
-```
-
-**Data example**
-
-```json
-{
-  "tokenID": ""
+  "tokenid": "'Bearer' + tokenId from firebase"
 }
 ```
 

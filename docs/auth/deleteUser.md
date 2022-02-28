@@ -1,5 +1,5 @@
-# DeleteUser
-- [DeleteUser](#deleteUser)
+# Delete User
+- [Delete User](#delete-User)
     - [Description](#description)
     - [Success Response](#success-response)
     - [Error Response](#error-response)
@@ -14,21 +14,14 @@
 &emsp;Use to delete a user in firebase with `token`
 
 
-**Data constraints**
+**Header**
 
 ```json
 {
-  "tokenID": "TokenID provided by firebase": string
+  "tokenID": "'Bearer' + TokenID provided by firebase": string
 }
 ```
 
-**Data example**
-
-```json
-{
-  "tokenID": "4f5sd7gf1k564sdf7..."
-}
-```
 ---
 ## Success Response
 
@@ -47,6 +40,21 @@
 <table>
 <tr>
 <td> Status </td> <td> Condition </td> <td> Response </td>
+</tr>
+
+<tr>
+<td> 401 </td>
+<td>Bad token</td>
+<td>
+
+```json
+{
+  "msg": "Bad format Token"
+     or firebaseError
+}
+```
+
+</td>
 </tr>
 
 <tr>

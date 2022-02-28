@@ -1,24 +1,40 @@
-# Sign User
-- [Sign User](#sign-user)
+# Delete Action Reaction
+
+- [Delete Action Reaction](#delete-action-reaction)
     - [Description](#description)
     - [Success Response](#success-response)
     - [Error Response](#error-response)
 
-**URL**: [/auth/signUser]()
+**URL**: [/actions]()
 
-**Method**: `POST`
+**Method**: `DELETE`
 
 ---
 
 ## Description
-&emsp;Use to sign a user in firebase with `token`
-
+&emsp;Use to delete an ActionReaction from an User
 
 **Header**
 
 ```json
 {
   "tokenid": "'Bearer' + tokenId from firebase" : string
+}
+```
+
+**Data constraints**
+
+```json
+{
+  "id": "ID of the ActionReaction": string
+}
+```
+
+**Data example**
+
+```json
+{
+  "id": "5f7ds65": string
 }
 ```
 
@@ -31,21 +47,17 @@
 
 ```json
 {
-  ".data": {
-    "email": "email of the user": string,
-    "name": "name of the user": string,
-    "uid": "uid of the user": string,
-  }
+  "msg": "Deleted successfully": string,
 }
 ```
 ---
 ## Error Response
 
+
 <table>
 <tr>
 <td> Status </td> <td> Condition </td> <td> Response </td>
 </tr>
-
 <tr>
 <td> 401 </td>
 <td>Bad token</td>
@@ -63,11 +75,26 @@
 
 <tr>
 <td> 500 </td>
-<td>If <code>uid</code> is wrong or error in firebase</td>
+<td>If firebase error</td>
 <td>
 
+```json
+{
+  "firebaseError": ""
+}
 ```
-firebase error
+
+</td>
+
+<tr>
+<td> 500 </td>
+<td>If mongo error</td>
+<td>
+
+```json
+{
+  "mongoDbError": ""
+}
 ```
 
 </td>

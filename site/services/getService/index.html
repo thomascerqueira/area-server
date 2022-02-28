@@ -15,7 +15,7 @@
     
     
       
-        <title>GetService - Server Area</title>
+        <title>Get Service - Server Area</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getservice" class="md-skip">
+        <a href="#get-service" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GetService
+              Get Service
             
           </span>
         </div>
@@ -221,7 +221,7 @@
   
     <li class="md-nav__item">
       <a href="../../auth/createUser/" class="md-nav__link">
-        CreateUser
+        Create User
       </a>
     </li>
   
@@ -235,7 +235,7 @@
   
     <li class="md-nav__item">
       <a href="../../auth/deleteUser/" class="md-nav__link">
-        DeleteUser
+        Delete User
       </a>
     </li>
   
@@ -249,7 +249,7 @@
   
     <li class="md-nav__item">
       <a href="../../auth/signUser/" class="md-nav__link">
-        SignUser
+        Sign User
       </a>
     </li>
   
@@ -263,7 +263,7 @@
   
     <li class="md-nav__item">
       <a href="../../auth/signUserProvider/" class="md-nav__link">
-        SignUserProvider
+        Sign User Provider
       </a>
     </li>
   
@@ -313,7 +313,7 @@
   
     <li class="md-nav__item">
       <a href="../getAllServices/" class="md-nav__link">
-        GetAllServices
+        Get All Services
       </a>
     </li>
   
@@ -336,12 +336,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          GetService
+          Get Service
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        GetService
+        Get Service
       </a>
       
         
@@ -384,6 +384,96 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Actions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Actions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Actions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/createActionReaction/" class="md-nav__link">
+        Create Action Reaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/deleteActionReaction/" class="md-nav__link">
+        Delete Action Reaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/Github/" class="md-nav__link">
+        GitHub Action Reaction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../actions/Weather/" class="md-nav__link">
+        Weather Action Reaction
+      </a>
     </li>
   
 
@@ -455,9 +545,9 @@
               
                 
 
-<h1 id="getservice">GetService</h1>
+<h1 id="get-service">Get Service</h1>
 <ul>
-<li><a href="#getservice">GetService</a><ul>
+<li><a href="#get-service">Get Service</a><ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#success-response">Success Response</a></li>
 <li><a href="#error-response">Error Response</a></li>
@@ -469,14 +559,9 @@
 <hr />
 <h2 id="description">Description</h2>
 <p>&emsp;Use to get actions reactions of a user  <code>service</code></p>
-<p><strong>Data constraints</strong></p>
+<p><strong>Header</strong></p>
 <pre><code class="language-json">{
-  &quot;tokenID&quot;: &quot;'Bearer ' + firebase token ID&quot;: string
-}
-</code></pre>
-<p><strong>Data example</strong></p>
-<pre><code class="language-json">{
-  &quot;tokenID&quot;: &quot;&quot;
+  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot;
 }
 </code></pre>
 <hr />
@@ -530,7 +615,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../getAllServices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GetAllServices" rel="prev">
+        <a href="../getAllServices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Get All Services" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -539,11 +624,26 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              GetAllServices
+              Get All Services
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../../actions/createActionReaction/" class="md-footer__link md-footer__link--next" aria-label="Next: Create Action Reaction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Create Action Reaction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

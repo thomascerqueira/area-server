@@ -1,5 +1,5 @@
-# CreateUser
-- [CreateUser](#createuser)
+# Create User
+- [Create User](#create-user)
     - [Description](#description)
     - [Success Response](#success-response)
     - [Error Response](#error-response)

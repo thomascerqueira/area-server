@@ -1,6 +1,6 @@
-# GetAllServices
+# Get All Services
 
-- [GetAllServices](#getAllServices)
+- [Get All Services](#get-All-Services)
     - [Description](#description)
     - [Success Response](#success-response)
 

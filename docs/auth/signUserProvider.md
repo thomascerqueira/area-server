@@ -1,24 +1,30 @@
-# signUserProvider
-- [SignUserProvider](#signuserprovider)
+# Sign User Provider
+- [Sign User Provider](#sign-user-provider)
     - [Description](#description)
     - [Success Response](#success-response)
     - [Error Response](#error-response)
 
-**URL**: [/auth/deleteUser]()
+**URL**: [/auth/signUserProvider]()
 
 **Method**: `POST`
 
 ---
 
 ## Description
-&emsp;Use to delete a user in firebase with `token`
+&emsp;Use to sign a user in firebase with a provider
 
+**Header**
+
+```json
+{
+  "tokenid": "'Bearer' + tokenId from firebase": string
+}
+```
 
 **Data constraints**
 
 ```json
 {
-  "tokenID": "TokenID provided by firebase": string,
   "user": "user settings provided by firebase": {}
 }
 ```
@@ -27,7 +33,6 @@
 
 ```json
 {
-  "tokenID": "4f5sd7gf1k564sdf7...",
   "user": "..."
 }
 ```
@@ -41,9 +46,7 @@
 ```json
 {
   ".data": {
-    "email": "email of the user": string,
-    "name": "name of the user": string,
-    "uid": "uid of the user": string,
+    "value from db"
   }
 }
 ```
@@ -55,6 +58,20 @@
 <td> Status </td> <td> Condition </td> <td> Response </td>
 </tr>
 
+<tr>
+<td> 401 </td>
+<td>Bad token</td>
+<td>
+
+```json
+{
+  "msg": "Bad format Token"
+     or firebaseError
+}
+```
+
+</td>
+</tr>
 <tr>
 <td> 500 </td>
 <td>If <code>uid</code> is wrong or error in firebase</td>
