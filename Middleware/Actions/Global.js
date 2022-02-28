@@ -7,7 +7,8 @@ import {createSurveyAction} from "../../Functions/Actions/Global.js";
 
 export const actions = {
   'push': createGithubAction,
-  "temperature": createSurveyAction
+  "temperature": createSurveyAction,
+  "pollution": createSurveyAction
 }
 
 export const customAction = {
