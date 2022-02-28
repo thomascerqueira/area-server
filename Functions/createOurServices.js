@@ -90,8 +90,12 @@ function createJsonServices() {
           type: "string"
         },
         {
-          name: "check",
+          name: "option",
           type: "string"
+        },
+        {
+          name: "temp",
+          type: 'number'
         }
       ]
     },
@@ -103,8 +107,12 @@ function createJsonServices() {
           type: "string"
         },
         {
-          name: "check",
+          name: "option",
           type: "string"
+        },
+        {
+          name: "temp",
+          type: 'number'
         }
       ]
     })

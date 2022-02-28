@@ -12,7 +12,7 @@ async function weatherActionTemp(data) {
           return true;
         }
         break
-      case 'more':
+      case 'greater':
         if (result.data.main['temp'] >= data['temp']) {
           return true;
         }
