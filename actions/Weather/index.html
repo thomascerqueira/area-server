@@ -454,6 +454,19 @@
     Description
   </a>
   
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temperature" class="md-nav__link">
+    temperature
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -502,6 +515,19 @@
     Description
   </a>
   
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temperature" class="md-nav__link">
+    temperature
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -519,21 +545,6 @@
 
 <h1 id="weather">Weather</h1>
 <h2 id="description">Description</h2>
-<p>For any ActionReaction from github we need:</p>
-<pre><code class="language-json">{
-  &quot;city&quot;: &quot;Name of the City to check&quot;: string,
-  &quot;temp&quot;: &quot;Temperature to check&quot;: number,
-  &quot;option&quot;: &quot;greater, less, equal; check to validate the reaction&quot;
-}
-</code></pre>
-<p>Example:</p>
-<pre><code class="language-json">{
-  &quot;city&quot;: &quot;Paris&quot;,
-  &quot;temp&quot;: 20,
-  &quot;option&quot;: &quot;greater&quot;
-}
-</code></pre>
-<p>The reaction will occur if the temperature of <code>Paris</code> is <code>greater</code> than <code>20</code> degrees </p>
 <p>The available actions are:</p>
 <table>
 <tr>
@@ -548,6 +559,41 @@
 <td>Action relative to the pollution</td>
 </tr>
 </table>
+
+<h3 id="temperature">temperature</h3>
+<p>For the Action <code>temperature</code></p>
+<pre><code class="language-json">{
+  &quot;city&quot;: &quot;Name of the City to check&quot;: string,
+  &quot;temp&quot;: &quot;Temperature to check&quot;: number,
+  &quot;option&quot;: &quot;greater, less, equal; check to validate the reaction&quot;
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;city&quot;: &quot;Paris&quot;,
+  &quot;temp&quot;: 20,
+  &quot;option&quot;: &quot;greater&quot;
+}
+</code></pre>
+<p>The reaction will occur if the temperature of <code>Paris</code> is <code>greater</code> than <code>20</code> degrees </p>
+<hr />
+<p>For the Action <code>pollution</code></p>
+<pre><code class="language-json">{
+  &quot;value&quot;: &quot;Value of the air quality to check&quot;: number between 1 and 5,
+  &quot;long&quot;: &quot;Longitude of the place&quot;: number,
+  &quot;lat&quot;: &quot;Latitude of the place&quot;: number,
+  &quot;option&quot;: &quot;greater, less, equal; check to validate the reaction&quot;
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;value&quot;: 2,
+  &quot;long&quot;: 2.0,
+  &quot;lat&quot;: 4.0,
+  &quot;option&quot;: &quot;greater&quot;
+}
+</code></pre>
+<p>The reaction will occur if the air quality at <code>2.0,4.0</code> is <code>greater</code> than <code>2</code> air quality </p>
 
               
             </article>
