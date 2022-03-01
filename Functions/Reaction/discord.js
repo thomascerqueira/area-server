@@ -13,9 +13,10 @@ async function createDiscordReaction(options, _) {
       }
     )
     console.log(result)
-    options.webhooks_id = result.data.id;
-    options.webhooks_token = result.data.token;
-    return options
+    let data = options
+    data['webhooks_id'] = result.data.id;
+    data['webhooks_token'] = result.data.token;
+    return data
   } catch (err) {
     console.log(err)
     throw err
