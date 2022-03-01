@@ -34,24 +34,29 @@ const routes = [
             email: {
                 in: ['body'],
                 isEmpty: {
+                    bail: true,
                     errorMessage: "Email is missing"
                 },
                 isEmail: {
+                    bail: true,
                     errorMessage: "Email is wrongly formated"
                 }
             },
             password: {
                 in: ["body"],
                 isEmpty: {
+                    bail: true,
                     errorMessage: "Password is missing"
                 },
                 isStrongPassword: {
+                    bail: true,
                     errorMessage: "Password need to be stronger"
                 }
             },
             username: {
                 in: ["body"],
                 isEmpty: {
+                    bail: true,
                     errorMessage: "Username is missing"
                 },
             }
