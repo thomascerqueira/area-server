@@ -47,7 +47,6 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                 id: surveyID
               }).then((data) => {
                 try {
-                  console.log("Ici", surveyID, field[surveyID])
                   if (field[surveyID].done === false) {
                     customAction[data.action.actionName](data.action.data)
                       .then((result) => {
