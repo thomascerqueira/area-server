@@ -13,8 +13,7 @@ function updateStatueSurveyAction(id, value) {
 
 function createSurveyAction(_, id) {
   try {
-    addValueArray("References", "Surveys", "id_survey", {
-      id: id,
+    addValueArray("References", "Surveys", "id_survey", id, {
       done: false
     })
   } catch (e) {

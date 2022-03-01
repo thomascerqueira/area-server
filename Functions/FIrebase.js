@@ -1,13 +1,11 @@
 import {admin, allDb} from '../config.js';
 
-function addValueArray(nameCollection, nameDoc, nameArray, data) {
+function addValueArray(nameCollection, nameDoc, nameArray, name, data) {
   const db = admin.firestore()
   const dbRef = db.collection(nameCollection).doc(nameDoc)
 
   const newData = {}
-  newData[nameArray] = {
-    data
-  }
+  newData[name] = data
 
   dbRef.update(newData)
     .then(() => {})
