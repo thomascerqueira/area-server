@@ -47,5 +47,6 @@ async function weatherActionPoll(data) {
 
 export {
   weatherActionTemp,
-  weatherActionPoll
+  weatherActionPoll,
+  checkOption
 }
