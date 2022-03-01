@@ -6,7 +6,7 @@ import { createDiscordReaction } from "../../Functions/Reaction/discord.js";
 import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
 import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
-import {deleteField} from "../../Functions/Firebase";
+import {deleteField} from "../../Functions/Firebase.js";
 
 export const actions = {
   'push': createGithubAction,
