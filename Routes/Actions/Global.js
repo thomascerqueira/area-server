@@ -2,6 +2,7 @@ import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
 import {createActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
 import {deleteActionReaction} from "../../Middleware/Actions/Delete.js";
+import {testCovid} from "../../Middleware/Actions/Covid.js";
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     route: "/survey",
     middlewares: [],
     callback: getSurveyAction
+  },
+  {
+    type: 'get',
+    route: "/testCovid",
+    middlewares: [check_arg(['country', 'iso'])],
+    callback: testCovid
   }
 ]
 
