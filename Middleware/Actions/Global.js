@@ -1,7 +1,8 @@
-import {createGithubAction} from "../../Functions/Actions/Github.js";
-import {addDocC} from "../../Functions/MongoDB/addDoc.js";
-import {allDb, auth} from "../../config.js";
+import { createGithubAction } from "../../Functions/Actions/Github.js";
+import { addDocC } from "../../Functions/MongoDB/addDoc.js";
+import { allDb, auth } from "../../config.js";
 import generateID from "../../Functions/generateID.js";
+import { createDiscordReaction } from "../../Functions/Reaction/discord.js";
 import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
 import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
@@ -12,6 +13,8 @@ export const actions = {
   "pollution": createSurveyAction,
   "covid": createSurveyAction
 }
+
+const reactions = { 'sendMessage': createDiscordReaction }
 
 export const customAction = {
   'temperature': weatherActionTemp,
@@ -52,7 +55,8 @@ async function createActionReaction(req, res) {
     .then(async (decoded) => {
       const id = generateID()
       try {
-        await actions[req.body.action.actionName](req.body.action.data, id)
+        const actionData = await actions[req.body.action.actionName](req.body.action.data, id)
+        const reactionData = await reactions[req.body.reaction.reactionName](req.body.reaction.data)
       } catch (err) {
         console.error(err)
         res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
@@ -65,14 +69,14 @@ async function createActionReaction(req, res) {
           "action": {
             "service": req.body.action.service.toString(),
             "actionName": req.body.action.actionName.toString(),
-            "data": req.body.action.data
+            "data": actionData
           },
           "reaction": {
             "service": req.body.reaction.service.toString(),
             "reactionName": req.body.reaction.reactionName.toString(),
-            "data": req.body.reaction.data
+            "data": reactionData
           },
-          title: req.body.title
+          "title": req.body.title
         })
         .then((result) => {
           res.status(200).send({
@@ -90,8 +94,23 @@ async function createActionReaction(req, res) {
     })
 }
 
+async function getActionReaction(req, res) {
+  res.status(401).send({ msg: "not implemented" })
+}
+
+async function updateActionReaction(req, res) {
+  res.status(401).send({ msg: "not implemented" })
+}
+
+async function deleteActionReaction(req, res) {
+  res.status(401).send({ msg: "not implemented" })
+}
+
 export {
   createActionReaction,
+  getActionReaction,
+  updateActionReaction,
+  deleteActionReaction
   updateSurveyAction,
   getSurveyAction
 }
