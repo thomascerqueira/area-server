@@ -114,7 +114,7 @@ export {
   createActionReaction,
   getActionReaction,
   updateActionReaction,
-  deleteActionReaction
+  deleteActionReaction,
   updateSurveyAction,
   getSurveyAction
 }
