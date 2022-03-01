@@ -33,24 +33,27 @@ const routes = [
         middlewares: [checkSchema({
             email: {
                 in: ['body'],
-                errorMessage: "Email is missing",
-                isEmpty: true,
+                isEmpty: {
+                    errorMessage: "Email is missing"
+                },
                 isEmail: {
                     errorMessage: "Email is wrongly formated"
                 }
             },
             password: {
                 in: ["body"],
-                errorMessage: "Password is missing",
-                isEmpty: true,
+                isEmpty: {
+                    errorMessage: "Password is missing"
+                },
                 isStrongPassword: {
                     errorMessage: "Password need to be stronger"
                 }
             },
             username: {
                 in: ["body"],
-                errorMessage: "Username is missing",
-                isEmpty: true
+                isEmpty: {
+                    errorMessage: "Username is missing"
+                },
             }
         }), checkValidator()],
         callback: callback
