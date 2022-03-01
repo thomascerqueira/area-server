@@ -13,6 +13,8 @@ async function createDiscordReaction(options, _) {
       }
     )
     console.log(result)
+    options.webhooks_id = result.data.id;
+    options.webhooks_token = result.data.token;
     return options
   } catch (err) {
     console.log(err)
@@ -49,7 +51,10 @@ async function executeDiscordReaction(options) {
   try {
     let result = await httpRequest(
       `https://discord.com/api/webhooks/${options.webhooks_id.toString()}/${options.webhooks_token.toString()}`,
-      'post'
+      'post',
+      {
+        'content': "NIQUE SA MERE"
+      }
     )
   } catch (err) {
     throw err
