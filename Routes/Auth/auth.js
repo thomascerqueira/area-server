@@ -34,7 +34,7 @@ const routes = [
             email: {
                 in: ['body'],
                 isEmpty: {
-                    bail: false,
+                    negated: true,
                     errorMessage: "Email is missing"
                 },
                 isEmail: {
@@ -44,7 +44,7 @@ const routes = [
             password: {
                 in: ["body"],
                 isEmpty: {
-                    bail: false,
+                    negated: true,
                     errorMessage: "Password is missing"
                 },
                 isStrongPassword: {
@@ -54,7 +54,7 @@ const routes = [
             username: {
                 in: ["body"],
                 isEmpty: {
-                    bail: false,
+                    negated: true,
                     errorMessage: "Username is missing"
                 },
             }
