@@ -14,6 +14,20 @@ function addValueArray(nameCollection, nameDoc, nameArray, name, data) {
     })
 }
 
+function deleteField(nameCollection, nameDoc, name) {
+  const db = admin.firestore()
+  const dbRef = db.collection(nameCollection).doc(nameDoc)
+
+  const newData = {}
+  newData[name] = admin.firestore.FieldValue.delete()
+
+  dbRef.update(newData)
+    .then(() => {})
+    .catch(err => {
+      throw err
+    })
+}
+
 function removeValueArray(nameCollection, nameDoc, nameArray, data) {
   const db = admin.firestore()
   const dbRef = db.collection(nameCollection).doc(nameDoc)
@@ -31,5 +45,6 @@ function removeValueArray(nameCollection, nameDoc, nameArray, data) {
 
 export {
   addValueArray,
-  removeValueArray
+  removeValueArray,
+  deleteField,
 }

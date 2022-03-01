@@ -39,22 +39,22 @@ nodeCron.schedule('*/10 * * * * *', async () => {
   dbRef.get()
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
-        if (doc.data()['id_survey'].length &&
-          doc.data()['id_survey'].length > 0) {
+        if (doc.data()) {
+          const survey = doc.data()
           try {
-            doc.data()['id_survey'].map((survey) => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
-                id: survey.id
+                id: Object.keys(survey)
               }).then((data) => {
                 try {
                   if (survey.done === false) {
+                    console.log("ICI", Object.keys(survey))
                     customAction[data.action.actionName](data.action.data)
                       .then((result) => {
                         if (result === true) {
                           dispatchReaction(data)
                             .then(() => {
                               console.log("Dispatch function for ", survey)
-                              updateStatueSurveyAction(survey.id, true)
+                              updateStatueSurveyAction(Object.keys(survey), true)
                             })
                             .catch((err) => {
                               console.error("Error dispatch function", err)
@@ -66,10 +66,10 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                       })
                   }
                 } catch (e) {
-                  console.log("Error on id ", survey, e)
+                  console.log("Error on id ", Object.keys(survey), e)
                 }
-              })
-            })
+              }
+            )
           } catch (err) {
             console.error("Error nodeCron", err);
           }
