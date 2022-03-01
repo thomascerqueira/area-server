@@ -2,16 +2,18 @@ import {createGithubAction} from "../../Functions/Actions/Github.js";
 import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
-import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
+import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
 import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 
 export const actions = {
   'push': createGithubAction,
-  "temperature": createSurveyAction
+  "temperature": createSurveyAction,
+  "pollution": createSurveyAction
 }
 
 export const customAction = {
-  'temperature': weatherActionTemp
+  'temperature': weatherActionTemp,
+  'pollution': weatherActionPoll
 }
 
 async function updateSurveyAction(req, res) {
