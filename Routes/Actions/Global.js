@@ -1,8 +1,7 @@
 import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
-import {createActionReaction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
+import {createActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
 import {deleteActionReaction} from "../../Middleware/Actions/Delete.js";
-import {getSurveyAction} from "../../Functions/Actions/Global.js";
 
 const routes = [
   {

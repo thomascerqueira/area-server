@@ -11,7 +11,7 @@ function updateStatueSurveyAction(id, value) {
   }
 }
 
-function getSurveyAction() {
+function getActionSurvey() {
   const db = admin.firestore()
   const dbRef = db.collection("References")
 
@@ -24,7 +24,6 @@ function getSurveyAction() {
         } catch (err) {
           console.error(err)
         }
-
       })
     })
 }
@@ -42,5 +41,5 @@ function createSurveyAction(_, id) {
 export {
   createSurveyAction,
   updateStatueSurveyAction,
-  getSurveyAction
+  getActionSurvey
 }

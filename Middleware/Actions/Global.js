@@ -3,7 +3,7 @@ import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
 import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
-import {createSurveyAction, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
+import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 
 export const actions = {
   'push': createGithubAction,
@@ -19,6 +19,16 @@ async function updateSurveyAction(req, res) {
     updateStatueSurveyAction(req.body.id, req.body.value)
     res.status(200).send({"msg": "Done"})
   }catch (err) {
+    res.status(500).send(err)
+  }
+}
+
+async function getSurveyAction(req, res) {
+  try {
+    getActionSurvey()
+    res.status(200).send({"msg": "good"})
+  } catch (err) {
+    console.error(err)
     res.status(500).send(err)
   }
 }
@@ -77,5 +87,6 @@ async function createActionReaction(req, res) {
 
 export {
   createActionReaction,
-  updateSurveyAction
+  updateSurveyAction,
+  getSurveyAction
 }
