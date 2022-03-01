@@ -19,8 +19,8 @@ function getActionSurvey() {
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
         try {
-          console.log(Object.keys(doc))
-          console.log(doc)
+          console.log(Object.keys(doc.data()))
+          console.log(doc.data())
         } catch (err) {
           console.error(err)
         }
