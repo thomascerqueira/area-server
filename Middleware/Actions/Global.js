@@ -113,15 +113,10 @@ async function updateActionReaction(req, res) {
   res.status(401).send({ msg: "not implemented" })
 }
 
-async function deleteActionReaction(req, res) {
-  res.status(401).send({ msg: "not implemented" })
-}
-
 export {
   createActionReaction,
   getActionReaction,
   updateActionReaction,
-  deleteActionReaction,
   updateSurveyAction,
   getSurveyAction
 }
