@@ -45,9 +45,14 @@ const routes = [
                 in: ["body"],
                 errorMessage: "Username is missing",
             }
-        }), checkValidator()]
+        }), checkValidator()],
+        callback: callback
     }
 ]
+
+async function callback(req, res, next) {
+    res.status(200).send({ msg: "all is good" })
+}
 
 function checkValidator() {
     return (req, res, next) => {
