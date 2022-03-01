@@ -46,5 +46,5 @@ function removeValueArray(nameCollection, nameDoc, nameArray, data) {
 export {
   addValueArray,
   removeValueArray,
-  deleteField,
+  deleteField
 }

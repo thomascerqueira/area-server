@@ -1,14 +1,14 @@
 import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
 import {createActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
-import {deleteActionReaction} from "../../Middleware/Actions/Delete.js";
 import {testCovid} from "../../Middleware/Actions/Covid.js";
+import {deleteActionReaction, deleteForced} from "../../Middleware/Actions/Delete.js";
 
 const routes = [
   {
     type: 'post',
     route: '/create',
-    middlewares: [check_arg(['action', 'reaction'])],
+    middlewares: [check_header(['tokenid']), check_arg(['action', 'reaction'])],
     callback: createActionReaction
   },
   {
@@ -16,6 +16,12 @@ const routes = [
     route: '/',
     middlewares: [check_arg(['id']), check_header(['tokenid'])],
     callback: deleteActionReaction
+  },
+  {
+    type: 'delete',
+    route: '/all',
+    middlewares: [check_arg(['ids'])],
+    callback: deleteForced
   },
   {
     type: 'patch',

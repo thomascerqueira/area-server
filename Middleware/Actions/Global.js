@@ -1,10 +1,12 @@
-import {createGithubAction} from "../../Functions/Actions/Github.js";
-import {addDocC} from "../../Functions/MongoDB/addDoc.js";
-import {allDb, auth} from "../../config.js";
+import { createGithubAction } from "../../Functions/Actions/Github.js";
+import { addDocC } from "../../Functions/MongoDB/addDoc.js";
+import { allDb, auth } from "../../config.js";
 import generateID from "../../Functions/generateID.js";
+import { createDiscordReaction } from "../../Functions/Reaction/discord.js";
 import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
 import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
+import {deleteField} from "../../Functions/Firebase.js";
 
 export const actions = {
   'push': createGithubAction,
@@ -13,10 +15,19 @@ export const actions = {
   "covid": createSurveyAction
 }
 
+export const reactions = {
+  'sendMessage': createDiscordReaction,
+  "send_mail": emptyReactionData
+}
+
 export const customAction = {
   'temperature': weatherActionTemp,
   'pollution': weatherActionPoll,
   'covid': covidAction
+}
+
+async function emptyReactionData(data, _) {
+  return data
 }
 
 async function updateSurveyAction(req, res) {
@@ -51,11 +62,19 @@ async function createActionReaction(req, res) {
   auth.verifyIdToken(token)
     .then(async (decoded) => {
       const id = generateID()
+      let actionData
+      let reactionData
       try {
-        await actions[req.body.action.actionName](req.body.action.data, id)
+        actionData = await actions[req.body.action.actionName](req.body.action.data, id)
+        reactionData = await reactions[req.body.reaction.reactionName](req.body.reaction.data, id)
       } catch (err) {
         console.error(err)
-        res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
+        deleteField("References", "Surveys", id)
+        try {
+          res.status(404).send(err.data)
+        } catch (err) {
+          res.status(404).send(err)
+        }
         return
       }
       addDocC(
@@ -65,18 +84,19 @@ async function createActionReaction(req, res) {
           "action": {
             "service": req.body.action.service.toString(),
             "actionName": req.body.action.actionName.toString(),
-            "data": req.body.action.data
+            "data": actionData
           },
           "reaction": {
             "service": req.body.reaction.service.toString(),
             "reactionName": req.body.reaction.reactionName.toString(),
-            "data": req.body.reaction.data
+            "data": reactionData
           },
-          title: req.body.title
+          "title": req.body.title
         })
         .then((result) => {
           res.status(200).send({
-            id: id
+            'msg': result.msg,
+            'id': id
           })
         })
         .catch((err) => {
@@ -90,8 +110,18 @@ async function createActionReaction(req, res) {
     })
 }
 
+async function getActionReaction(req, res) {
+  res.status(401).send({ msg: "not implemented" })
+}
+
+async function updateActionReaction(req, res) {
+  res.status(401).send({ msg: "not implemented" })
+}
+
 export {
   createActionReaction,
+  getActionReaction,
+  updateActionReaction,
   updateSurveyAction,
   getSurveyAction
 }

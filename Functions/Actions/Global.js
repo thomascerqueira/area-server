@@ -1,4 +1,4 @@
-import {addValueArray} from "../FIrebase.js";
+import {addValueArray} from "../Firebase.js";
 import {admin} from "../../config.js";
 
 function updateStatueSurveyAction(id, value) {
@@ -28,11 +28,12 @@ function getActionSurvey() {
     })
 }
 
-function createSurveyAction(_, id) {
+function createSurveyAction(data, id) {
   try {
     addValueArray("References", "Surveys", "id_survey", id, {
       done: false
     })
+    return data
   } catch (e) {
     throw e
   }

@@ -62,6 +62,11 @@ function createJsonServices() {
     actions: [],
     reactions: []
   }
+  let Discord = {
+    name: "Discord",
+    actions: [],
+    reactions: []
+  }
 
   githubEvent.forEach((evt) => {
     GitHub.actions.push({
@@ -148,11 +153,26 @@ function createJsonServices() {
     ]
   })
 
+  Discord.reactions.push({
+    name: 'sendMessage',
+    inputs: [
+      {
+        name: 'name',
+        type: 'string'
+      },
+      {
+        name: 'channel_id',
+        type: 'string'
+      }
+    ]
+  })
+
   ourServices = [
     GitHub,
     Area,
     Weather,
-    Covid
+    Covid,
+    Discord
   ]
 
   const data = JSON.stringify(ourServices)

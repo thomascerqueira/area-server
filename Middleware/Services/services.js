@@ -2,7 +2,7 @@ import {admin, allDb, auth} from '../../config.js'
 import {getAllValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import * as fs from "fs";
 import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
-import {removeValueArray} from "../../Functions/FIrebase.js";
+import {removeValueArray} from "../../Functions/Firebase.js";
 import {createJsonServices} from "../../Functions/createOurServices.js";
 
 function updateServices(req, res) {
