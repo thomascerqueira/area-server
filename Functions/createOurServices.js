@@ -83,7 +83,7 @@ function createJsonServices() {
   })
 
   Weather.actions.push({
-      name: "temp",
+      name: "temperature",
       inputs: [
         {
           name: "city",
@@ -94,7 +94,7 @@ function createJsonServices() {
           type: "string"
         },
         {
-          name: "temp",
+          name: "temperature",
           type: 'number'
         }
       ]

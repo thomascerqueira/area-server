@@ -59,6 +59,8 @@ nodeCron.schedule('* * * * *', async () => {
                             .catch((err) => {
                               console.error("Error dispatch function", err)
                             })
+                        } else {
+                          console.log("Result not false for ", surveyID)
                         }
                       })
                       .catch((err) => {

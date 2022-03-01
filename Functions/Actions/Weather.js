@@ -28,7 +28,7 @@ async function weatherActionTemp(data) {
       `http://api.openweathermap.org/data/2.5/weather?q=${data['city']}&appid=${process.env.OPEN_WEATHER_KEY}&units=metric`,
       "get"
     )
-    return checkOption(data['option'], result.data.main['temp'], data['temp'])
+    return checkOption(data['option'], result.data.main['temp'], data['temperature'])
   } catch (e) {
     console.error("Err in Weather Temp action", e)
     throw e
