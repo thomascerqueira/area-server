@@ -9,7 +9,8 @@ import {covidAction} from "../../Functions/Actions/Covid.js";
 export const actions = {
   'push': createGithubAction,
   "temperature": createSurveyAction,
-  "pollution": createSurveyAction
+  "pollution": createSurveyAction,
+  "covid": createSurveyAction
 }
 
 export const customAction = {
