@@ -56,6 +56,7 @@ async function executeDiscordReaction(options) {
         'content': "NIQUE SA MERE"
       }
     )
+    return true
   } catch (err) {
     throw err
   }
