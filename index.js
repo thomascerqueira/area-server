@@ -11,6 +11,7 @@ import {admin, allDb} from './config.js';
 import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
 import {dispatchReaction} from "./Functions/Reaction/Global.js";
 import {customAction} from "./Middleware/Actions/Global.js";
+import {updateStatueSurveyAction} from "./Functions/Actions/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -38,31 +39,34 @@ nodeCron.schedule('* * * * *', async () => {
   dbRef.get()
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
-        if (doc.data()['id_survey'].length &&
-          doc.data()['id_survey'].length > 0) {
+        if (doc.data()) {
+          const field = doc.data()
           try {
-            doc.data()['id_survey'].map((survey) => {
+            Object.keys(field).map((surveyID) => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
-                id: survey
+                id: surveyID
               }).then((data) => {
                 try {
-                  customAction[data.action.actionName](data.action.data)
-                    .then((result) => {
-                      if (result === true) {
-                        dispatchReaction(data)
-                          .then(() => {
-                            console.log("Dispatch function for ", survey)
-                          })
-                          .catch((err) => {
-                            console.error("Error dispatch function", err)
-                          })
-                      }
-                    })
-                    .catch((err) => {
-                      console.error("Error Custom Action", err)
-                    })
+                  if (field[surveyID].done === false) {
+                    customAction[data.action.actionName](data.action.data)
+                      .then((result) => {
+                        if (result === true) {
+                          dispatchReaction(data)
+                            .then(() => {
+                              console.log("Dispatch function for ", surveyID)
+                              updateStatueSurveyAction(surveyID, true)
+                            })
+                            .catch((err) => {
+                              console.error("Error dispatch function", err)
+                            })
+                        }
+                      })
+                      .catch((err) => {
+                        console.error("Error Custom Action", err)
+                      })
+                  }
                 } catch (e) {
-                  console.log("Error on id ", survey, e)
+                  console.log("Error on id ", surveyID, e)
                 }
               })
             })

@@ -1,6 +1,6 @@
 import {allDb, auth} from "../../config.js";
 import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
-import {removeValueArray} from "../../Functions/FIrebase.js";
+import {deleteField} from "../../Functions/FIrebase.js";
 
 function deleteActionReaction(req, res) {
   let token
@@ -20,7 +20,7 @@ function deleteActionReaction(req, res) {
         uid: decoded.uid
       }).then(() => {
         try {
-          removeValueArray("References", "Surveys", "id_survey", req.body.id)
+          deleteField("References", "Surveys", req.body.id)
           res.status(200).send({'msg': 'Delete success'})
           console.log(`ActionReaction ${req.body.id} Deleted successfully`)
         } catch (err) {
