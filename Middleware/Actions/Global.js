@@ -6,6 +6,7 @@ import { createDiscordReaction } from "../../Functions/Reaction/discord.js";
 import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
 import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
+import {sendMail} from "../../Functions/sendMail.js";
 
 export const actions = {
   'push': createGithubAction,
@@ -15,7 +16,8 @@ export const actions = {
 }
 
 export const reactions = {
-  'sendMessage': createDiscordReaction
+  'sendMessage': createDiscordReaction,
+  "send_mail": sendMail
 }
 
 export const customAction = {
@@ -63,7 +65,7 @@ async function createActionReaction(req, res) {
         reactionData = await reactions[req.body.reaction.reactionName](req.body.reaction.data, id)
       } catch (err) {
         console.error(err)
-        res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
+        res.status(404).send(err)
         return
       }
       addDocC(
