@@ -4,16 +4,19 @@ function checkOption(option, main, value) {
   switch (option) {
     case 'less':
       if (main <= value) {
+        console.log("less")
         return true;
       }
       break
     case 'greater':
       if (main >= value) {
+        console.log("greater")
         return true;
       }
       break
     case 'equal':
       if (main === value) {
+        console.log("equal")
         return true;
       }
       break;
