@@ -157,6 +157,10 @@ function createJsonServices() {
     name: 'sendMessage',
     inputs: [
       {
+        name: 'name',
+        type: 'string'
+      },
+      {
         name: 'channel_id',
         type: 'string'
       }

@@ -6,7 +6,7 @@ async function createDiscordReaction(options, _) {
       `https://discord.com/api/channels/${options.channel_id.toString()}/webhooks`,
       'post',
       {
-        name: "test"
+        name: `${options.name}`
       },
       {
         "Authorization": `${process.env.DISCORD_KEY}`
