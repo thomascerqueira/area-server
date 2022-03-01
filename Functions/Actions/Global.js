@@ -1,4 +1,4 @@
-import {addValueArray} from "../FIrebase.js";
+import {addValueArray} from "../Firebase.js";
 import {admin} from "../../config.js";
 
 function updateStatueSurveyAction(id, value) {

@@ -1,6 +1,6 @@
 import {allDb, auth} from "../../config.js";
 import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
-import {deleteField} from "../../Functions/FIrebase.js";
+import {deleteField} from "../../Functions/Firebase.js";
 
 function deleteActionReaction(req, res) {
   let token
