@@ -45,7 +45,9 @@ nodeCron.schedule('*/10 * * * * *', async () => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
                 id: Object.keys(survey)
               }).then((data) => {
+                console.log(data)
                 try {
+                  console.log("Object.keys(survey)", survey.done)
                   if (survey.done === false) {
                     console.log("ICI", Object.keys(survey))
                     customAction[data.action.actionName](data.action.data)
