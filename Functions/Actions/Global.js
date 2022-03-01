@@ -2,8 +2,7 @@ import {addValueArray} from "../FIrebase.js";
 
 function updateStatueSurveyAction(id, value) {
   try {
-    addValueArray("References", "Surveys", "id_survey", {
-      id: id,
+    addValueArray("References", "Surveys", "id_survey", id, {
       done: value
     })
   } catch (err) {
