@@ -70,7 +70,11 @@ async function createActionReaction(req, res) {
       } catch (err) {
         console.error(err)
         deleteField("References", "Surveys", id)
-        res.status(404).send(err)
+        try {
+          res.status(404).send(err.data)
+        } catch (err) {
+          res.status(404).send(err)
+        }
         return
       }
       addDocC(
@@ -91,7 +95,8 @@ async function createActionReaction(req, res) {
         })
         .then((result) => {
           res.status(200).send({
-            id: id
+            'msg': result.msg,
+            'id': id
           })
         })
         .catch((err) => {
