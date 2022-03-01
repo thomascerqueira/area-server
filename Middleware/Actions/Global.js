@@ -7,6 +7,7 @@ import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weat
 import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
 import {sendMail} from "../../Functions/sendMail.js";
+import {deleteField} from "../../Functions/FIrebase";
 
 export const actions = {
   'push': createGithubAction,
@@ -17,13 +18,17 @@ export const actions = {
 
 export const reactions = {
   'sendMessage': createDiscordReaction,
-  "send_mail": sendMail
+  "send_mail": emptyReactionData
 }
 
 export const customAction = {
   'temperature': weatherActionTemp,
   'pollution': weatherActionPoll,
   'covid': covidAction
+}
+
+async function emptyReactionData(data, _) {
+  return data
 }
 
 async function updateSurveyAction(req, res) {
@@ -65,6 +70,7 @@ async function createActionReaction(req, res) {
         reactionData = await reactions[req.body.reaction.reactionName](req.body.reaction.data, id)
       } catch (err) {
         console.error(err)
+        deleteField("References", "Surveys", id)
         res.status(404).send(err)
         return
       }
