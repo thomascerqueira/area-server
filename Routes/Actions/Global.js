@@ -2,6 +2,7 @@ import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
 import {createActionReaction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
 import {deleteActionReaction} from "../../Middleware/Actions/Delete.js";
+import {getSurveyAction} from "../../Functions/Actions/Global.js";
 
 const routes = [
   {
@@ -21,6 +22,12 @@ const routes = [
     route: '/survey',
     middlewares: [check_arg(['id', 'value'])],
     callback: updateSurveyAction
+  },
+  {
+    type: 'get',
+    route: "/survey",
+    middlewares: [],
+    callback: getSurveyAction
   }
 ]
 
