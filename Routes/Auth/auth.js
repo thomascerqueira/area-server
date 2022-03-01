@@ -34,16 +34,23 @@ const routes = [
             email: {
                 in: ['body'],
                 errorMessage: "Email is missing",
-                isEmail: true,
+                isEmpty: true,
+                isEmail: {
+                    errorMessage: "Email is wrongly formated"
+                }
             },
             password: {
                 in: ["body"],
                 errorMessage: "Password is missing",
-                isStrongPassword: true
+                isEmpty: true,
+                isStrongPassword: {
+                    errorMessage: "Password need to be stronger"
+                }
             },
             username: {
                 in: ["body"],
                 errorMessage: "Username is missing",
+                isEmpty: true
             }
         }), checkValidator()],
         callback: callback
