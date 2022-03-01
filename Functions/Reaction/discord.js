@@ -12,11 +12,9 @@ async function createDiscordReaction(options, _) {
         "Authorization": `${process.env.DISCORD_KEY}`
       }
     )
-    console.log(result)
-    let data = options
-    data['webhooks_id'] = result.data.id;
-    data['webhooks_token'] = result.data.token;
-    return data
+    options.webhooks_id = result.data.id.toString();
+    options.webhooks_token = result.data.token.toString();
+    return options
   } catch (err) {
     console.log(err)
     throw err
