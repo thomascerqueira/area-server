@@ -1,6 +1,6 @@
 import httpRequest from "../httpRequest.js";
 
-async function createDiscordReaction(options) {
+async function createDiscordReaction(options, _) {
   try {
     let result = await httpRequest(
       `https://discord.com/api/channels/${options.channel_id.toString()}/webhooks`,

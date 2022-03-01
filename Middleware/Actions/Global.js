@@ -14,7 +14,9 @@ export const actions = {
   "covid": createSurveyAction
 }
 
-const reactions = { 'sendMessage': createDiscordReaction }
+export const reactions = {
+  'sendMessage': createDiscordReaction
+}
 
 export const customAction = {
   'temperature': weatherActionTemp,
@@ -54,9 +56,11 @@ async function createActionReaction(req, res) {
   auth.verifyIdToken(token)
     .then(async (decoded) => {
       const id = generateID()
+      let actionData
+      let reactionData
       try {
-        const actionData = await actions[req.body.action.actionName](req.body.action.data, id)
-        const reactionData = await reactions[req.body.reaction.reactionName](req.body.reaction.data)
+        actionData = await actions[req.body.action.actionName](req.body.action.data, id)
+        reactionData = await reactions[req.body.reaction.reactionName](req.body.reaction.data, id)
       } catch (err) {
         console.error(err)
         res.status(404).send({'msg': "Error while creating, maybe its an unknown actionName or internal server error"})
