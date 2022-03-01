@@ -2,6 +2,17 @@ import {allDb, auth} from "../../config.js";
 import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
 import {deleteField} from "../../Functions/Firebase.js";
 
+function deleteForced(req, res) {
+  req.body['ids'].forEach((id) => {
+    dropDocument(allDb['ActionReaction'], "ActionReaction", {
+      id: id
+    })
+      .then(() => {
+        deleteField("References", "Surveys", id)
+      })
+  })
+}
+
 function deleteActionReaction(req, res) {
   let token
   try {
@@ -40,5 +51,6 @@ function deleteActionReaction(req, res) {
 }
 
 export {
-  deleteActionReaction
+  deleteActionReaction,
+  deleteForced
 }
