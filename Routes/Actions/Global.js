@@ -1,6 +1,6 @@
 import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
-import {createActionReaction} from "../../Middleware/Actions/Global.js";
+import {createActionReaction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
 import {deleteActionReaction} from "../../Middleware/Actions/Delete.js";
 
 const routes = [
@@ -15,6 +15,12 @@ const routes = [
     route: '/',
     middlewares: [check_arg(['id']), check_header(['tokenid'])],
     callback: deleteActionReaction
+  },
+  {
+    type: 'post',
+    route: '/survey',
+    middlewares: [check_arg(['id', 'value'])],
+    callback: updateSurveyAction
   }
 ]
 

@@ -3,7 +3,7 @@ import {addDocC} from "../../Functions/MongoDB/addDoc.js";
 import {allDb, auth} from "../../config.js";
 import generateID from "../../Functions/generateID.js";
 import {weatherActionTemp} from "../../Functions/Actions/Weather.js"
-import {createSurveyAction} from "../../Functions/Actions/Global.js";
+import {createSurveyAction, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
 
 export const actions = {
   'push': createGithubAction,
@@ -12,6 +12,15 @@ export const actions = {
 
 export const customAction = {
   'temperature': weatherActionTemp
+}
+
+async function updateSurveyAction(req, res) {
+  try {
+    updateStatueSurveyAction(req.body.id, req.body.value)
+    res.status(200).send({"msg": "Done"})
+  }catch (err) {
+    res.status(500).send(err)
+  }
 }
 
 async function createActionReaction(req, res) {
@@ -67,5 +76,6 @@ async function createActionReaction(req, res) {
 }
 
 export {
-  createActionReaction
+  createActionReaction,
+  updateSurveyAction
 }
