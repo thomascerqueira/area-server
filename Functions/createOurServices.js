@@ -151,7 +151,8 @@ function createJsonServices() {
   ourServices = [
     GitHub,
     Area,
-    Weather
+    Weather,
+    Covid
   ]
 
   const data = JSON.stringify(ourServices)
