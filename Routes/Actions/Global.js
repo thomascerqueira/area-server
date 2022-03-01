@@ -17,7 +17,7 @@ const routes = [
     callback: deleteActionReaction
   },
   {
-    type: 'post',
+    type: 'patch',
     route: '/survey',
     middlewares: [check_arg(['id', 'value'])],
     callback: updateSurveyAction
