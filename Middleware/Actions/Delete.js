@@ -11,6 +11,7 @@ function deleteForced(req, res) {
         deleteField("References", "Surveys", id)
       })
   })
+  res.status(200).send({"msg": "Cest pas bien :'("})
 }
 
 function deleteActionReaction(req, res) {
