@@ -12,7 +12,10 @@ async function covidAction(data) {
         'x-rapidapi-key': `${process.env.COVID_KEY}`
       }
     )
-    console.log(result.data)
+    if (result.data.length > 0) {
+      return (checkOption(data['option'], result.data[0]['ActiveCases'], data['value']))
+    }
+    return false
     // return checkOption(data['option'], result.data.)
   } catch (e) {
     console.error("Err in covidAction", e)
