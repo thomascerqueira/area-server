@@ -40,21 +40,22 @@ nodeCron.schedule('*/10 * * * * *', async () => {
     .then((snapshot) => {
       snapshot.docs.map((doc) => {
         if (doc.data()) {
+          const field = doc.data()
           try {
-            doc.data().map((survey) => {
+            Object.keys(field).map((surveyID) => {
               getOneValueDb(allDb["ActionReaction"], "ActionReaction", {
-                id: Object.keys(survey)
+                id: surveyID
               }).then((data) => {
                 try {
-                  console.log("Ici", Object.keys(survey))
-                  if (survey.done === false) {
+                  console.log("Ici", surveyID, field[surveyID])
+                  if (field[surveyID].done === false) {
                     customAction[data.action.actionName](data.action.data)
                       .then((result) => {
                         if (result === true) {
                           dispatchReaction(data)
                             .then(() => {
-                              console.log("Dispatch function for ", survey)
-                              updateStatueSurveyAction(Object.keys(survey), true)
+                              console.log("Dispatch function for ", surveyID)
+                              updateStatueSurveyAction(surveyID, true)
                             })
                             .catch((err) => {
                               console.error("Error dispatch function", err)
@@ -66,7 +67,7 @@ nodeCron.schedule('*/10 * * * * *', async () => {
                       })
                   }
                 } catch (e) {
-                  console.log("Error on id ", survey, e)
+                  console.log("Error on id ", surveyID, e)
                 }
               })
             })
