@@ -1,7 +1,9 @@
 import {admin, allDb, auth} from '../../config.js'
-import {getAllValueDb, getOneValueDb} from "../../Functions/MongoDB/getValueDb.js";
-import {createJsonServices} from "../../Functions/createOurServices.js";
+import {getAllValueDb} from "../../Functions/MongoDB/getValueDb.js";
 import * as fs from "fs";
+import {dropDocument} from "../../Functions/MongoDB/dropCollection.js";
+import {removeValueArray} from "../../Functions/FIrebase.js";
+import {createJsonServices} from "../../Functions/createOurServices.js";
 
 function updateServices(req, res) {
   createJsonServices();
@@ -12,14 +14,21 @@ function updateServices(req, res) {
   file.forEach((serv) => {
     try {
       dbRef.doc(serv.name).set({
+        service: serv.name,
         actions: serv.actions ? serv.actions : [],
         reactions: serv.reactions ? serv.reactions : []
       })
+        .then(() => {
+          console.log(`${serv.name} Done`)
+        })
+        .catch(err => {
+          console.log(`Error on ${serv.name}` + err)
+        })
     } catch (err) {
       console.error(err)
     }
   })
-  res.status(200).send({'msg': 'inchalla ca marche'})
+  res.status(200).send({'msg': 'Done, See logs for information'})
 }
 
 function getAllServices(req, res) {
@@ -40,7 +49,14 @@ function getAllServices(req, res) {
 }
 
 function getServicesUser(req, res) {
-  const token = req.body.tokenID.split(' ')[1]
+  let token
+  try {
+    token = req.headers.tokenid.split(' ')[1]
+  } catch (err) {
+    console.error(err)
+    res.status(401).send({'msg': "Bad format Token"})
+    return
+  }
 
   auth.verifyIdToken(token)
     .then((decoded) => {
@@ -52,6 +68,7 @@ function getServicesUser(req, res) {
           cursor.forEach((val) => {
             result.push({
               id: val.id,
+              titre: val.title,
               actionService: val.action.service,
               actionElement: val.action.actionName,
               inputAction: val.action.data,
@@ -66,10 +83,14 @@ function getServicesUser(req, res) {
           res.status(500).send(err)
         })
     })
+    .catch((err) => {
+      console.error(err)
+      res.status(401).send(err);
+    })
 }
 
 export {
   getAllServices,
   getServicesUser,
-  updateServices
+  updateServices,
 }

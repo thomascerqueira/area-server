@@ -42,7 +42,15 @@ function createUser(req, res) {
 }
 
 function deleteUser(req, res) {
-  const token = req.body.tokenID.split(' ')[1]
+  let token
+  try {
+    token = req.headers.tokenid.split(' ')[1]
+  } catch (err) {
+    console.error(err)
+    res.status(401).send({'msg': "Bad format Token"})
+    return
+  }
+
 
   auth.verifyIdToken(token)
   .then((decoded) => {
@@ -55,10 +63,21 @@ function deleteUser(req, res) {
       res.status(500).send(err)
     })
   })
+    .catch((error) => {
+      console.error(error)
+      res.status(500).send(error)
+    })
 }
 
 function signUser(req, res) {
-  const token = req.body.tokenID.split(' ')[1]
+  let token;
+  try {
+    token = req.headers.tokenid.split(' ')[1]
+  } catch (err) {
+    console.error(err)
+    res.status(401).send({'msg': "Bad format Token"})
+    return
+  }
 
   //ToDo verify email
   auth.verifyIdToken(token)
@@ -85,10 +104,22 @@ function signUser(req, res) {
       })
         .catch((err) => res.status(500).send(err))
     })
+    .catch((err) => {
+      console.error(err)
+      res.status(401).send(err)
+    })
 }
 
 function signUserProvider(req, res) {
-  const token = req.body.tokenID.split(' ')[1]
+  let token
+  try {
+    token = req.headers.tokenid.split(' ')[1]
+  } catch (err) {
+    console.error(err)
+    res.status(401).send({'msg': "Bad format Token"})
+    return
+  }
+
   const user = req.body.user
 
   //ToDo verify email
@@ -112,6 +143,10 @@ function signUserProvider(req, res) {
         }
       })
         .catch((err) => res.status(500).send(err))
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(401).send(err)
     })
 }
 

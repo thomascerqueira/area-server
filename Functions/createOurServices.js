@@ -47,13 +47,18 @@ function createJsonServices() {
     actions: [],
     reaction: []
   };
-  let Mail = {
-    name: "Mail",
+  let Area = {
+    name: "Area",
     actions: [],
     reactions: []
   }
   let Weather = {
     name: "Weather",
+    actions: [],
+    reactions: []
+  }
+  let Covid = {
+    name: "Covid",
     actions: [],
     reactions: []
   }
@@ -73,7 +78,7 @@ function createJsonServices() {
     })
   })
 
-  Mail.reactions.push({
+  Area.reactions.push({
     name: 'send_mail',
     inputs: [
       {
@@ -83,15 +88,19 @@ function createJsonServices() {
   })
 
   Weather.actions.push({
-      name: "temp",
+      name: "temperature",
       inputs: [
         {
           name: "city",
           type: "string"
         },
         {
-          name: "check",
+          name: "option",
           type: "string"
+        },
+        {
+          name: "temperature",
+          type: 'number'
         }
       ]
     },
@@ -99,20 +108,51 @@ function createJsonServices() {
       name: "pollution",
       inputs: [
         {
-          name: "city",
+          name: "option",
           type: "string"
         },
         {
-          name: "check",
+          name: "long",
+          type: 'number'
+        },
+        {
+          name: "lat",
+          type: 'number'
+        },
+        {
+          name: "value",
           type: "string"
         }
       ]
     })
 
+  Covid.actions.push({
+    name: "covid",
+    inputs: [
+      {
+        name: "option",
+        type: "string"
+      },
+      {
+        name: "country",
+        type: 'string'
+      },
+      {
+        name: "iso",
+        type: 'string'
+      },
+      {
+        name: "value",
+        type: "number"
+      }
+    ]
+  })
+
   ourServices = [
     GitHub,
-    Mail,
-    Weather
+    Area,
+    Weather,
+    Covid
   ]
 
   const data = JSON.stringify(ourServices)

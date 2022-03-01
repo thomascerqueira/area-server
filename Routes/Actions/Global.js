@@ -1,6 +1,7 @@
 import express from 'express';
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
-import {createActionReaction, deleteActionReaction, getActionReaction, updateActionReaction} from "../../Middleware/Actions/Global.js";
+import {createActionReaction, deleteActionReaction, getActionReaction, updateActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
+import {testCovid} from "../../Middleware/Actions/Covid.js";
 
 const routes = [
   {
@@ -10,22 +11,28 @@ const routes = [
     callback: createActionReaction
   },
   {
-    type: 'get',
-    route: '/get',
-    middlewares: [],
-    callback: getActionReaction
+    type: 'delete',
+    route: '/',
+    middlewares: [check_arg(['id']), check_header(['tokenid'])],
+    callback: deleteActionReaction
   },
   {
     type: 'patch',
-    route: '/update',
-    middlewares: [check_arg(['action', 'reaction'])],
-    callback: updateActionReaction
+    route: '/survey',
+    middlewares: [check_arg(['id', 'value'])],
+    callback: updateSurveyAction
   },
   {
-    type: 'delete',
-    route: '/delete',
-    middlewares: [check_arg(['area_id'])],
-    callback: deleteActionReaction
+    type: 'get',
+    route: "/survey",
+    middlewares: [],
+    callback: getSurveyAction
+  },
+  {
+    type: 'get',
+    route: "/testCovid",
+    middlewares: [check_arg(['country', 'iso'])],
+    callback: testCovid
   }
 ]
 

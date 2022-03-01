@@ -1,5 +1,5 @@
 import { createUser, deleteUser, signUser, signUserProvider } from '../../Middleware/Auth/auth.js'
-import {create_route_from_routes, check_arg} from '../../Functions/createroutefromroutes.js'
+import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
 
 const routes = [
     {
@@ -11,19 +11,19 @@ const routes = [
     {
         type: 'delete',
         route: '/deleteUser',
-        middlewares: [check_arg(['tokenID'])],
+        middlewares: [check_header(['tokenid'])],
         callback: deleteUser
     },
     {
         type: 'post',
         route: '/signUser',
-        middlewares: [check_arg(['tokenID'])],
+        middlewares: [check_header(['tokenid'])],
         callback: signUser
     },
     {
         type: 'post',
         route: '/signUserProvider',
-        middlewares: [check_arg(['tokenID', 'user'])],
+        middlewares: [check_header(['tokenid']), check_arg(['user'])],
         callback: signUserProvider
     }
 ]
