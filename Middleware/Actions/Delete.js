@@ -38,8 +38,8 @@ function deleteActionReaction(req, res) {
         uid: decoded.uid
       }).then((res) => {
         try {
-          await action[res.action.actionName](res.action.data)
-          await reaction[res.reaction.reactionName](res.action.data)
+          await action[req.action.actionName](req.action.data)
+          await reaction[req.reaction.reactionName](req.action.data)
         } catch (err) {
           console.log("")
         }
