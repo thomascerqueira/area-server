@@ -45,12 +45,12 @@ function deleteActionReaction(req, res) {
         const actionResult = await action[result.action.actionName](result.action.data, githubToken)
         const reactionResult = await reaction[result.reaction.reactionName](result.action.data)
         console.log(actionResult, reactionResult)
-        // if (actionResult && reactionResult) {
-        //   deleteFromDb(decoded.uid, req.body.id)
-        //   res.status(200).send({ msg: "successfuly delete" })
-        // } else {
-        //   res.status(500).send({ msg: "internal server error" })
-        // }
+        if (actionResult && reactionResult) {
+          deleteFromDb(decoded.uid, req.body.id)
+          res.status(200).send({ msg: "successfuly delete" })
+        } else {
+          res.status(500).send({ msg: "internal server error" })
+        }
       })
     })
     .catch((err) => {
