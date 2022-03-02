@@ -11,7 +11,7 @@ function updateStatueSurveyAction(id, value) {
   }
 }
 
-await function getActionSurvey() {
+async function getActionSurvey() {
   const db = admin.firestore()
   const dbRef = db.collection("References").doc("Surveys")
 
