@@ -36,7 +36,7 @@ function deleteActionReaction(req, res) {
       getOneValueDb(allDb['ActionReaction'], "ActionReaction", {
         id: req.body.id,
         uid: decoded.uid
-      }).then((res) => {
+      }).then(async (res) => {
         try {
           await action[req.action.actionName](req.action.data)
           await reaction[req.reaction.reactionName](req.action.data)
