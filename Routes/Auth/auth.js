@@ -30,7 +30,7 @@ const routes = [
                         let token;
                         try {
                             token = req.headers.tokenid.split(' ')[1]
-                            return token[0] !== "Bearer";
+                            return token[0] === "Bearer";
                         } catch (err) {
                             return false
                         }
@@ -91,7 +91,11 @@ function checkValidator() {
     return (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(500).send({ errors: errors.array() })
+            if (errors[0].find('tokenid')) {
+                res.status(401).send({error: errors[0]})
+            } else {
+                res.status(500).send({ errors: errors[0] })
+            }
             return
         }
         next()
