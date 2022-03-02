@@ -17,7 +17,11 @@ async function getActionSurvey() {
 
   dbRef.get()
     .then((snapshot) => {
+      console.log(snapshot)
       return snapshot.data()
+    })
+    .catch((err) => {
+      return err
     })
 }
 
