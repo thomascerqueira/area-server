@@ -1,13 +1,13 @@
 function deleteFromDb(uid, id) {
-  console.log(`Deleting ActionReaction ${req.body.id} for user ${decoded.uid}`)
+  console.log(`Deleting ActionReaction ${id} for user ${uid}`)
   dropDocument(allDb['ActionReaction'], 'ActionReaction', {
     id: req.body.id,
     uid: decoded.uid
   }).then(() => {
     try {
-      deleteField("References", "Surveys", req.body.id)
+      deleteField("References", "Surveys", id)
       res.status(200).send({ 'msg': 'Delete success' })
-      console.log(`ActionReaction ${req.body.id} Deleted successfully`)
+      console.log(`ActionReaction ${id} Deleted successfully`)
     } catch (err) {
       console.error(err)
       res.status(500).send(err)

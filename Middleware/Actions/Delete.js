@@ -36,10 +36,10 @@ function deleteActionReaction(req, res) {
       getOneValueDb(allDb['ActionReaction'], "ActionReaction", {
         id: req.body.id,
         uid: decoded.uid
-      }).then(async (res) => {
+      }).then(async (result) => {
         try {
-          await action[req.action.actionName](req.action.data)
-          await reaction[req.reaction.reactionName](req.action.data)
+          await action[result.action.actionName](result.action.data)
+          await reaction[result.reaction.reactionName](result.action.data)
         } catch (err) {
           console.log("")
         }
