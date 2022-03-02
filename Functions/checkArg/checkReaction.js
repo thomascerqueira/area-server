@@ -9,7 +9,7 @@ const checkReaction = {
     options: (value) => {
       return value.service && value.actionName && value.data && value.title
     },
-    errorMessage: "action need .service .actionName .data .title"
+    errorMessage: "action need .service .actionName .data"
   },
 }
 

@@ -7,9 +7,9 @@ const checkAction = {
   },
   custom: {
     options: (value) => {
-      return value.service && value.actionName && value.data && value.title
+      return value.service && value.actionName && value.data
     },
-    errorMessage: "action need .service .actionName .data .title"
+    errorMessage: "action need .service .actionName .data"
   },
 }
 
