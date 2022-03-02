@@ -7,7 +7,7 @@ const checkReaction = {
   },
   custom: {
     options: (value) => {
-      return value.service && value.reactionName && value.data && value.title
+      return value.service && value.reactionName && value.data
     },
     errorMessage: "action need .service .actionName .data"
   },
