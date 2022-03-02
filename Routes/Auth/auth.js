@@ -94,9 +94,9 @@ function checkValidator() {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       if (errors.array()[0].msg.indexOf("tokenid") !== -1) {
-        res.status(401).send({errors: errors})
+        res.status(401).send(errors)
       } else {
-        res.status(500).send({errors: errors})
+        res.status(500).send(errors)
       }
       return
     }
