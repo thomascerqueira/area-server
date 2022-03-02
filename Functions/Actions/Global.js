@@ -16,7 +16,8 @@ async function getActionSurvey() {
   const dbRef = db.collection("References").doc("Surveys")
 
   try {
-    return await dbRef.get()
+    let result = await dbRef.get()
+    return result.data()
   } catch (err) {
     return err
   }
