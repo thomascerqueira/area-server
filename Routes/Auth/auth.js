@@ -29,8 +29,7 @@ const routes = [
         custom: {
           options: (value, {}) => {
             try {
-              const token = value.split(' ')[1]
-              console.log(token)
+              const token = value.split(' ')
               return token[0] === "Bearer";
             } catch (err) {
               return false
