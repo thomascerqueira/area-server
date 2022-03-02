@@ -1,20 +1,37 @@
 import express from 'express';
-import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
+import {
+  create_route_from_routes,
+  check_arg,
+  check_header,
+  checkValidator
+} from '../../Functions/createroutefromroutes.js'
 import {createActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
 import {testCovid} from "../../Middleware/Actions/Covid.js";
 import {deleteActionReaction, deleteForced} from "../../Middleware/Actions/Delete.js";
+import {checkSchema} from "express-validator";
+import {checkToken} from "../../Functions/checkArg/checkToken.js";
+import {checkId} from "../../Functions/checkArg/checkId.js";
+import {checkAction} from "../../Functions/checkArg/checkAction.js";
+import {checkReaction} from "../../Functions/checkArg/checkReaction.js";
 
 const routes = [
   {
     type: 'post',
     route: '/create',
-    middlewares: [check_header(['tokenid']), check_arg(['action', 'reaction'])],
+    middlewares: [checkSchema({
+      checkToken,
+      checkAction,
+      checkReaction
+    }), checkValidator()],
     callback: createActionReaction
   },
   {
     type: 'delete',
     route: '/',
-    middlewares: [check_arg(['id']), check_header(['tokenid'])],
+    middlewares: [checkSchema({
+      checkToken,
+      checkId
+    }), checkValidator()],
     callback: deleteActionReaction
   },
   {

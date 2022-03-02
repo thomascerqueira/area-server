@@ -49,14 +49,7 @@ function getAllServices(req, res) {
 }
 
 function getServicesUser(req, res) {
-  let token
-  try {
-    token = req.headers.tokenid.split(' ')[1]
-  } catch (err) {
-    console.error(err)
-    res.status(401).send({'msg': "Bad format Token"})
-    return
-  }
+  let token = req.headers.tokenid.split(' ')[1]
 
   auth.verifyIdToken(token)
     .then((decoded) => {
