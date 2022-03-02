@@ -32,13 +32,8 @@ async function deleteGithubAction(options) {
       `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks/${options.hook_id.toString()}`,
       "delete",
       {
-        config: {
-          content_type: "json",
-          token: options.token
-        },
       },
       {
-        Authorization: `token ${options.token}`
       })
   } catch (err) {
     console.error("Err Create Github Action", err)
