@@ -37,8 +37,9 @@ async function deleteGithubAction(options) {
       })
   } catch (err) {
     console.error("Err Create Github Action", err)
-    throw err;
+    return false
   }
+  return true
 }
 
 async function getGithubAction(options) {

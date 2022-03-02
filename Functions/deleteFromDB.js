@@ -1,3 +1,6 @@
+import { dropDocument } from "../../Functions/MongoDB/dropCollection.js";
+import { deleteField } from "../../Functions/Firebase.js";
+
 function deleteFromDb(uid, id) {
   console.log(`Deleting ActionReaction ${id} for user ${uid}`)
   dropDocument(allDb['ActionReaction'], 'ActionReaction', {

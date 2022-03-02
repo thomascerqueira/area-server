@@ -1,6 +1,4 @@
 import { allDb, auth } from "../../config.js";
-import { dropDocument } from "../../Functions/MongoDB/dropCollection.js";
-import { deleteField } from "../../Functions/Firebase.js";
 import { deleteGithubAction } from "../../Functions/Actions/Github.js";
 import { getOneValueDb } from "../../Functions/MongoDB/getValueDb.js";
 import { deleteFromDb } from "../../Functions/deleteFromDB.js";
@@ -38,12 +36,15 @@ function deleteActionReaction(req, res) {
         uid: decoded.uid
       }).then(async (result) => {
         try {
-          await action[result.action.actionName](result.action.data)
-          await reaction[result.reaction.reactionName](result.action.data)
+          const actionResult = await action[result.action.actionName](result.action.data)
+          const reactionResult = await reaction[result.reaction.reactionName](result.action.data)
         } catch (err) {
-          console.log("")
+          console.log("je passe ici")
+          actionResult = true
+          reactionResult = true
         }
-        deleteFromDb(decoded.uid, req.body.id)
+        // if (actionResult && reactionResult)
+        //deleteFromDb(decoded.uid, req.body.id)
       })
     })
     .catch((err) => {
