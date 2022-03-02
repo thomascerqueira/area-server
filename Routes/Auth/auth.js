@@ -2,6 +2,30 @@ import {createUser, deleteUser, signUser, signUserProvider} from '../../Middlewa
 import {create_route_from_routes, check_arg, check_header} from '../../Functions/createroutefromroutes.js'
 import {checkSchema, validationResult} from 'express-validator'
 
+
+const checkToken = {
+  tokenid: {
+    in: ['headers'],
+    isEmpty: {
+      negated: true,
+      errorMessage: "tokenid is missing",
+      bail: true
+    },
+    custom: {
+      options: (value, {}) => {
+        try {
+          const token = value.split(' ')
+          return token[0] === "Bearer";
+        } catch (err) {
+          return false
+        }
+      },
+      errorMessage: "Bad format tokenid",
+      bail: true
+    }
+  }
+}
+
 const routes = [
   {
     type: 'post',
@@ -19,26 +43,7 @@ const routes = [
     type: 'post',
     route: '/signUser',
     middlewares: [checkSchema({
-      tokenid: {
-        in: ['headers'],
-        isEmpty: {
-          negated: true,
-          errorMessage: "tokenid is missing",
-          bail: true
-        },
-        custom: {
-          options: (value, {}) => {
-            try {
-              const token = value.split(' ')
-              return token[0] === "Bearer";
-            } catch (err) {
-              return false
-            }
-          },
-          errorMessage: "Bad format tokenid",
-          bail: true
-        }
-      }
+      checkToken
     }), checkValidator()],
     callback: signUser
   },
