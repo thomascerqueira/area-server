@@ -35,16 +35,11 @@ function deleteActionReaction(req, res) {
         id: req.body.id,
         uid: decoded.uid
       }).then(async (result) => {
-        try {
-          const actionResult = await action[result.action.actionName](result.action.data)
-          const reactionResult = await reaction[result.reaction.reactionName](result.action.data)
-        } catch (err) {
-          console.log("je passe ici")
-          actionResult = true
-          reactionResult = true
-        }
+        const actionResult = await action[result.action.actionName](result.action.data)
+        const reactionResult = await reaction[result.reaction.reactionName](result.action.data)
+        console.log(actionResult, reactionResult)
         // if (actionResult && reactionResult)
-        //deleteFromDb(decoded.uid, req.body.id)
+        //   deleteFromDb(decoded.uid, req.body.id)
       })
     })
     .catch((err) => {
