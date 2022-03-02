@@ -31,7 +31,7 @@ function deleteActionReaction(req, res) {
   }
 
   let githubToken
-  if (!req.body.githubtoken)
+  if (!req.body.githubToken)
     githubToken = ""
   else
     githubToken = req.body.githubToken
