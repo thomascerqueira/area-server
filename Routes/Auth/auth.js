@@ -18,7 +18,27 @@ const routes = [
     {
         type: 'post',
         route: '/signUser',
-        middlewares: [check_header(['tokenid'])],
+        middlewares: [checkSchema({
+            tokenid: {
+                in: ['headers'] ,
+                isEmpty: {
+                    negated: true,
+                    errorMessage: "tokenid is missing"
+                },
+                custom: {
+                    options: (value, {req}) => {
+                        let token;
+                        try {
+                            token = req.headers.tokenid.split(' ')[1]
+                            return token[0] !== "Bearer";
+                        } catch (err) {
+                            return false
+                        }
+                    },
+                    errorMessage: "Bad format tokenid"
+                }
+            }
+        }), checkValidator()],
         callback: signUser
     },
     {
