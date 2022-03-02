@@ -27,10 +27,10 @@ const routes = [
           bail: true
         },
         custom: {
-          options: (value, {req}) => {
-            let token;
+          options: (value, {}) => {
             try {
-              token = req.headers.tokenid.split(' ')[1]
+              const token = value.split(' ')[1]
+              console.log(token)
               return token[0] === "Bearer";
             } catch (err) {
               return false
