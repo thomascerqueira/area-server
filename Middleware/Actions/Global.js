@@ -41,8 +41,8 @@ async function updateSurveyAction(req, res) {
 
 async function getSurveyAction(req, res) {
   try {
-    getActionSurvey()
-    res.status(200).send({"msg": "good"})
+    let result = await getActionSurvey()
+    res.status(200).send(result)
   } catch (err) {
     console.error(err)
     res.status(500).send(err)

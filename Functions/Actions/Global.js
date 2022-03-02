@@ -11,20 +11,13 @@ function updateStatueSurveyAction(id, value) {
   }
 }
 
-function getActionSurvey() {
+await function getActionSurvey() {
   const db = admin.firestore()
-  const dbRef = db.collection("References")
+  const dbRef = db.collection("References").doc("Surveys")
 
   dbRef.get()
     .then((snapshot) => {
-      snapshot.docs.map((doc) => {
-        try {
-          console.log(Object.keys(doc.data()))
-          console.log(doc.data())
-        } catch (err) {
-          console.error(err)
-        }
-      })
+      return snapshot.data()
     })
 }
 
