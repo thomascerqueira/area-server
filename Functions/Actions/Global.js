@@ -15,14 +15,11 @@ async function getActionSurvey() {
   const db = admin.firestore()
   const dbRef = db.collection("References").doc("Surveys")
 
-  dbRef.get()
-    .then((snapshot) => {
-      console.log(snapshot)
-      return snapshot.data()
-    })
-    .catch((err) => {
-      return err
-    })
+  try {
+    return await dbRef.get()
+  } catch (err) {
+    return err
+  }
 }
 
 function createSurveyAction(data, id) {
