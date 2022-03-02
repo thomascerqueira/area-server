@@ -2,7 +2,6 @@ import express from 'express';
 import {
   create_route_from_routes,
   check_arg,
-  check_header,
   checkValidator
 } from '../../Functions/createroutefromroutes.js'
 import {createActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
@@ -19,9 +18,9 @@ const routes = [
     type: 'post',
     route: '/create',
     middlewares: [checkSchema({
-      checkToken,
-      checkAction,
-      checkReaction
+      tokenid: checkToken,
+      action: checkAction,
+      reaction: checkReaction
     }), checkValidator()],
     callback: createActionReaction
   },
@@ -29,8 +28,8 @@ const routes = [
     type: 'delete',
     route: '/',
     middlewares: [checkSchema({
-      checkToken,
-      checkId
+      tokenid: checkToken,
+      id: checkId
     }), checkValidator()],
     callback: deleteActionReaction
   },

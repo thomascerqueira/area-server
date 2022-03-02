@@ -15,9 +15,9 @@ const routes = [
     type: 'post',
     route: '/createUser',
     middlewares: [checkSchema({
-      checkEmail,
-      checkPassword,
-      checkUsername
+      email: checkEmail,
+      password: checkPassword,
+      username: checkUsername
     }), checkValidator()],
     callback: createUser
   },
@@ -25,7 +25,7 @@ const routes = [
     type: 'delete',
     route: '/deleteUser',
     middlewares: [checkSchema({
-      checkToken
+      tokenid: checkToken
     }), checkValidator()],
     callback: deleteUser
   },
@@ -33,7 +33,7 @@ const routes = [
     type: 'post',
     route: '/signUser',
     middlewares: [checkSchema({
-      checkToken
+      tokenid: checkToken
     }), checkValidator()],
     callback: signUser
   },
@@ -41,8 +41,8 @@ const routes = [
     type: 'post',
     route: '/signUserProvider',
     middlewares: [checkSchema({
-      checkToken,
-      checkUser
+      tokenid: checkToken,
+      user: checkUser
     }), checkValidator()],
     callback: signUserProvider
   }

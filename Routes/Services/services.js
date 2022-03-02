@@ -1,8 +1,8 @@
 import express from 'express';
-import {create_route_from_routes, check_header, checkValidator} from '../../Functions/createroutefromroutes.js'
+import {create_route_from_routes, checkValidator} from '../../Functions/createroutefromroutes.js'
 import {getAllServices, getServicesUser, updateServices} from '../../Middleware/Services/services.js'
 import {checkToken} from "../../Functions/checkArg/checkToken.js";
-import {checkSchema, validationResult} from 'express-validator'
+import {checkSchema} from 'express-validator'
 
 const routes = [
     {
@@ -15,7 +15,7 @@ const routes = [
         type: 'get',
         route: '/getUser',
         middlewares: [checkSchema({
-            checkToken
+            tokenid: checkToken
         }), checkValidator()],
         callback: getServicesUser
     },
