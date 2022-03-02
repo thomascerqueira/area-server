@@ -29,7 +29,7 @@ async function createGithubAction(options, id) {
 async function deleteGithubAction(options, githubToken) {
   try {
     let result = await httpRequest(
-      `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks/${options.hook_id.toString()}`,
+      `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks/${options.hook_id.toString()}?access_token=${githubToken}`,
       "delete",
       {
       },
