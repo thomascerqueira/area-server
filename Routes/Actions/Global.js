@@ -12,6 +12,7 @@ import {checkToken} from "../../Functions/checkArg/checkToken.js";
 import {checkId} from "../../Functions/checkArg/checkId.js";
 import {checkAction} from "../../Functions/checkArg/checkAction.js";
 import {checkReaction} from "../../Functions/checkArg/checkReaction.js";
+import {checkTitle} from "../../Functions/checkArg/checkTitle.js";
 
 const routes = [
   {
@@ -20,7 +21,8 @@ const routes = [
     middlewares: [checkSchema({
       tokenid: checkToken,
       action: checkAction,
-      reaction: checkReaction
+      reaction: checkReaction,
+      title: checkTitle
     }), checkValidator()],
     callback: createActionReaction
   },
