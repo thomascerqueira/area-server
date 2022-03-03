@@ -10,6 +10,7 @@ function getTwitchAccessToken(req, res) {
         redirect_uri: "http://localhost:3000/services"
     })
         .then((response) => {
+            console.log(response)
             res.status(200).send(response)
         }).catch(err => {
             console.log(err)
