@@ -8,14 +8,13 @@ function getTwitchAccessToken(req, res) {
         code: `${code}`,
         grant_type: "authorization_code",
         redirect_uri: "http://localhost:3000/services"
+    }).then((response) => {
+        console.log(response)
+        res.status(200).send(response.data)
+    }).catch(err => {
+        console.log(err)
+        res.status(500).send({ msg: "internal server error" })
     })
-        .then((response) => {
-            console.log(response)
-            res.status(200).send(response.data)
-        }).catch(err => {
-            console.log(err)
-            res.status(500).send({ msg: "internal server error" })
-        })
 }
 
 function refreshTwitchAccessToken(refreshToken) {

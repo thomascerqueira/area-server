@@ -2,6 +2,7 @@ import { createUser, deleteUser, signUser, signUserProvider } from '../../Middle
 import { create_route_from_routes, check_arg, check_header } from '../../Functions/createroutefromroutes.js'
 import httpRequest from '../../Functions/httpRequest.js'
 import { getTwitchAccessToken } from '../../Middleware/Auth/twitch.js'
+import { getGithubAccessToken } from '../../Middleware/Auth/github.js'
 
 const routes = [
 	{
@@ -33,6 +34,12 @@ const routes = [
 		route: "/getTwitchAccessToken",
 		middlewares: [check_header(['tokenid']), check_arg(['code'])],
 		callback: getTwitchAccessToken
+	},
+	{
+		type: "post",
+		route: "/getGitHubAccessToken",
+		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		callback: getGithubAccessToken
 	}
 ]
 
