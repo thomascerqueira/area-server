@@ -12,7 +12,8 @@ export const actions = {
   'push': createGithubAction,
   "temperature": createSurveyAction,
   "pollution": createSurveyAction,
-  "covid": createSurveyAction
+  "covid": createSurveyAction,
+  "battleNet": createSurveyAction,
 }
 
 export const reactions = {
