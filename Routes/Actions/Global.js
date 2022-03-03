@@ -50,16 +50,16 @@ const routes = [
   }
 ]
 
-async function getGitHubToken(res, res) {
+async function getGitHubToken(req, res) {
   fetch("https://github.com/login/oauth/access_token", {
-      method: "post",
-      body: new URLSearchParams({
-        client_id: "b8b149a225608f23c2b6",
-        client_secret: "d91aafb434103b6f5c400e5294fb4292900acecd",
-        code: req.body.code,
-        redirect_uri: "http://localhost:3000/services",
-      })
-    }).then(response => res.send(response))
+    method: "post",
+    body: new URLSearchParams({
+      client_id: "b8b149a225608f23c2b6",
+      client_secret: "d91aafb434103b6f5c400e5294fb4292900acecd",
+      code: req.body.code,
+      redirect_uri: "http://localhost:3000/services",
+    })
+  }).then(response => res.send(response))
 }
 
 export default create_route_from_routes(routes)
