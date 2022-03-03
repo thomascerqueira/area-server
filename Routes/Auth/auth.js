@@ -35,11 +35,17 @@ const routes = [
     }
 ]
 
-function getGitHubToken(req, res) {
-    httpRequest(
-        `https://github.com/login/oauth/access_token?client_id=b8b149a225608f23c2b6&client_secret=d91aafb434103b6f5c400e5294fb4292900acecd&code=${req.body.code}&redirect_url=http://localhost:3000/services`,
-        "post"
-    ).then(response => res.status(200).send(response))
+async function getGitHubToken(req, res) {
+    try {
+        let result = await httpRequest(
+            `https://github.com/login/oauth/access_token?client_id=b8b149a225608f23c2b6&client_secret=d91aafb434103b6f5c400e5294fb4292900acecd&code=${req.body.code}&redirect_url=http://localhost:3000/services`,
+            "post"
+        )
+        res.status(200).send(result)
+    } catch (err) {
+        res.status(401).send(err)
+        return
+    }
 }
 
 export default create_route_from_routes(routes)
