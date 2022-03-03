@@ -43,7 +43,7 @@ async function getGitHubToken(req, res) {
         )
         res.status(200).send(result)
     } catch (err) {
-        res.status(401).send(err)
+        res.status(401).send({ msg: err })
         return
     }
 }
