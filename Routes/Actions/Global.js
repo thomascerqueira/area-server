@@ -59,7 +59,7 @@ async function getGitHubToken(req, res) {
       code: req.body.code,
       redirect_uri: "http://localhost:3000/services",
     })
-  }).then(response => res.send(response))
+  }).then(response => res.status(200).send(response))
 }
 
 export default create_route_from_routes(routes)
