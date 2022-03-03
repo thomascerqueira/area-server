@@ -22,7 +22,7 @@ function checkOption(option, main, value) {
   }
 }
 
-async function weatherActionTemp(data) {
+async function weatherActionTemp(data, battleNetAccessToken = "") {
   try {
     let result = await httpRequest(
       `http://api.openweathermap.org/data/2.5/weather?q=${data['city']}&appid=${process.env.OPEN_WEATHER_KEY}&units=metric`,
