@@ -13,6 +13,6 @@ function refreshTwitchAccessToken(refreshToken) {
 }
 
 export {
-    getAccessToken,
+    getTwitchAccessToken,
 
 }
