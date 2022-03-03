@@ -1,4 +1,4 @@
-import httpRequest from "../../Functions/httpRequest"
+import httpRequest from "../../Functions/httpRequest.js"
 
 function getTwitchAccessToken(req, res) {
     const code = req.body.code
