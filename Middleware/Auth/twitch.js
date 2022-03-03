@@ -11,6 +11,8 @@ function getTwitchAccessToken(req, res) {
     })
         .then((response) => {
             res.status(200).send(response)
+        }).catch(err => {
+            res.status(500).send({ msg: "internal server error" })
         })
 }
 
