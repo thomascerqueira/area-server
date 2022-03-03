@@ -7,11 +7,11 @@ import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
 import pkg from 'cors';
 import nodeCron from 'node-cron';
-import {admin, allDb} from './config.js';
-import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
-import {dispatchReaction} from "./Functions/Reaction/Global.js";
-import {customAction} from "./Middleware/Actions/Global.js";
-import {updateStatueSurveyAction} from "./Functions/Actions/Global.js";
+import { admin, allDb } from './config.js';
+import { getOneValueDb } from "./Functions/MongoDB/getValueDb.js";
+import { dispatchReaction } from "./Functions/Reaction/Global.js";
+import { customAction } from "./Middleware/Actions/Global.js";
+import { updateStatueSurveyAction } from "./Functions/Actions/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -19,7 +19,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.set('trust_proxy', true)
-app.use(pkg());
+app.use(cors());
 app.use(express.json())
 app.use(loggerMiddleware)
 app.use('/auth', authRoute)
