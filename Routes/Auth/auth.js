@@ -47,8 +47,7 @@ async function getGitHubToken(req, res) {
 				code: `${req.body.code}`
 			}
 		)
-		result = JSON.stringify(result)
-		res.status(200).send(result)
+		res.status(200).send({ result })
 	} catch (err) {
 		console.log(err)
 		res.status(401).send({ msg: err })
