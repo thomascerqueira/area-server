@@ -19,7 +19,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.set('trust_proxy', true)
-app.use(cors());
+app.use(pkg());
 app.use(express.json())
 app.use(loggerMiddleware)
 app.use('/auth', authRoute)
@@ -30,6 +30,11 @@ app.use('/actions', actionsRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+})
+
+app.use((req, res, nect) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  next();
 })
 
 nodeCron.schedule('* * * * *', async () => {
