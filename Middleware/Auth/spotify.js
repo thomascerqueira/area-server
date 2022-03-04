@@ -6,8 +6,8 @@ function getSpotifyAccessToken(req, res) {
 		{
 		},
 		{
-			'Content-Type': 'application/x-www-form-urlencoded',
-			Authorization: "Basic NTQ1YTc0ZWYxZTQ4NGMxYzk4NmI3Yzg1YjQyYjA4ODg6NDc0YWYwN2Y4N2RlNDJhMWFmODEwMmE4NjgwNjI2Nzk=",
+			"Content-Type": "application/x-www-form-urlencoded",
+			"Authorization": "Basic NTQ1YTc0ZWYxZTQ4NGMxYzk4NmI3Yzg1YjQyYjA4ODg6NDc0YWYwN2Y4N2RlNDJhMWFmODEwMmE4NjgwNjI2Nzk=",
 		}).then((response) => {
 			console.log(response)
 			res.status(200).send(response.data)
