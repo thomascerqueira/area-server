@@ -1,6 +1,6 @@
 import httpRequest from "../../Functions/httpRequest.js"
 
-function getBattleNetAccessToke(req, res) {
+function getBattleNetAccessToken(req, res) {
 	const code = req.body.code
 	httpRequest("https://eu.battle.net/oauth/token", "post",
 		{
@@ -17,4 +17,8 @@ function getBattleNetAccessToke(req, res) {
 			console.log(err)
 			res.status(500).send({ msg: "internal server error" })
 		})
+}
+
+export {
+	getBattleNetAccessToken
 }
