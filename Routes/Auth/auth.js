@@ -3,6 +3,7 @@ import { create_route_from_routes, check_arg, check_header } from '../../Functio
 import { getTwitchAccessToken } from '../../Middleware/Auth/twitch.js'
 import { getGithubAccessToken } from '../../Middleware/Auth/github.js'
 import { getBattleNetAccessToken } from '../../Middleware/Auth/battlenet.js'
+import { getSpotifyAccessToken } from '../../Middleware/Auth/spotify.js'
 
 const routes = [
 	{
@@ -46,6 +47,12 @@ const routes = [
 		route: "/getBattleNetAccessToken",
 		middlewares: [check_header(['tokenid']), check_arg(['code'])],
 		callback: getBattleNetAccessToken
+	},
+	{
+		type: "post",
+		route: "/getSpotifyAccessToken",
+		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		callback: getSpotifyAccessToken
 	}
 ]
 
