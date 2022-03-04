@@ -2,7 +2,7 @@ import httpRequest from "../../Functions/httpRequest.js"
 
 function getSpotifyAccessToken(req, res) {
 	const code = req.body.code
-	httpRequest("https://accounts.spotify.com/api/token?grant_type=authorization_code&code=${code}", "post",
+	httpRequest("https://accounts.spotify.com/api/token", "post",
 		{
 			grant_type: "authorization_code",
 			code: code,
