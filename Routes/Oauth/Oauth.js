@@ -8,7 +8,7 @@ const routes = [
   {
     type: 'GET',
     route: '/page/:redirect_url',
-    middleware: [checkSchema({
+    middlewares: [checkSchema({
       tokenid: checkToken
     }), checkValidator()],
     callback: getPage
