@@ -4,6 +4,7 @@ import { getTwitchAccessToken } from '../../Middleware/Auth/twitch.js'
 import { getGithubAccessToken } from '../../Middleware/Auth/github.js'
 import { getBattleNetAccessToken } from '../../Middleware/Auth/battlenet.js'
 import { getSpotifyAccessToken } from '../../Middleware/Auth/spotify.js'
+import { getRedditAccessToken } from '../../Middleware/Auth/reddit.js'
 
 const routes = [
 	{
@@ -53,6 +54,12 @@ const routes = [
 		route: "/getSpotifyAccessToken",
 		middlewares: [check_header(['tokenid']), check_arg(['code'])],
 		callback: getSpotifyAccessToken
+	},
+	{
+		type: "post",
+		route: "/getRedditAccessToken",
+		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		callback: getRedditAccessToken
 	}
 ]
 
