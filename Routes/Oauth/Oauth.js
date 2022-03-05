@@ -7,7 +7,7 @@ import {authorize} from "../../Middleware/Oauth/Oauth.js";
 const routes = [
   {
     type: 'get',
-    route: '/authorize/:redirect_uri',
+    route: '/authorize',
     middlewares: [checkSchema({
       tokenid: checkToken
     }), checkValidator()],
