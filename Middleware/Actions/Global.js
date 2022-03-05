@@ -12,6 +12,7 @@ import {
 } from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
 import {deleteField} from "../../Functions/Firebase.js";
+import {battleNetAction} from "../../Functions/Actions/BattleNet.js";
 
 export const actions = {
   'push': createGithubAction,
@@ -29,7 +30,8 @@ export const reactions = {
 export const customAction = {
   'temperature': weatherActionTemp,
   'pollution': weatherActionPoll,
-  'covid': covidAction
+  'covid': covidAction,
+  'priceToken': battleNetAction
 }
 
 async function emptyReactionData(data, _) {

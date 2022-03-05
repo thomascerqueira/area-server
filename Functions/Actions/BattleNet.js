@@ -1,14 +1,20 @@
 import httpRequest from "../httpRequest.js";
 import { checkOption } from "./Weather.js";
+import {getOneValueDb} from "../MongoDB/getValueDb.js";
 
-async function battleNetAction(data) {
+async function battleNetAction(data, uid) {
     try {
+        const data = getOneValueDb(allDb['UsersDB'], 'users', {
+            uid: uid
+        })
+        const token = data['services']['battleNet']['token']
+
         let result = await httpRequest(
             `https://eu.api.blizzard.com/data/wow/token/index?namespace=dynamic-eu&locale=fr_FR`,
             "get",
             {},
             {
-                "Authorization": `Bearer ${data.battleNetAccessToken}`
+                "Authorization": `Bearer ${token}`
             }
         )
         if (result.data.length > 0) {
