@@ -16,6 +16,7 @@ import { getGithubAccessToken } from '../../Middleware/Auth/github.js'
 import { getBattleNetAccessToken } from '../../Middleware/Auth/battlenet.js'
 import { getSpotifyAccessToken } from '../../Middleware/Auth/spotify.js'
 import { getRedditAccessToken } from '../../Middleware/Auth/reddit.js'
+import {checkCode} from "../../Functions/checkArg/checkCode.js";
 
 const routes = [
   {
@@ -56,31 +57,46 @@ const routes = [
   {
 		type: "post",
 		route: "/getTwitchAccessToken",
-		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		middlewares: [checkSchema({
+      tokenid: checkToken,
+      code: checkCode
+    }), checkValidator()],
 		callback: getTwitchAccessToken
 	},
 	{
 		type: "post",
 		route: "/getGitHubAccessToken",
-		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		middlewares: [checkSchema({
+      tokenid: checkToken,
+      code: checkCode
+    }), checkValidator()],
 		callback: getGithubAccessToken
 	},
 	{
 		type: "post",
 		route: "/getBattleNetAccessToken",
-		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		middlewares: [checkSchema({
+      tokenid: checkToken,
+      code: checkCode
+    }), checkValidator()],
 		callback: getBattleNetAccessToken
 	},
 	{
 		type: "post",
 		route: "/getSpotifyAccessToken",
-		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		middlewares: [checkSchema({
+      tokenid: checkToken,
+      code: checkCode
+    }), checkValidator()],
 		callback: getSpotifyAccessToken
 	},
 	{
 		type: "post",
 		route: "/getRedditAccessToken",
-		middlewares: [check_header(['tokenid']), check_arg(['code'])],
+		middlewares: [checkSchema({
+      tokenid: checkToken,
+      code: checkCode
+    }), checkValidator()],
 		callback: getRedditAccessToken
 	}
 ]
