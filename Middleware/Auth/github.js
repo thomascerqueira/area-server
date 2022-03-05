@@ -19,11 +19,9 @@ function getGithubAccessToken(req, res) {
         }, {
           $set: {
             "services.github": {
-              github: {
                 token: response.data.access_token,
                 refresh_token: "",
                 connected: true
-              }
             }
           }
         })
