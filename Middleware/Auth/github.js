@@ -14,7 +14,7 @@ function getGithubAccessToken(req, res) {
           "Accept": "application/json",
           "Content-Type": "application/x-www-form-urlencoded"
         }).then((response) => {
-        updateDoc(allDb['UserDB'], 'users', {
+        updateDoc(allDb[process.env.DB_MONGO_USERS], 'users', {
           uid: decoded.uid
         }, {
           $set: {
