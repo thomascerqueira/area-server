@@ -17,10 +17,11 @@ async function updateAllSurveyAction() {
 
   dbRef.get()
     .then((snapshot) => {
-      snapshot.data().map((doc) => {
+      let data = snapshot.data()
+      Object.keys(data).map(key => {
         try {
-          updateStatueSurveyAction(Object.keys(doc), false)
-          console.log("Update survey", Object.keys(doc))
+          updateStatueSurveyAction(key, false)
+          console.log("Update survey", key)
         } catch (e) {
           console.error("Error updateAllSurveyAction update Survey action", e)
         }
