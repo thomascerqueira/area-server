@@ -67,6 +67,11 @@ function createJsonServices() {
     actions: [],
     reactions: []
   }
+  let BattleNet = {
+    name: "BattleNet",
+    actions: [],
+    reactions: []
+  }
 
   githubEvent.forEach((evt) => {
     GitHub.actions.push({
@@ -167,12 +172,27 @@ function createJsonServices() {
     ]
   })
 
+  BattleNet.actions.push({
+    name: "priceToken",
+    inputs: [
+      {
+        name: "option",
+        type: "string"
+      },
+      {
+        name: "value",
+        type: "number"
+      },
+    ]
+  })
+
   ourServices = [
     GitHub,
     Area,
     Weather,
     Covid,
-    Discord
+    Discord,
+    BattleNet
   ]
 
   const data = JSON.stringify(ourServices)

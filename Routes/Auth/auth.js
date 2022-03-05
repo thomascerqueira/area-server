@@ -1,11 +1,11 @@
-import {createUser, deleteUser, signUser, signUserProvider} from '../../Middleware/Auth/auth.js'
+import {createUser, deleteUser, getUserInfo, signUser, signUserProvider} from '../../Middleware/Auth/auth.js'
 import {
   create_route_from_routes,
   checkValidator,
   check_arg,
   check_header
 } from '../../Functions/createroutefromroutes.js'
-import {checkSchema} from 'express-validator'
+import {check, checkSchema} from 'express-validator'
 import {checkToken} from "../../Functions/checkArg/checkToken.js";
 import {checkUser} from "../../Functions/checkArg/checkUser.js";
 import {checkEmail} from "../../Functions/checkArg/checkEmail.js";
@@ -53,6 +53,14 @@ const routes = [
       user: checkUser
     }), checkValidator()],
     callback: signUserProvider
+  },
+  {
+    type: 'get',
+    route: '/',
+    middlewares: [checkSchema({
+      tokenid: checkToken
+    }), checkValidator()],
+    callback: getUserInfo
   },
   {
     type: "post",
