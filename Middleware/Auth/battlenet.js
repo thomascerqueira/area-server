@@ -5,7 +5,7 @@ function getBattleNetAccessToken(req, res) {
 	httpRequest(`https://eu.battle.net/oauth/token?`, "post",
 		`code=${code}&grant_type=authorization_code&redirect_uri=http://localhost:3000/services`,
 		{
-			"Authorization": "Basic YTI5ZGZmYzMwY2JmNDUxMmE0MTg3NDBkNWVkODRlZjA6VW5JajZmeXZBUWZHTUpvN29KVzE4bTNHWExpVE9DclI="
+			"Authorization": `Basic ${process.env.BATTLENET_CODE}`
 		}).then((response) => {
 			console.log(response)
 			res.status(200).send(response.data)

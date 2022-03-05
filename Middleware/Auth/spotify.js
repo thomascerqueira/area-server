@@ -6,7 +6,7 @@ function getSpotifyAccessToken(req, res) {
 		`code=${code}&grant_type=authorization_code&redirect_uri=http://localhost:3000/services`,
 		{
 			"Content-Type": "application/x-www-form-urlencoded",
-			"Authorization": "Basic NTQ1YTc0ZWYxZTQ4NGMxYzk4NmI3Yzg1YjQyYjA4ODg6NDc0YWYwN2Y4N2RlNDJhMWFmODEwMmE4NjgwNjI2Nzk=",
+			"Authorization": `Basic ${process.env.SPOTIFY_ID}`,
 		}).then((response) => {
 			console.log(response)
 			res.status(200).send(response.data)

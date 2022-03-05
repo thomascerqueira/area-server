@@ -7,11 +7,11 @@ import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
 import pkg from 'cors';
 import nodeCron from 'node-cron';
-import { admin, allDb } from './config.js';
-import { getOneValueDb } from "./Functions/MongoDB/getValueDb.js";
-import { dispatchReaction } from "./Functions/Reaction/Global.js";
-import { customAction } from "./Middleware/Actions/Global.js";
-import { updateStatueSurveyAction } from "./Functions/Actions/Global.js";
+import {admin, allDb} from './config.js';
+import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
+import {dispatchReaction} from "./Functions/Reaction/Global.js";
+import {customAction} from "./Middleware/Actions/Global.js";
+import {updateAllStatusSurveyAction, updateStatueSurveyAction} from "./Functions/Actions/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -35,6 +35,10 @@ app.get('/', (req, res) => {
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   next();
+})
+
+nodeCron.schedule("0 0 0 * * *", async () => {
+  updateAllStatusSurveyAction()
 })
 
 nodeCron.schedule('* * * * *', async () => {
