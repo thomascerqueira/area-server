@@ -9,6 +9,7 @@
     <script>
         function callback() {
           let uri = '<%redirect_uri%>'
+          console.log(uri)
 
           fetch(uri, {
             method: 'POST',
