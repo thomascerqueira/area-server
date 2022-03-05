@@ -18,8 +18,7 @@ function getGithubAccessToken(req, res) {
           uid: decoded.uid
         }, {
           $set: {
-            services: {
-              ...,
+            "services.github": {
               github: {
                 token: response.data.access_token,
                 refresh_token: "",
