@@ -3,8 +3,8 @@ import httpRequest from "../../Functions/httpRequest.js"
 function getTwitchAccessToken(req, res) {
     const code = req.body.code
     httpRequest("https://id.twitch.tv/oauth2/token", "post", {
-        client_id: "iar5wg2v3xoe7mzbds9sgx16mvkabi",
-        client_secret: "4cs3b9tt6usygjqkytmt4qgbghd4vg",
+        client_id: `${process.env.TWITCH_ID}`,
+        client_secret: `${process.env.TWITCH_SECRET}`,
         code: `${code}`,
         grant_type: "authorization_code",
         redirect_uri: "http://localhost:3000/services"
