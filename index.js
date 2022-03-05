@@ -31,7 +31,7 @@ app.use('/actions', actionsRoutes)
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-  
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   next();
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 nodeCron.schedule("0 0 0 * * *", async () => {
   updateAllStatusSurveyAction()
-}
+})
 
 nodeCron.schedule('* * * * *', async () => {
   const db = admin.firestore()
