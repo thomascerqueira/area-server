@@ -8,6 +8,7 @@ async function battleNetAction(data, uid) {
         const data = getOneValueDb(allDb['UsersDB'], 'users', {
             uid: uid
         })
+        console.log(data)
         const token = data['services']['battleNet']['token']
 
         let result = await httpRequest(
