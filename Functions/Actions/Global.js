@@ -20,6 +20,7 @@ async function updateAllSurveyAction() {
       snapshot.data().map((doc) => {
         try {
           updateStatueSurveyAction(Object.keys(doc), false)
+          console.log("Update survey", Object.keys(doc))
         } catch (e) {
           console.error("Error updateAllSurveyAction update Survey action", e)
         }
