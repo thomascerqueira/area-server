@@ -18,10 +18,6 @@ async function battleNetAction(data, uid) {
 				"Authorization": `Bearer ${token}`
 			}
 		)
-		console.log(result)
-		console.log(result.data['price'])
-		console.log(data['option'])
-		console.log(data['value'])
 		return (checkOption(data['option'], result.data['price'], data['value']))
 	} catch (e) {
 		console.error("Err in Battle Net action", e)
