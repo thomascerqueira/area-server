@@ -20,7 +20,7 @@ function getSpotifyAccessToken(req, res) {
           $set: {
             "services.spotify": {
               token: response.data.access_token,
-              refresh_token: "",
+              refresh_token: response.data.refresh_token,
               connected: true
             }
           }
