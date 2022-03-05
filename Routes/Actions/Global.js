@@ -69,7 +69,7 @@ const routes = [
     route: "/testCovid",
     middlewares: [check_arg(['country', 'iso'])],
     callback: testCovid
-  }
+  },
 ]
 
 export default create_route_from_routes(routes)
