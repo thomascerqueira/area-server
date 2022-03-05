@@ -18,6 +18,7 @@ async function battleNetAction(data, uid) {
                 "Authorization": `Bearer ${token}`
             }
         )
+        console.log(result)
         if (result.data.length > 0) {
             console.log(result.data['price'])
             console.log(data['option'])
