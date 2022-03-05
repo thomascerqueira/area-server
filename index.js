@@ -28,6 +28,7 @@ app.use('/services', servicesRoute)
 app.use('/actions/github', githubActionsRoutes)
 app.use('/actions', actionsRoutes)
 app.use('/oauth', oauthRoutes)
+app.set('view engine', 'html');
 // app.use('/mongoDb', mongoDbRoute)
 
 app.get('/', (req, res) => {
