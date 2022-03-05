@@ -2,14 +2,14 @@
 <html lang="">
 <body>
     <h1>Accept conditions ?</h1>
-    <h1><%redirect_uri%></h1>
+    <h1><%=redirect_uri%></h1>
     <button onclick="callback()">
         yes
     </button>
 
     <script>
         function callback() {
-          let uri = '<%redirect_uri%>'
+          let uri = '<%=redirect_uri%>'
           console.log(uri)
 
           fetch(uri, {
