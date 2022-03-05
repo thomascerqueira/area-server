@@ -1,6 +1,6 @@
 import {auth} from "../../config.js";
 
-function getPage(req, res) {
+function authorize(req, res) {
   const token = req.headers.tokenid.split(' ')[1]
 
   auth.verifyIdToken(token)
@@ -14,5 +14,5 @@ function getPage(req, res) {
 }
 
 export {
-  getPage
+  authorize
 }
