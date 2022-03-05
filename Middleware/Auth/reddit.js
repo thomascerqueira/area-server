@@ -6,6 +6,7 @@ function getRedditAccessToken(req, res) {
 		{
 		},
 		{
+      "Content-Type": "application/x-www-form-urlencoded",
 			"Authorization": "Basic MEZRQTY0N25MWVI3NnpxYU81bjdIZzo="
 		}).then((response) => {
 			console.log(response)
