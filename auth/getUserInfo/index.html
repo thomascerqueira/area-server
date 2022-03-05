@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="http://localhost:3000/auth/signUserProvider/">
+        <link rel="canonical" href="http://localhost:3000/auth/getUserInfo/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
     
     
       
-        <title>Sign User Provider - Server Area</title>
+        <title>Get User Info - Server Area</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sign-user-provider" class="md-skip">
+        <a href="#sign-user" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sign User Provider
+              Get User Info
             
           </span>
         </div>
@@ -262,6 +262,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../signUserProvider/" class="md-nav__link">
+        Sign User Provider
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -274,12 +288,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Sign User Provider
+          Get User Info
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Sign User Provider
+        Get User Info
       </a>
       
         
@@ -322,20 +336,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getUserInfo/" class="md-nav__link">
-        Get User Info
-      </a>
     </li>
   
 
@@ -559,33 +559,23 @@
               
                 
 
-<h1 id="sign-user-provider">Sign User Provider</h1>
+<h1 id="sign-user">Sign User</h1>
 <ul>
-<li><a href="#sign-user-provider">Sign User Provider</a><ul>
+<li><a href="#sign-user">Sign User</a><ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#success-response">Success Response</a></li>
 <li><a href="#error-response">Error Response</a></li>
 </ul>
 </li>
 </ul>
-<p><strong>URL</strong>: <a href="">/auth/signUserProvider</a></p>
-<p><strong>Method</strong>: <code>POST</code></p>
+<p><strong>URL</strong>: <a href="">/auth/</a></p>
+<p><strong>Method</strong>: <code>GET</code></p>
 <hr />
 <h2 id="description">Description</h2>
-<p>&emsp;Use to sign a user in firebase with a provider</p>
+<p>&emsp;Use to get info of the user with <code>tokenid</code></p>
 <p><strong>Header</strong></p>
 <pre><code class="language-json">{
-  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot;: string
-}
-</code></pre>
-<p><strong>Data constraints</strong></p>
-<pre><code class="language-json">{
-  &quot;user&quot;: &quot;user settings provided by firebase&quot;: {}
-}
-</code></pre>
-<p><strong>Data example</strong></p>
-<pre><code class="language-json">{
-  &quot;user&quot;: &quot;...&quot;
+  &quot;tokenid&quot;: &quot;'Bearer' + tokenId from firebase&quot; : string
 }
 </code></pre>
 <hr />
@@ -593,8 +583,18 @@
 <p><strong>Code</strong>: <code>200 OK</code></p>
 <p><strong>Content</strong></p>
 <pre><code class="language-json">{
-  &quot;.data&quot;: {
-    &quot;value from db&quot;
+  &quot;uid&quot;: &quot;uid of the user&quot;,
+  &quot;email&quot;: &quot;email of the user&quot;,
+  &quot;name&quot;: &quot;Name of the user&quot;,
+  &quot;services&quot; : &quot;services of the users&quot;
+}
+</code></pre>
+<p><code>serivces</code> is :</p>
+<pre><code class="language-json">{
+  &quot;service&quot;: {
+    &quot;token&quot;: &quot;token for the service&quot;,
+    &quot;refresh_token&quot;: &quot;refresh token for the service&quot;,
+    &quot;connected&quot;: &quot;If the user have activated this service&quot;
   }
 }
 </code></pre>
@@ -620,6 +620,7 @@
 
 </td>
 </tr>
+
 <tr>
 <td> 500 </td>
 <td>If <code>uid</code> is wrong or error in firebase</td>
@@ -647,7 +648,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../signUser/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sign User" rel="prev">
+        <a href="../signUserProvider/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sign User Provider" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -656,20 +657,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Sign User
+              Sign User Provider
             </div>
           </div>
         </a>
       
       
         
-        <a href="../getUserInfo/" class="md-footer__link md-footer__link--next" aria-label="Next: Get User Info" rel="next">
+        <a href="../../services/getAllServices/" class="md-footer__link md-footer__link--next" aria-label="Next: Get All Services" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Get User Info
+              Get All Services
             </div>
           </div>
           <div class="md-footer__button md-icon">
