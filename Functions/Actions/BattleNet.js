@@ -5,7 +5,7 @@ import {getOneValueDb} from "../MongoDB/getValueDb.js";
 
 async function battleNetAction(data, uid) {
     try {
-        const data = getOneValueDb(allDb['UsersDB'], 'users', {
+        const data = await getOneValueDb(allDb['UsersDB'], 'users', {
             uid: uid
         })
         console.log(data)
