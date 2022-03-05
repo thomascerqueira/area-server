@@ -5,10 +5,10 @@ import {getOneValueDb} from "../MongoDB/getValueDb.js";
 
 async function battleNetAction(data, uid) {
 	try {
-		const data = await getOneValueDb(allDb['UsersDB'], 'users', {
+		const user = await getOneValueDb(allDb['UsersDB'], 'users', {
 			uid: uid
 		})
-		const token = data['services']['battleNet']['token']
+		const token = user['services']['battleNet']['token']
 
 		let result = await httpRequest(
 			`https://eu.api.blizzard.com/data/wow/token/index?namespace=dynamic-eu&locale=fr_FR`,
