@@ -13,7 +13,7 @@ async function createGithubAction(options, id) {
           content_type: "json",
           token: options.token
         },
-        events: options.events
+        events: [options.events]
       },
       {
         Authorization: `token ${options.token}`
