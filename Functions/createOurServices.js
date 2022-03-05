@@ -72,6 +72,16 @@ function createJsonServices() {
     actions: [],
     reactions: []
   }
+  let Spotify = {
+    name: "Spotify",
+    actions: [],
+    reactions: []
+  }
+  let CoinRanking = {
+    name: "CoinRanking",
+    actions: [],
+    reactions: []
+  }
 
   githubEvent.forEach((evt) => {
     GitHub.actions.push({
@@ -186,13 +196,47 @@ function createJsonServices() {
     ]
   })
 
+  Spotify.actions.push(
+    {
+      name: "recommendation",
+      inputs: [
+        {
+          name: "genre",
+          type: "string"
+        },
+      ]
+    },
+    {
+      name: "newRelease",
+      inputs: []
+    }
+  )
+
+  CoinRanking.actions.push(
+    {
+      name: "coinPrice",
+      inputs: [
+        {
+          name: "option",
+          type: "string"
+        },
+        {
+          name: "value",
+          type: "number"
+        },
+      ]
+    }
+  )
+
   ourServices = [
     GitHub,
     Area,
     Weather,
     Covid,
     Discord,
-    BattleNet
+    BattleNet,
+    Spotify,
+    CoinRanking
   ]
 
   const data = JSON.stringify(ourServices)
