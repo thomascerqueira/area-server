@@ -6,7 +6,7 @@ import {getPage} from "../../Middleware/Oauth/Oauth.js";
 
 const routes = [
   {
-    type: 'GET',
+    type: 'get',
     route: '/page/:redirect_url',
     middlewares: [checkSchema({
       tokenid: checkToken
