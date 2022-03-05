@@ -8,23 +8,11 @@
     </button>
 
     <script>
-        async function callback() {
+        function callback() {
           let uri = '<%=redirect_uri%>'
           console.log(uri)
 
-          fetch(uri, {
-            method: 'POST',
-            body: {
-              code: 'fdoijaoijzeaoei'
-            },
-            headers: {}
-          })
-          .then((resp) => {
-            console.log(resp)
-          })
-          .catch((err) => {
-            console.error(err)
-          })
+          window.location.replace(uri + "?code=HAAAAA")
         }
     </script>
 </body>
