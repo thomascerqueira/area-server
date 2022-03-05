@@ -42,14 +42,7 @@ function createUser(req, res) {
 }
 
 function deleteUser(req, res) {
-  let token
-  try {
-    token = req.headers.tokenid.split(' ')[1]
-  } catch (err) {
-    console.error(err)
-    res.status(401).send({'msg': "Bad format Token"})
-    return
-  }
+  let token = req.headers.tokenid.split(' ')[1]
 
 
   auth.verifyIdToken(token)
@@ -70,14 +63,7 @@ function deleteUser(req, res) {
 }
 
 function signUser(req, res) {
-  let token;
-  try {
-    token = req.headers.tokenid.split(' ')[1]
-  } catch (err) {
-    console.error(err)
-    res.status(401).send({'msg': "Bad format Token"})
-    return
-  }
+  let token = req.headers.tokenid.split(' ')[1]
 
   //ToDo verify email
   auth.verifyIdToken(token)
@@ -111,15 +97,7 @@ function signUser(req, res) {
 }
 
 function signUserProvider(req, res) {
-  let token
-  try {
-    token = req.headers.tokenid.split(' ')[1]
-  } catch (err) {
-    console.error(err)
-    res.status(401).send({'msg': "Bad format Token"})
-    return
-  }
-
+  let token = req.headers.tokenid.split(' ')[1]
   const user = req.body.user
 
   //ToDo verify email

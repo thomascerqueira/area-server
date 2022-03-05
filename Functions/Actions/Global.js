@@ -11,21 +11,34 @@ function updateStatueSurveyAction(id, value) {
   }
 }
 
-function getActionSurvey() {
+function updateAllStatusSurveyAction() {
   const db = admin.firestore()
-  const dbRef = db.collection("References")
+  const dbRef = db.collection("References").doc("Surveys")
 
   dbRef.get()
     .then((snapshot) => {
-      snapshot.docs.map((doc) => {
+      let data = snapshot.data()
+      Object.keys(data).map(key => {
         try {
-          console.log(Object.keys(doc.data()))
-          console.log(doc.data())
-        } catch (err) {
-          console.error(err)
+          updateStatueSurveyAction(key, false)
+          console.log("Update survey", key)
+        } catch (e) {
+          console.error("Error updateAllSurveyAction update Survey action", e)
         }
       })
     })
+}
+
+async function getActionSurvey() {
+  const db = admin.firestore()
+  const dbRef = db.collection("References").doc("Surveys")
+
+  try {
+    let result = await dbRef.get()
+    return result.data()
+  } catch (err) {
+    return err
+  }
 }
 
 function createSurveyAction(data, id) {
@@ -42,5 +55,6 @@ function createSurveyAction(data, id) {
 export {
   createSurveyAction,
   updateStatueSurveyAction,
-  getActionSurvey
+  getActionSurvey,
+  updateAllStatusSurveyAction
 }

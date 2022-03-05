@@ -1,21 +1,43 @@
 import express from 'express';
-import { create_route_from_routes, check_arg, check_header } from '../../Functions/createroutefromroutes.js'
-import { createActionReaction, getSurveyAction, updateSurveyAction } from "../../Middleware/Actions/Global.js";
-import { testCovid } from "../../Middleware/Actions/Covid.js";
-import { deleteActionReaction, deleteForced } from "../../Middleware/Actions/Delete.js";
-import httpRequest from '../../Functions/httpRequest.js';
+import {
+  create_route_from_routes,
+  check_arg,
+  checkValidator
+} from '../../Functions/createroutefromroutes.js'
+import {
+  createActionReaction,
+  getSurveyAction,
+  updateAllSurveyAction,
+  updateSurveyAction
+} from "../../Middleware/Actions/Global.js";
+import {testCovid} from "../../Middleware/Actions/Covid.js";
+import {deleteActionReaction, deleteForced} from "../../Middleware/Actions/Delete.js";
+import {checkSchema} from "express-validator";
+import {checkToken} from "../../Functions/checkArg/checkToken.js";
+import {checkId} from "../../Functions/checkArg/checkId.js";
+import {checkAction} from "../../Functions/checkArg/checkAction.js";
+import {checkReaction} from "../../Functions/checkArg/checkReaction.js";
+import {checkTitle} from "../../Functions/checkArg/checkTitle.js";
 
 const routes = [
   {
     type: 'post',
     route: '/create',
-    middlewares: [check_header(['tokenid']), check_arg(['action', 'reaction'])],
+    middlewares: [checkSchema({
+      tokenid: checkToken,
+      action: checkAction,
+      reaction: checkReaction,
+      title: checkTitle
+    }), checkValidator()],
     callback: createActionReaction
   },
   {
     type: 'delete',
     route: '/',
-    middlewares: [check_arg(['id']), check_header(['tokenid'])],
+    middlewares: [checkSchema({
+      tokenid: checkToken,
+      id: checkId
+    }), checkValidator()],
     callback: deleteActionReaction
   },
   {
@@ -29,6 +51,12 @@ const routes = [
     route: '/survey',
     middlewares: [check_arg(['id', 'value'])],
     callback: updateSurveyAction
+  },
+  {
+    type: 'patch',
+    route: '/survey/all',
+    middlewares: [],
+    callback: updateAllSurveyAction
   },
   {
     type: 'get',
