@@ -6,7 +6,7 @@ function getRedditAccessToken(req, res) {
 		`code=${code}&grant_type=authorization_code&redirect_uri=http://localhost:3000/services`,
 		{
       "Content-Type": "application/x-www-form-urlencoded",
-			"Authorization": "MEZRQTY0N25MWVI3NnpxYU81bjdIZzpCSGl5YTd4NXBFUE5Ed2tOSW95ZEZqdWQ4Sm9rN3c="
+			"Authorization": `Basic ${process.env.REDDIT_ID}`
 		}).then((response) => {
 			console.log(response)
 			res.status(200).send(response.data)
