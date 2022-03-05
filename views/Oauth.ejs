@@ -12,7 +12,13 @@
           let uri = '<%=redirect_uri%>'
           console.log(uri)
 
-          fetch(uri + '?code=HAAAA')
+          fetch(uri + '?code=HAAAA',
+            {
+              method: 'POST',
+              data: {
+                code: "haaaaaa"
+              }
+            })
           .then((resp) => {
             console.log(resp)
             window.close()
