@@ -12,16 +12,17 @@
           let uri = '<%=redirect_uri%>'
           console.log(uri)
 
-          fetch(uri + "?code=HAAAA",
-            {
-              method: 'GET'
-            })
-          .then((resp) => {
-            console.log(resp)
-          })
-          .catch((err) => {
-            console.error(err)
-          })
+          window.location.replace(uri + "?code=haaaa")
+          // fetch(uri + "?code=HAAAA",
+          //   {
+          //     method: 'GET'
+          //   })
+          // .then((resp) => {
+          //   console.log(resp)
+          // })
+          // .catch((err) => {
+          //   console.error(err)
+          // })
         }
     </script>
 </body>
