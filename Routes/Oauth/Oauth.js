@@ -8,9 +8,7 @@ const routes = [
   {
     type: 'get',
     route: '/authorize',
-    middlewares: [checkSchema({
-      tokenid: checkToken
-    }), checkValidator()],
+    middlewares: [],
     callback: authorize
   }
 ]
