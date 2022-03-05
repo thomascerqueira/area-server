@@ -5,7 +5,8 @@ async function coinrankingGetUuid(name) {
     let result = await httpRequest(
       `https://api.coinranking.com/v2/search-suggestions?query=${name}`,
       "get",
-      headers = {
+      {},
+      {
         'x-access-token': `${process.env.COINRANKING_KEY}`
       }
     )
@@ -22,7 +23,8 @@ async function coinrankingGetCoin(data) {
     let result = await httpRequest(
       `https://api.coinranking.com/v2/coin/${uuid}/price`,
       "get",
-      headers = {
+      {},
+      {
         'x-access-token': `${process.env.COINRANKING_KEY}`
       }
     )
