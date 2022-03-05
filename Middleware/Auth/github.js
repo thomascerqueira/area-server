@@ -28,7 +28,7 @@ function getGithubAccessToken(req, res) {
           }
         })
           .then(() => {
-            console.log(response)
+            console.log(response.data)
             res.status(200).send(response.data)
           })
           .catch((err) => {
