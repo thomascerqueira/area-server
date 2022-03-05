@@ -8,7 +8,7 @@
     </button>
 
     <script>
-        function callback() {
+        async function callback() {
           let uri = '<%=redirect_uri%>'
           console.log(uri)
 
@@ -18,6 +18,12 @@
               code: 'fdoijaoijzeaoei'
             },
             headers: {}
+          })
+          .then((resp) => {
+            console.log(resp)
+          })
+          .catch((err) => {
+            console.error(err)
           })
         }
     </script>
