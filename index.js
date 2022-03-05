@@ -11,7 +11,7 @@ import {admin, allDb} from './config.js';
 import {getOneValueDb} from "./Functions/MongoDB/getValueDb.js";
 import {dispatchReaction} from "./Functions/Reaction/Global.js";
 import {customAction} from "./Middleware/Actions/Global.js";
-import {updateStatueSurveyAction} from "./Functions/Actions/Global.js";
+import {updateAllSurveyAction, updateStatueSurveyAction} from "./Functions/Actions/Global.js";
 const { cors } = pkg;
 dotenv.config()
 
@@ -30,6 +30,10 @@ app.use('/actions', actionsRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+})
+
+nodeCron.schedule("0 0 0 * * *", async () => {
+  await updateAllSurveyAction()
 })
 
 nodeCron.schedule('* * * * *', async () => {
