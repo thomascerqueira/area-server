@@ -13,6 +13,8 @@ import {
 import {covidAction} from "../../Functions/Actions/Covid.js";
 import {deleteField} from "../../Functions/Firebase.js";
 import {battleNetAction} from "../../Functions/Actions/BattleNet.js";
+import { spotifyNewRecommendations, spotifyNewReleaseAction } from "../../Functions/Actions/Spotify.js";
+import { coinrankingGetCoin } from "../../Functions/Actions/Coinranking.js";
 
 export const actions = {
   'push': createGithubAction,
@@ -20,6 +22,9 @@ export const actions = {
   "pollution": createSurveyAction,
   "covid": createSurveyAction,
   "priceToken": createSurveyAction,
+  "recommendation": createSurveyAction,
+  "newRelease": createSurveyAction,
+  "coinPrice": createSurveyAction
 }
 
 export const reactions = {
@@ -31,7 +36,10 @@ export const customAction = {
   'temperature': weatherActionTemp,
   'pollution': weatherActionPoll,
   'covid': covidAction,
-  'priceToken': battleNetAction
+  'priceToken': battleNetAction,
+  'recommendation': spotifyNewRecommendations,
+  'newRelease': spotifyNewReleaseAction,
+  'coinPrice': coinrankingGetCoin
 }
 
 async function emptyReactionData(data, _) {
