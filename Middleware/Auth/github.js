@@ -17,15 +17,16 @@ function getGithubAccessToken(req, res) {
         updateDoc(allDb[process.env.DB_MONGO_USERS], 'users', {
           uid: decoded.uid
         }, {
+          $set: {
             services: {
-              $set: {
-                github: {
-                  token: response.data.access_token,
-                  refresh_token: "",
-                  connected: true
-                }
+              ...,
+              github: {
+                token: response.data.access_token,
+                refresh_token: "",
+                connected: true
               }
             }
+          }
         })
           .then(() => {
             console.log(response.data)
