@@ -18,7 +18,7 @@ export const actions = {
   "temperature": createSurveyAction,
   "pollution": createSurveyAction,
   "covid": createSurveyAction,
-  "battleNet": createSurveyAction,
+  "priceToken": createSurveyAction,
 }
 
 export const reactions = {
