@@ -62,6 +62,28 @@ function deleteUser(req, res) {
     })
 }
 
+function getUserInfo(req, res) {
+  let token = req.headers.tokenid.split(' ')[1]
+
+  //ToDo verify email
+  auth.verifyIdToken(token)
+    .then((decoded) => {
+      getOneValueDb(allDb[process.env.DB_MONGO_USERS], 'users', {
+        uid: decoded.uid
+      })
+        .then((resp) => {
+          res.status(200).send(resp)
+        })
+        .catch((err) => {
+          res.status(500).send(err)
+        })
+    })
+    .catch((error) => {
+      console.error(error)
+      res.status(401).send(error)
+    })
+}
+
 function signUser(req, res) {
   let token = req.headers.tokenid.split(' ')[1]
 
@@ -132,5 +154,6 @@ export {
   createUser,
   deleteUser,
   signUser,
-  signUserProvider
+  signUserProvider,
+  getUserInfo
 }

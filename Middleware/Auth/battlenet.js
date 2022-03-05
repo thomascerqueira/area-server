@@ -39,7 +39,7 @@ function getBattleNetAccessToken(req, res) {
 		})
 		.catch(err => {
 			console.log(err)
-			res.status(500).send(err)
+			res.status(401).send(err)
 		})
 
 }
