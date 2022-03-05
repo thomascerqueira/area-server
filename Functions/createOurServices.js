@@ -217,6 +217,10 @@ function createJsonServices() {
       name: "coinPrice",
       inputs: [
         {
+          name: "name",
+          type: "string"
+        },
+        {
           name: "option",
           type: "string"
         },
