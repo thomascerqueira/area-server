@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html lang="">
-<head>
-    <title>Validate</title>
-</head>
 <body>
-    <h1><%= test %></h1>
+    <h1>Accept conditions ?</h1>
+    <button onclick="callback()">
+        yes
+    </button>
+
+    <script>
+        import axios from "axios";
+
+        async function callback() {
+          let uri = '<%redirect_uri%>'
+
+          axios.post({
+            method: 'post',
+            url: uri,
+            data: {
+              code: "mdrrrrr"
+            }
+          }).then(() => {})
+          .catch((err) => {
+            console.error(err)
+          })
+        }
+    </script>
 </body>
 </html>
