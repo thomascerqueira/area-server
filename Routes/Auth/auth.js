@@ -11,11 +11,11 @@ import {checkUser} from "../../Functions/checkArg/checkUser.js";
 import {checkEmail} from "../../Functions/checkArg/checkEmail.js";
 import {checkPassword} from "../../Functions/checkArg/checkPassword.js";
 import {checkUsername} from "../../Functions/checkArg/checkUsername.js";
-import { getTwitchAccessToken } from '../../Middleware/Auth/twitch.js'
-import { getGithubAccessToken } from '../../Middleware/Auth/github.js'
-import { getBattleNetAccessToken } from '../../Middleware/Auth/battlenet.js'
-import { getSpotifyAccessToken } from '../../Middleware/Auth/spotify.js'
-import { getRedditAccessToken } from '../../Middleware/Auth/reddit.js'
+import {getTwitchAccessToken} from '../../Middleware/Auth/twitch.js'
+import {getGithubAccessToken} from '../../Middleware/Auth/github.js'
+import {getBattleNetAccessToken} from '../../Middleware/Auth/battlenet.js'
+import {getSpotifyAccessToken} from '../../Middleware/Auth/spotify.js'
+import {getRedditAccessToken} from '../../Middleware/Auth/reddit.js'
 import {checkCode} from "../../Functions/checkArg/checkCode.js";
 
 const routes = [
@@ -55,50 +55,50 @@ const routes = [
     callback: signUserProvider
   },
   {
-		type: "post",
-		route: "/getTwitchAccessToken",
-		middlewares: [checkSchema({
+    type: "post",
+    route: "/getTwitchAccessToken",
+    middlewares: [checkSchema({
       tokenid: checkToken,
       code: checkCode
     }), checkValidator()],
-		callback: getTwitchAccessToken
-	},
-	{
-		type: "post",
-		route: "/getGitHubAccessToken",
-		middlewares: [checkSchema({
+    callback: getTwitchAccessToken
+  },
+  {
+    type: "post",
+    route: "/getGitHubAccessToken",
+    middlewares: [checkSchema({
       tokenid: checkToken,
       code: checkCode
     }), checkValidator()],
-		callback: getGithubAccessToken
-	},
-	{
-		type: "post",
-		route: "/getBattleNetAccessToken",
-		middlewares: [checkSchema({
+    callback: getGithubAccessToken
+  },
+  {
+    type: "post",
+    route: "/getBattleNetAccessToken",
+    middlewares: [checkSchema({
       tokenid: checkToken,
       code: checkCode
     }), checkValidator()],
-		callback: getBattleNetAccessToken
-	},
-	{
-		type: "post",
-		route: "/getSpotifyAccessToken",
-		middlewares: [checkSchema({
+    callback: getBattleNetAccessToken
+  },
+  {
+    type: "post",
+    route: "/getSpotifyAccessToken",
+    middlewares: [checkSchema({
       tokenid: checkToken,
       code: checkCode
     }), checkValidator()],
-		callback: getSpotifyAccessToken
-	},
-	{
-		type: "post",
-		route: "/getRedditAccessToken",
-		middlewares: [checkSchema({
+    callback: getSpotifyAccessToken
+  },
+  {
+    type: "post",
+    route: "/getRedditAccessToken",
+    middlewares: [checkSchema({
       tokenid: checkToken,
       code: checkCode
     }), checkValidator()],
-		callback: getRedditAccessToken
-	}
+    callback: getRedditAccessToken
+  }
 ]
 
 export default create_route_from_routes(routes)
