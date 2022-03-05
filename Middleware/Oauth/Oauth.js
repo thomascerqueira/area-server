@@ -5,6 +5,7 @@ function authorize(req, res) {
 
   auth.verifyIdToken(token)
     .then((decoded) => {
+      console.log(req.params.redirect_uri)
       res.status(200).render('../../Template/Oauth')
     })
     .catch((error) => {
