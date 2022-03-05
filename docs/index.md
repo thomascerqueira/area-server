@@ -7,6 +7,7 @@
 * [Delete User](auth/deleteUser.md)
 * [Sign User](auth/signUser.md)
 * [Sign User Provider](auth/signUserProvider.md)
+* [Get User Info](auth/getUserInfo.md)
 
 ###Services
 * [Get All Services](services/getAllServices.md)

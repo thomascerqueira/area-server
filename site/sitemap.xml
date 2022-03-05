@@ -2,57 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://localhost:3000/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/actions/Github/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/actions/Weather/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/actions/createActionReaction/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/actions/deleteActionReaction/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/auth/createUser/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/auth/deleteUser/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://localhost:3000/auth/getUserInfo/</loc>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/auth/signUser/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/auth/signUserProvider/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/services/getAllServices/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://localhost:3000/services/getService/</loc>
-         <lastmod>2022-02-28</lastmod>
+         <lastmod>2022-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
