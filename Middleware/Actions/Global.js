@@ -4,7 +4,12 @@ import { allDb, auth } from "../../config.js";
 import generateID from "../../Functions/generateID.js";
 import { createDiscordReaction } from "../../Functions/Reaction/discord.js";
 import {weatherActionPoll, weatherActionTemp} from "../../Functions/Actions/Weather.js"
-import {createSurveyAction, getActionSurvey, updateStatueSurveyAction} from "../../Functions/Actions/Global.js";
+import {
+  createSurveyAction,
+  getActionSurvey,
+  updateAllStatusSurveyAction,
+  updateStatueSurveyAction
+} from "../../Functions/Actions/Global.js";
 import {covidAction} from "../../Functions/Actions/Covid.js";
 import {deleteField} from "../../Functions/Firebase.js";
 
@@ -35,6 +40,15 @@ async function updateSurveyAction(req, res) {
     updateStatueSurveyAction(req.body.id, req.body.value)
     res.status(200).send({"msg": "Done"})
   }catch (err) {
+    res.status(500).send(err)
+  }
+}
+
+async function updateAllSurveyAction(req, res) {
+  try {
+    updateAllStatusSurveyAction()
+    res.status(200).send({'msg': "Done"})
+  } catch (err) {
     res.status(500).send(err)
   }
 }
@@ -116,5 +130,6 @@ export {
   getActionReaction,
   updateActionReaction,
   updateSurveyAction,
-  getSurveyAction
+  getSurveyAction,
+  updateAllSurveyAction
 }

@@ -4,7 +4,12 @@ import {
   check_arg,
   checkValidator
 } from '../../Functions/createroutefromroutes.js'
-import {createActionReaction, getSurveyAction, updateSurveyAction} from "../../Middleware/Actions/Global.js";
+import {
+  createActionReaction,
+  getSurveyAction,
+  updateAllSurveyAction,
+  updateSurveyAction
+} from "../../Middleware/Actions/Global.js";
 import {testCovid} from "../../Middleware/Actions/Covid.js";
 import {deleteActionReaction, deleteForced} from "../../Middleware/Actions/Delete.js";
 import {checkSchema} from "express-validator";
@@ -13,7 +18,6 @@ import {checkId} from "../../Functions/checkArg/checkId.js";
 import {checkAction} from "../../Functions/checkArg/checkAction.js";
 import {checkReaction} from "../../Functions/checkArg/checkReaction.js";
 import {checkTitle} from "../../Functions/checkArg/checkTitle.js";
-import {updateAllSurveyAction} from "../../Functions/Actions/Global.js";
 
 const routes = [
   {

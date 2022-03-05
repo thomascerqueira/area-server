@@ -11,7 +11,7 @@ function updateStatueSurveyAction(id, value) {
   }
 }
 
-async function updateAllSurveyAction() {
+function updateAllStatusSurveyAction() {
   const db = admin.firestore()
   const dbRef = db.collection("References").doc("Surveys")
 
@@ -56,5 +56,5 @@ export {
   createSurveyAction,
   updateStatueSurveyAction,
   getActionSurvey,
-  updateAllSurveyAction
+  updateAllStatusSurveyAction
 }
