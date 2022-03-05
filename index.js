@@ -5,6 +5,7 @@ import authRoute from './Routes/Auth/auth.js'
 import servicesRoute from './Routes/Services/services.js'
 import githubActionsRoutes from './Routes/Actions/github.js'
 import actionsRoutes from './Routes/Actions/Global.js'
+import oauthRoutes from './Routes/Oauth/Oauth.js'
 import pkg from 'cors';
 import nodeCron from 'node-cron';
 import {admin, allDb} from './config.js';
@@ -26,6 +27,7 @@ app.use('/auth', authRoute)
 app.use('/services', servicesRoute)
 app.use('/actions/github', githubActionsRoutes)
 app.use('/actions', actionsRoutes)
+app.use('/oauth', oauthRoutes)
 // app.use('/mongoDb', mongoDbRoute)
 
 app.get('/', (req, res) => {
