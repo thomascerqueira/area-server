@@ -7,20 +7,15 @@
     </button>
 
     <script>
-        import axios from "axios";
-
-        async function callback() {
+        function callback() {
           let uri = '<%redirect_uri%>'
 
-          axios.post({
-            method: 'post',
-            url: uri,
-            data: {
-              code: "mdrrrrr"
-            }
-          }).then(() => {})
-          .catch((err) => {
-            console.error(err)
+          fetch(uri, {
+            method: 'POST',
+            body: {
+              code: 'fdoijaoijzeaoei'
+            },
+            headers: {}
           })
         }
     </script>
