@@ -8,7 +8,6 @@ async function battleNetAction(data, uid) {
         const data = await getOneValueDb(allDb['UsersDB'], 'users', {
             uid: uid
         })
-        console.log(data)
         const token = data['services']['battleNet']['token']
 
         let result = await httpRequest(
@@ -20,6 +19,9 @@ async function battleNetAction(data, uid) {
             }
         )
         if (result.data.length > 0) {
+            console.log(result.data['price'])
+            console.log(data['option'])
+            console.log(data['value'])
             return (checkOption(data['option'], result.data['price'], data['value']))
         }
         return false
