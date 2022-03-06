@@ -8,12 +8,12 @@ const reaction = {
 
 function prettyPrintSpotify(name, image, url) {
     return (
-      `<div><div>${name}</div><img src=${image}/><a href=${url}>${url}</a><br/></div>`
+      `<div><div>${name}</div><img src=${image.url} height=${image.height} width=${image.width}/><a href=${url}>${url}</a><br/></div>`
     )
 }
 
 function getBodyReaction(reactionData, actionData, result) {
-    let body
+    let body = ""
     let check
     switch (actionData.service) {
         case 'Covid':
