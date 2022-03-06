@@ -30,7 +30,7 @@ async function spotifyNewRecommendations(data, uid) {
     const user = await getOneValueDb(allDb['UsersDB'], 'users', {
 			uid: uid
 		})
-		const token = user['services']['github']['token']
+		const token = user['services']['spotify']['token']
 
     let result = await httpRequest(
       "https://api.spotify.com/v1/recommendations",
