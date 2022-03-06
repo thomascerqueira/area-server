@@ -7,11 +7,11 @@ const reaction = {
 }
 
 function prettyPrintSpotify(url) {
-    const album = url.split("https://open.spotify.com/")
-    const base = url.split(album)
-    console.log(base[0] + "embed/" + album[1])
+    const album = url.split("/album/")
+    const base = album[0] + "/embed/album/" + album[1]
+    console.log(base)
     return (
-      `<iframe src="${base[0] + "embed/" + album[1]}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+      `<iframe src="${base}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
     )
 }
 
