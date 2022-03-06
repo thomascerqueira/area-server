@@ -13,7 +13,8 @@ const checkReaction = {
         return false
       }
     },
-    errorMessage: "action need .service .actionName .data"
+    errorMessage: "action need .service .actionName .data",
+    bail: true
   },
 }
 
