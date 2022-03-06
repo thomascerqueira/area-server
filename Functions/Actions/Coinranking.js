@@ -29,9 +29,7 @@ async function coinrankingGetCoin(data) {
         'x-access-token': `${process.env.COINRANKING_KEY}`
       }
     )
-    console.log(data)
-    console.log(result)
-    return (checkOption(data['option'], result.data['price'], data['value']))
+    return (checkOption(data['option'], result.data.data['price'], data['value']))
   } catch (e) {
     console.error("Err in coinranking action", e)
     throw e
