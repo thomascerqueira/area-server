@@ -492,6 +492,7 @@
     "reactions": [
       {
         "name": "send_mail",
+        "description": "Send a email",
         "inputs": [
           {
             "name": "email",
@@ -505,28 +506,155 @@
     "name": "Weather",
     "actions": [
       {
-        "name": "temp",
+        "name": "temperature",
+        "description": "Reaction if the temperature is 'greater/less/equal' than the value",
         "inputs": [
           {
             "name": "city",
             "type": "string"
           },
           {
-            "name": "check",
+            "name": "option",
             "type": "string"
+          },
+          {
+            "name": "temperature",
+            "type": "number"
           }
         ]
       },
       {
         "name": "pollution",
+        "description": "Reaction if the air quality is 'greater/less/equal' than the value",
         "inputs": [
           {
-            "name": "city",
+            "name": "option",
             "type": "string"
           },
           {
-            "name": "check",
+            "name": "long",
+            "type": "number"
+          },
+          {
+            "name": "lat",
+            "type": "number"
+          },
+          {
+            "name": "value",
             "type": "string"
+          }
+        ]
+      }
+    ],
+    "reactions": []
+  },
+  {
+    "name": "Covid",
+    "actions": [
+      {
+        "name": "covid",
+        "description": "Reaction if the number of contamination is 'greater/less/equal' than the value",
+        "inputs": [
+          {
+            "name": "option",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "iso",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ]
+      }
+    ],
+    "reactions": []
+  },
+  {
+    "name": "Discord",
+    "actions": [],
+    "reactions": [
+      {
+        "name": "sendMessage",
+        "description": "Send a message on a discord channel of a server",
+        "inputs": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "channel_id",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BattleNet",
+    "actions": [
+      {
+        "name": "priceToken",
+        "description": "Reaction if the price of WOW token is 'greater/less/equal' than the value",
+        "inputs": [
+          {
+            "name": "option",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ]
+      }
+    ],
+    "reactions": []
+  },
+  {
+    "name": "Spotify",
+    "actions": [
+      {
+        "name": "recommendation",
+        "description": "Reaction when we get a new recommendation from spotify",
+        "inputs": [
+          {
+            "name": "genre",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "newRelease",
+        "description": "Reaction when we get new release from spotify",
+        "inputs": []
+      }
+    ],
+    "reactions": []
+  },
+  {
+    "name": "CoinRanking",
+    "actions": [
+      {
+        "name": "coinPrice",
+        "description": "Reaction if the price of the crypto is 'greater/less/equal' than the value",
+        "inputs": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "option",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "number"
           }
         ]
       }
