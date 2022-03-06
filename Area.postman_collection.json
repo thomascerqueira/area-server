@@ -384,7 +384,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"NTM GITHUB\",\n    \"action\": {\n        \"service\": \"GitHub\",\n        \"actionName\": \"push\",\n        \"data\": {\n            \"token\": \"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\",\n            \"githubName\": \"thomascerqueira\",\n            \"repository\": \"BatFPV\",\n            \"events\": \"push\"\n        }\n    },\n    \"reaction\": {\n        \"service\": \"email\",\n        \"reactionName\": \"send_mail\",\n        \"data\": {\n            \"email\": \"thomas.cerqueira@epitech.eu\",\n            \"object\": \"reaction\"\n        }\n    }\n}",
+									"raw": "{\n    \"title\": \"NTM GITHUB\",\n    \"action\": {\n        \"service\": \"GitHub\",\n        \"actionName\": \"push\",\n        \"data\": {\n            \"token\": \"rien\",\n            \"githubName\": \"thomascerqueira\",\n            \"repository\": \"BatFPV\",\n            \"events\": \"push\"\n        }\n    },\n    \"reaction\": {\n        \"service\": \"email\",\n        \"reactionName\": \"send_mail\",\n        \"data\": {\n            \"email\": \"thomas.cerqueira@epitech.eu\",\n            \"object\": \"reaction\"\n        }\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
