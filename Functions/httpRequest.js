@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default async function httpRequest(url, method="get", data={}, headers={
+export default async function httpRequest(url, method="get", data=undefined, headers={
   'Content-Type': 'application/json'
 }) {
   try {
