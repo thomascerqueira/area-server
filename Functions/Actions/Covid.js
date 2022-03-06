@@ -16,7 +16,6 @@ async function covidAction(data) {
       return (checkOption(data['option'], result.data[0]['ActiveCases'], data['value']))
     }
     return false
-    // return checkOption(data['option'], result.data.)
   } catch (e) {
     console.error("Err in covidAction", e)
     throw e

@@ -63,7 +63,6 @@ function deleteUser(req, res) {
 function getUserInfo(req, res) {
   let token = req.headers.tokenid.split(' ')[1]
 
-  //ToDo verify email
   auth.verifyIdToken(token)
     .then((decoded) => {
       getOneValueDb(allDb[process.env.DB_MONGO_USERS], 'users', {
@@ -85,13 +84,12 @@ function getUserInfo(req, res) {
 function signUser(req, res) {
   let token = req.headers.tokenid.split(' ')[1]
 
-  //ToDo verify email
   auth.verifyIdToken(token)
     .then((decoded) => {
-      // if (!decoded.email_verified) {
-      //   res.status(403).send({msg: 'Email not verified'})
-      //   return
-      // }
+      if (!decoded.email_verified) {
+        res.status(403).send({msg: 'Email not verified'})
+        return
+      }
       getOneValueDb(allDb[process.env.DB_MONGO_USERS], 'users', {
         uid: decoded.user_id
       }).then((value) => {
@@ -120,7 +118,6 @@ function signUserProvider(req, res) {
   let token = req.headers.tokenid.split(' ')[1]
   const user = req.body.user
 
-  //ToDo verify email
   auth.verifyIdToken(token)
     .then((decoded) => {
       console.log(decoded, user)

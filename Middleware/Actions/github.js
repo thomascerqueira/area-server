@@ -13,7 +13,6 @@ function getWebHooks(req, res) {
       })
         .then((res) => {
           if (res) {
-            //TODO sent document to dispatch function
             dispatchReaction(res, "")
           }
         })

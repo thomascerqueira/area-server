@@ -1,4 +1,3 @@
-import Mongodb from 'mongodb';
 import mongoose from 'mongoose';
 
 
