@@ -30,7 +30,7 @@ function getBodyReaction(reactionData, actionData, result) {
                     if (reactionData.service === "Discord")
                         body += item.name + ": " + item.external_urls.spotify + '\n'
                     else
-                        body += prettyPrintSpotify(item.uri)
+                        body += prettyPrintSpotify(item.external_urls.spotify)
                 })
             } else {
                 console.log(result.data)
