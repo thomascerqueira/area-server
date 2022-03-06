@@ -18,7 +18,7 @@ function createUser(req, res) {
       auth.generateEmailVerificationLink(req.body.email)
         .then((value) => {
           readFile(resolve("Template", "confirm.html"), (err, html) => {
-            const mail = html.toString().replaceAll("{{CONFIRM_LINK}}", value).replaceAll("{{EMAIL_ADDRESS}}", req.body.email)
+            const mail = html.toString().replaceAll("{{CONFIRM_LINK}}", value)
             sendMail({"email": req.body.email, "object": "Verify your email"}, mail)
             .then(() => {})
           })
