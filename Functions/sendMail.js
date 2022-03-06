@@ -1,23 +1,23 @@
 import {transporter} from "../config.js";
-import {readFile} from "fs";
-import {resolve} from "path";
+import {readFileSync} from "fs";
 
 async function sendMail(options, type, html = {}) {
   let body
   switch (type) {
     case ("confirm"):
-      readFile("./Template/confirm.html", (err, buff) => {
+      readFileSync("./Template/confirm.html", (err, buff) => {
         body = buff.toString().replaceAll("{{CONFIRM_LINK}}", html['confirm_link'])
       })
       break
     case ("reaction"):
-      readFile("./Template/MailReaction.html", (err, buff) => {
+      readFileSync("./Template/MailReaction.html", (err, buff) => {
         body = buff.toString().replaceAll("{{SERVICE}}", html['service']).replaceAll("{{VALUE}}", html['value'])
       })
       break
     default:
       break
   }
+  console.log(body)
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
