@@ -100,6 +100,7 @@ function createJsonServices() {
 
   Area.reactions.push({
     name: 'send_mail',
+    description: "Send a email",
     inputs: [
       {
         name: "email",
@@ -109,6 +110,7 @@ function createJsonServices() {
 
   Weather.actions.push({
       name: "temperature",
+      description: "Reaction if the temperature is 'greater/less/equal' than the value",
       inputs: [
         {
           name: "city",
@@ -126,6 +128,7 @@ function createJsonServices() {
     },
     {
       name: "pollution",
+      description: "Reaction if the air quality is 'greater/less/equal' than the value",
       inputs: [
         {
           name: "option",
@@ -148,6 +151,7 @@ function createJsonServices() {
 
   Covid.actions.push({
     name: "covid",
+    description: "Reaction if the number of contamination is 'greater/less/equal' than the value",
     inputs: [
       {
         name: "option",
@@ -170,6 +174,7 @@ function createJsonServices() {
 
   Discord.reactions.push({
     name: 'sendMessage',
+    description: "Send a message on a discord channel of a server",
     inputs: [
       {
         name: 'name',
@@ -184,6 +189,7 @@ function createJsonServices() {
 
   BattleNet.actions.push({
     name: "priceToken",
+    description: "Reaction if the price of WOW token is 'greater/less/equal' than the value",
     inputs: [
       {
         name: "option",
@@ -199,6 +205,7 @@ function createJsonServices() {
   Spotify.actions.push(
     {
       name: "recommendation",
+      description: "Reaction when we get a new recommendation from spotify",
       inputs: [
         {
           name: "genre",
@@ -208,6 +215,7 @@ function createJsonServices() {
     },
     {
       name: "newRelease",
+      description: "Reaction when we get new release from spotify",
       inputs: []
     }
   )
@@ -215,6 +223,7 @@ function createJsonServices() {
   CoinRanking.actions.push(
     {
       name: "coinPrice",
+      description: "Reaction if the price of the crypto is 'greater/less/equal' than the value",
       inputs: [
         {
           name: "name",
