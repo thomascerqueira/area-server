@@ -30,6 +30,7 @@ function getBodyReaction(reactionData, actionData, result) {
                         body += prettyPrintSpotify(item.name, item.images[item.images.length - 1], item.external_urls.spotify)
                 })
             } else {
+                console.log(result.data)
                 body = JSON.stringify(result.data)
             }
             break
