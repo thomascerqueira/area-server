@@ -51,7 +51,7 @@ function deleteActionReaction(req, res) {
         id: req.body.id,
         uid: decoded.uid
       }).then(async (result) => {
-        const actionResult = await action[result.action.actionName](result.action.data, githubToken)
+        const actionResult = await action[result.action.actionName](result.action.data, decoded.uid)
         const reactionResult = await reaction[result.reaction.reactionName](result.action.data)
         console.log(actionResult, reactionResult)
         if (actionResult && reactionResult) {

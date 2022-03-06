@@ -28,7 +28,7 @@ async function createGithubAction(options, id) {
   }
 }
 
-async function deleteGithubAction(options) {
+async function deleteGithubAction(options, uid) {
   try {
     const user = await getOneValueDb(allDb['UsersDB'], 'users', {
 			uid: uid
