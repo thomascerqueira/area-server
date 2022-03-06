@@ -62,6 +62,7 @@ nodeCron.schedule('* * * * *', async () => {
                   if (field[surveyID].done === false) {
                     customAction[data.action.actionName](data.action.data, data.uid)
                       .then((result) => {
+                        console.log(result)
                         if (result) {
                           dispatchReaction(data)
                             .then(() => {
