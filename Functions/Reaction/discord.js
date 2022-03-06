@@ -44,13 +44,13 @@ async function deleteDiscordReaction(options) {
   }
 }
 
-async function executeDiscordReaction(options) {
+async function executeDiscordReaction(options, _, body) {
   try {
     let result = await httpRequest(
       `https://discord.com/api/webhooks/${options.webhooks_id.toString()}/${options.webhooks_token.toString()}`,
       'post',
       {
-        'content': "NIQUE SA MERE"
+        'content': body.value
       }
     )
     return true

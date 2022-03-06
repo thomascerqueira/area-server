@@ -63,7 +63,7 @@ nodeCron.schedule('* * * * *', async () => {
                     customAction[data.action.actionName](data.action.data, data.uid)
                       .then((result) => {
                         if (result) {
-                          dispatchReaction(data)
+                          dispatchReaction(data, result)
                             .then(() => {
                               console.log("Dispatch function for ", surveyID)
                               updateStatueSurveyAction(surveyID, true)
