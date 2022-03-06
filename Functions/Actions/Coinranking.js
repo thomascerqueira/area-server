@@ -11,7 +11,7 @@ async function coinrankingGetUuid(name) {
       }
     )
     console.log(result.data.data.coins[0].uuid)
-    return result.data.data.coins[0].uuid
+    return result.data.data.coins[0].uuid.toString()
   } catch (e) {
     console.error("Err in coinranking action", e)
     throw e
