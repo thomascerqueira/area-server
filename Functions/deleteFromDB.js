@@ -5,8 +5,8 @@ import { allDb, auth } from "../config.js";
 function deleteFromDb(uid, id) {
   console.log(`Deleting ActionReaction ${id} for user ${uid}`)
   dropDocument(allDb['ActionReaction'], 'ActionReaction', {
-    id: req.body.id,
-    uid: decoded.uid
+    id: id,
+    uid: uid
   }).then(() => {
     try {
       deleteField("References", "Surveys", id)
