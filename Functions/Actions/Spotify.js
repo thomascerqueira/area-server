@@ -33,7 +33,7 @@ async function spotifyNewRecommendations(data, uid) {
 		const token = user['services']['spotify']['token']
 
     let result = await httpRequest(
-      "https://api.spotify.com/v1/recommendations",
+      "https://api.spotify.com/v1/recommendations?seed_genres=" + data['genre'],
       "get",
       undefined,
       {
