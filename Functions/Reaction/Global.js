@@ -25,7 +25,7 @@ function getBodyReaction(reactionData, actionData, result) {
                 const items = result.data.albums.items
                 items.forEach((item) => {
                     if (reactionData.service === "Discord")
-                        body += item.external_urls.spotify + '\n'
+                        body += item.name + ": " + item.external_urls.spotify + '\n'
                     else
                         body += prettyPrintSpotify(item.name, item.images[item.images.length - 1], item.external_urls.spotify)
                 })
