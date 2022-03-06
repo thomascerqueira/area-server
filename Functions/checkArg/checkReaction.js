@@ -12,6 +12,7 @@ const checkReaction = {
       if (value.service === "None" || value.reactionName === "None") {
         return false
       }
+      return true
     },
     errorMessage: "action need .service .actionName .data",
     bail: true
