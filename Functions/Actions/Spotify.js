@@ -12,7 +12,7 @@ async function spotifyNewReleaseAction(data, uid) {
     let result = await httpRequest(
       "https://api.spotify.com/v1/browse/new-releases",
       "get",
-      null,
+      undefined,
       {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -37,7 +37,7 @@ async function spotifyNewRecommendations(data, uid) {
     let result = await httpRequest(
       "https://api.spotify.com/v1/recommendations",
       "get",
-      null,
+      undefined,
       {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
