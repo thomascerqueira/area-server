@@ -18,8 +18,17 @@ function deleteForced(req, res) {
 
 function deleteActionReaction(req, res) {
 
-  const action = { "push": deleteGithubAction }
-  const reaction = { "sendMessage": deleteDiscordReaction, "send_mail": (_) => { return true } }
+  const action = {
+    "push": deleteGithubAction,
+    "temperature": () => { return true },
+    "pollution": () => { return true },
+    "covid": () => { return true },
+    "priceToken": () => { return true },
+    "recommendation": () => { return true },
+    "newRelease": () => { return true },
+    "coinPrice": () => { return true }
+  }
+  const reaction = { "sendMessage": deleteDiscordReaction, "send_mail": () => { return true } }
 
   let token
   try {
