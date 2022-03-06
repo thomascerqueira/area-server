@@ -3,16 +3,15 @@ import {readFileSync} from "fs";
 
 async function sendMail(options, type, html = {}) {
   let body
+  let buff
   switch (type) {
     case ("confirm"):
-      readFileSync("./Template/confirm.html", (err, buff) => {
-        body = buff.toString().replaceAll("{{CONFIRM_LINK}}", html['confirm_link'])
-      })
+      buff = readFileSync("./Template/confirm.html")
+      body = buff.toString().replaceAll("{{CONFIRM_LINK}}", html['confirm_link'])
       break
     case ("reaction"):
-      readFileSync("./Template/MailReaction.html", (err, buff) => {
-        body = buff.toString().replaceAll("{{SERVICE}}", html['service']).replaceAll("{{VALUE}}", html['value'])
-      })
+      buff = readFileSync("./Template/MailReaction.html")
+      body = buff.toString().replaceAll("{{SERVICE}}", html['service']).replaceAll("{{VALUE}}", html['value'])
       break
     default:
       break
