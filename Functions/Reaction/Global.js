@@ -22,7 +22,6 @@ function getBodyReaction(reactionData, actionData, result) {
             break
         case 'Spotify':
             if (actionData.actionName === "newRelease") {
-                console.log(result.data)
                 const items = result.data.albums.items
                 items.forEach((item) => {
                     body += prettyPrintSpotify(item.name, item.images[item.images.length - 1], item.external_urls.spotify)
