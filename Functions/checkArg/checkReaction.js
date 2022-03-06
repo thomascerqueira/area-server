@@ -7,7 +7,11 @@ const checkReaction = {
   },
   custom: {
     options: (value) => {
-      return value.service && value.reactionName && value.data
+      if(!value.service || !value.reactionName || !value.data)
+        return false
+      if (value.service === "None" || value.reactionName === "None") {
+        return false
+      }
     },
     errorMessage: "action need .service .actionName .data"
   },
