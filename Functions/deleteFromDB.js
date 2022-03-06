@@ -10,16 +10,15 @@ function deleteFromDb(uid, id) {
   }).then(() => {
     try {
       deleteField("References", "Surveys", id)
-      res.status(200).send({ 'msg': 'Delete success' })
       console.log(`ActionReaction ${id} Deleted successfully`)
     } catch (err) {
       console.error(err)
-      res.status(500).send(err)
+      throw err
     }
   })
     .catch((err) => {
       console.error(err)
-      res.status(500).send(err)
+      throw err
     })
 }
 
