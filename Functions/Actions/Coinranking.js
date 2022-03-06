@@ -10,7 +10,7 @@ async function coinrankingGetUuid(name) {
         'x-access-token': `${process.env.COINRANKING_KEY}`
       }
     )
-    console.log(result.data.coins)
+    console.log(result.data.data.coins)
     return result.data.data.coins[0].uuid
   } catch (e) {
     console.error("Err in coinranking action", e)
