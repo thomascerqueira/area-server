@@ -26,8 +26,13 @@ async function createGithubAction(options, id) {
   }
 }
 
-async function deleteGithubAction(options, githubToken) {
+async function deleteGithubAction(options) {
   try {
+    const user = await getOneValueDb(allDb['UsersDB'], 'users', {
+			uid: uid
+		})
+		const token = user['services']['github']['token']
+
     let result = await httpRequest(
       `https://api.github.com/repos/${options.githubName.toString()}/${options.repository.toString()}/hooks/${options.hook_id.toString()}?access_token=${githubToken}`,
       "delete",
