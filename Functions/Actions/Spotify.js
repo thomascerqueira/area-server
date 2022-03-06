@@ -14,7 +14,7 @@ async function spotifyNewReleaseAction(data, uid) {
       "get",
       {},
       {
-        "Authorization": `Berear ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
       }
     )
@@ -39,7 +39,7 @@ async function spotifyNewRecommendations(data, uid) {
       "get",
       {},
       {
-        "Authorization": `Berear ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
       }
     )
