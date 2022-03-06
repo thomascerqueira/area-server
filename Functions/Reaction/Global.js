@@ -9,10 +9,10 @@ const reaction = {
 function getBodyReaction(reactionData, actionData, result) {
     let body
     switch (actionData.service) {
-        case 'spotify':
+        case 'Spotify':
             body = JSON.stringify(result)
             break
-        case 'weather':
+        case 'Weather':
             let type
             let city
             if (actionData.actionName === "pollution") {
