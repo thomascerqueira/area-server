@@ -1,6 +1,6 @@
 import httpRequest from "../httpRequest.js"
 
-function coinrankingGetUuid(name) {
+async function coinrankingGetUuid(name) {
   try {
     let result = await httpRequest(
       `https://api.coinranking.com/v2/search-suggestions?query=${name}`,
