@@ -8,7 +8,12 @@ const reaction = {
 
 function getBodyReaction(reactionData, actionData, result) {
     let body
+    let check
     switch (actionData.service) {
+        case 'Covid':
+            check = actionData.data.option === "equal" ? "to" : "than"
+            body = `The number of contamination is ${actionData.data.option} ${check} ${actionData.data.value} in ${actionData.data.country}`
+            break
         case 'Spotify':
             body = JSON.stringify(result)
             break
@@ -18,7 +23,6 @@ function getBodyReaction(reactionData, actionData, result) {
             if (actionData.actionName === "pollution") {
                 const indices = ['Good', 'Fair', 'Moderate', 'Poor', 'Very Poor']
                 let index = actionData.data.value - 1
-                let check
 
                 switch (actionData.data.option) {
                     case 'greater':
@@ -44,6 +48,17 @@ function getBodyReaction(reactionData, actionData, result) {
                 type = `temperature is ${actionData.data.option} ${check} ${actionData.data.temperature}`
             }
             body = `The ${type} in ${city}`
+            break
+        case 'CoinRanking':
+            check = actionData.data.option === "equal" ? "to" : "than"
+            body = `The price of ${actionData.data.name} is ${actionData.data.option} ${check} ${actionData.data.value}`
+            break
+        case 'battleNet':
+            check = actionData.data.option === "equal" ? "to" : "than"
+            body = `The price of WOW token is ${actionData.data.option} ${check} ${actionData.data.value}`
+            break
+        case 'Github':
+            body = `There is a ${actionData.data.event} in the repo ${actionData.data.repository} of the user ${actionData.data.githubName}`
             break
         default:
             body = "REACTION"
