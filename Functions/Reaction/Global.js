@@ -15,7 +15,7 @@ function getBodyReaction(reactionData, actionData, result) {
             body = `The number of contamination is ${actionData.data.option} ${check} ${actionData.data.value} in ${actionData.data.country}`
             break
         case 'Spotify':
-            body = JSON.stringify(result)
+            body = JSON.stringify(result.data)
             break
         case 'Weather':
             let type
