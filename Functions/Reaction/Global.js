@@ -6,6 +6,12 @@ const reaction = {
     "sendMessage": executeDiscordReaction
 }
 
+function prettyPrintSpotify(name, image, url) {
+    return (
+      "<div><div>{name}</div><img src={image}/><a href={url}>{url}</a><br/></div>"
+    )
+}
+
 function getBodyReaction(reactionData, actionData, result) {
     let body
     let check
@@ -15,7 +21,14 @@ function getBodyReaction(reactionData, actionData, result) {
             body = `The number of contamination is ${actionData.data.option} ${check} ${actionData.data.value} in ${actionData.data.country}`
             break
         case 'Spotify':
-            body = JSON.stringify(result.data)
+            if (actionData.actionName === "newRelease") {
+                const items = result.data.albums.items
+                items.forEach((item) => {
+                    body += prettyPrintSpotify(item.name, item.images[item.images.length - 1], item.external_urls.spotify)
+                })
+            } else {
+                body = JSON.stringify(result.data)
+            }
             break
         case 'Weather':
             let type
