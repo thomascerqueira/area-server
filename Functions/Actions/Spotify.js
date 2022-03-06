@@ -18,6 +18,7 @@ async function spotifyNewReleaseAction(data, uid) {
         "Content-Type": "application/json"
       }
     )
+    console.log(result)
     if (result.data.length > 0)
       return result
     return false
@@ -43,6 +44,7 @@ async function spotifyNewRecommendations(data, uid) {
         "Content-Type": "application/json"
       }
     )
+    console.log(result)
     if (result.data.length > 0)
       return result
     return false
