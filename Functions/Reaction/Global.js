@@ -6,9 +6,9 @@ const reaction = {
     "sendMessage": executeDiscordReaction
 }
 
-function prettyPrintSpotify(name, image, url) {
+function prettyPrintSpotify(url) {
     return (
-      `<div style="display: grid; grid-template-columns: repeat(2, 1fr); padding-bottom: 5px"><div>${name}</div><img src=${image.url} height=${image.height} width=${image.width}/><a style="grid-column: 2 / 2" href=${url}>${url}</a><br/><br/><br/><br/></div>`
+      `<iframe src="${url}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
     )
 }
 
@@ -27,7 +27,7 @@ function getBodyReaction(reactionData, actionData, result) {
                     if (reactionData.service === "Discord")
                         body += item.name + ": " + item.external_urls.spotify + '\n'
                     else
-                        body += prettyPrintSpotify(item.name, item.images[item.images.length - 1], item.external_urls.spotify)
+                        body += prettyPrintSpotify(item.external_urls.spotify)
                 })
             } else {
                 body = JSON.stringify(result.data)
