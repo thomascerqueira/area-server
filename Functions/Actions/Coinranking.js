@@ -20,9 +20,9 @@ async function coinrankingGetUuid(name) {
 
 async function coinrankingGetCoin(data) {
   try {
-    const uuid = coinrankingGetUuid(data['name'])
-    console.log(uuid.json())
-    let result = await httpRequest(
+    let result = coinrankingGetUuid(data['name'])
+    uuid = result.data.uuid
+    result = await httpRequest(
       `https://api.coinranking.com/v2/coin/${uuid}/price`,
       "get",
       {},
