@@ -16,7 +16,6 @@ async function sendMail(options, type, html = {}) {
     default:
       break
   }
-  console.log(body)
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
