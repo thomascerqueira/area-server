@@ -1,26 +1,5 @@
 import httpRequest from '../httpRequest.js';
-
-function checkOption(option, main, value) {
-  switch (option) {
-    case 'less':
-      if (main <= value) {
-        return true;
-      }
-      break
-    case 'greater':
-      if (main >= value) {
-        return true;
-      }
-      break
-    case 'equal':
-      if (main === value) {
-        return true;
-      }
-      break;
-    default:
-      return false
-  }
-}
+import {checkOption} from "./CheckOption.js";
 
 async function weatherActionTemp(data) {
   try {
@@ -47,6 +26,5 @@ async function weatherActionPoll(data) {
 
 export {
   weatherActionTemp,
-  weatherActionPoll,
-  checkOption
+  weatherActionPoll
 }

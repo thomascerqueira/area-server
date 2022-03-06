@@ -45,14 +45,19 @@ function deleteActionReaction(req, res) {
         id: req.body.id,
         uid: decoded.uid
       }).then(async (result) => {
-        const actionResult = await action[result.action.actionName](result.action.data, decoded.uid)
-        const reactionResult = await reaction[result.reaction.reactionName](result.action.data)
-        console.log(actionResult, reactionResult)
-        if (actionResult && reactionResult) {
-          deleteFromDb(decoded.uid, req.body.id)
-          res.status(200).send({ msg: "successfuly delete" })
-        } else {
-          res.status(500).send({ msg: "internal server error" })
+        try {
+          const actionResult = await action[result.action.actionName](result.action.data, decoded.uid)
+          const reactionResult = await reaction[result.reaction.reactionName](result.reaction.data)
+          console.log(actionResult, reactionResult)
+          if (actionResult && reactionResult) {
+            deleteFromDb(decoded.uid, req.body.id)
+            res.status(200).send({ msg: "successfuly delete" })
+          } else {
+            res.status(500).send({ msg: "internal server error" })
+          }
+        } catch (e) {
+          console.error(e)
+          res.status(500).send(e)
         }
       })
     })

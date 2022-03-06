@@ -1,5 +1,5 @@
 import httpRequest from "../httpRequest.js"
-import { checkOption } from "./Weather.js";
+import {checkOption} from "./CheckOption.js";
 
 async function coinrankingGetUuid(name) {
   try {
