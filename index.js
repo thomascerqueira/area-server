@@ -40,7 +40,7 @@ app.use((req, res, next) => {
   next();
 })
 
-nodeCron.schedule("0 0 0 * * *", async () => {
+nodeCron.schedule("* 30 7 * * *", async () => {
   updateAllStatusSurveyAction()
 })
 
