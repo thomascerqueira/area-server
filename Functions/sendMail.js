@@ -6,12 +6,12 @@ async function sendMail(options, type, html = {}) {
   let body
   switch (type) {
     case ("confirm"):
-      readFile(resolve("Template", "confirm.html"), (err, buff) => {
+      readFile("./Template/confirm.html", (err, buff) => {
         body = buff.toString().replaceAll("{{CONFIRM_LINK}}", html['confirm_link'])
       })
       break
     case ("reaction"):
-      readFile(resolve("Template", "MailReaction.html"), (err, buff) => {
+      readFile("./Template/MailReaction.html", (err, buff) => {
         body = buff.toString().replaceAll("{{SERVICE}}", html['service']).replaceAll("{{VALUE}}", html['value'])
       })
       break
@@ -22,7 +22,7 @@ async function sendMail(options, type, html = {}) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: options.email,
-    subject: options.object,
+    subject: type,
     html: body,
   }
   transporter.sendMail(mailOptions)
