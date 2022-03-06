@@ -56,7 +56,6 @@ async function dispatchReaction(payload, result) {
     const {reac, act} = payload
     const bodyReaction = getBodyReaction(reac.data, act.data, result)
 
-    console.log(reac, act)
     reaction[reac.reactionName](reac.data, "reaction", {
         service: act.service,
         value: bodyReaction
