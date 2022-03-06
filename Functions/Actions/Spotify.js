@@ -1,13 +1,20 @@
 import httpRequest from "../httpRequest.js";
+import { allDb } from "../../config.js"
+import {getOneValueDb} from "../MongoDB/getValueDb.js";
 
 async function spotifyNewReleaseAction(data, uid) {
   try {
+    const user = await getOneValueDb(allDb['UsersDB'], 'users', {
+			uid: uid
+		})
+		const token = user['services']['github']['token']
+
     let result = await httpRequest(
       "https://api.spotify.com/v1/browse/new-releases",
       "get",
       {},
       {
-        "Authorization": `Berear `,
+        "Authorization": `Berear ${token}`,
         "Content-Type": "application/json"
       }
     )
@@ -22,12 +29,17 @@ async function spotifyNewReleaseAction(data, uid) {
 
 async function spotifyNewRecommendations(data, uid) {
   try {
+    const user = await getOneValueDb(allDb['UsersDB'], 'users', {
+			uid: uid
+		})
+		const token = user['services']['github']['token']
+
     let result = await httpRequest(
       "https://api.spotify.com/v1/recommendations",
       "get",
       {},
       {
-        "Authorization": `Berear `,
+        "Authorization": `Berear ${token}`,
         "Content-Type": "application/json"
       }
     )
