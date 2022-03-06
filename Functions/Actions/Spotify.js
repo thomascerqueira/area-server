@@ -18,10 +18,7 @@ async function spotifyNewReleaseAction(data, uid) {
         "Content-Type": "application/json"
       }
     )
-    console.log(result)
-    if (result.data.length > 0)
-      return result
-    return false
+    return result
   } catch (e) {
     console.error("Err in Spotify action", e)
     throw e
@@ -44,10 +41,7 @@ async function spotifyNewRecommendations(data, uid) {
         "Content-Type": "application/json"
       }
     )
-    console.log(result)
-    if (result.data.length > 0)
-      return result
-    return false
+    return result
   } catch (e) {
     console.error("Err in Spotify action", e)
     throw e
