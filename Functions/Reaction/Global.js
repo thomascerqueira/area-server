@@ -79,7 +79,7 @@ function getBodyReaction(reactionData, actionData, result) {
             check = actionData.data.option === "equal" ? "to" : "than"
             body = `The price of WOW token is ${actionData.data.option} ${check} ${actionData.data.value}`
             break
-        case 'Github':
+        case 'GitHub':
             body = `There is a ${actionData.data.event} in the repo ${actionData.data.repository} of the user ${actionData.data.githubName}`
             break
         default:
