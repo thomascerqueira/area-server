@@ -53,8 +53,8 @@ function getBodyReaction(reactionData, actionData, result) {
 }
 
 async function dispatchReaction(payload, result) {
-    const {reac, act} = payload
-    console.log(reac, act)
+    const reac = payload.reaction
+    const act = payload.action
     const bodyReaction = getBodyReaction(reac.data, act.data, result)
 
     reaction[reac.reactionName](reac.data, "reaction", {
