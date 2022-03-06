@@ -57,7 +57,7 @@ function deleteActionReaction(req, res) {
           }
         } catch (e) {
           console.error(e)
-          res.status(500).send(e)
+          res.status(500).send({msg: "Error while deleting"})
         }
       })
     })
