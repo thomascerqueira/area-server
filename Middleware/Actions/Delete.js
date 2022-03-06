@@ -39,12 +39,6 @@ function deleteActionReaction(req, res) {
     return
   }
 
-  let githubToken
-  if (!req.body.githubToken)
-    githubToken = ""
-  else
-    githubToken = req.body.githubToken
-
   auth.verifyIdToken(token)
     .then((decoded) => {
       getOneValueDb(allDb['ActionReaction'], "ActionReaction", {
